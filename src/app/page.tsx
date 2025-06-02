@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import FAQ from './components/FAQ';
 
 // 1. HERO
@@ -30,7 +31,7 @@ const Hero = () => (
 
       {/* Sous-titre avec animation */}
       <h2 className="text-xl md:text-2xl mb-12 font-medium text-[var(--color-text-primary)]/80 max-w-3xl mx-auto leading-relaxed">
-        Vous recevez chaque semaine les coordonnées d'entreprises en recherche active. À vous de signer.
+        Vous recevez chaque semaine les coordonnées d&apos;entreprises en recherche active. À vous de signer.
       </h2>
 
       {/* CTA avec animation et effet de hover amélioré */}
@@ -141,9 +142,11 @@ const SocialProof = () => (
             {/* Profile image with decorative border */}
             <div className="relative flex-shrink-0">
               <div className="absolute inset-0 bg-gradient-to-br from-[#10B981] to-[#059669] rounded-full blur-lg opacity-20 group-hover:opacity-30 transition-opacity duration-300" />
-              <img
+              <Image
                 src="/anais-remaoun-ezgif.com-webp-to-jpg-converter.jpg"
                 alt="Anaïs Remaoun, CEO de Audit & Coverage"
+                width={160}
+                height={160}
                 className="relative w-32 h-32 md:w-40 md:h-40 rounded-full object-cover border-4 border-white shadow-lg"
               />
               <div className="absolute -bottom-2 -right-2 w-12 h-12 bg-[#10B981] rounded-full flex items-center justify-center text-white shadow-lg">
@@ -189,9 +192,11 @@ const SocialProof = () => (
                   <div className="font-semibold text-[var(--color-text-primary)]">Anaïs Remaoun</div>
                   <div className="text-sm text-[var(--color-text-primary)]/60">CEO de Audit & Coverage</div>
                 </div>
-                <img
+                <Image
                   src="/audit_and_coverage_logo.jpeg"
                   alt="Logo Audit & Coverage"
+                  width={40}
+                  height={40}
                   className="h-10 w-auto opacity-90"
                 />
               </div>
@@ -202,7 +207,7 @@ const SocialProof = () => (
 
       {/* Bottom text */}
       <p className="text-center text-lg mt-12 max-w-2xl mx-auto text-[var(--color-text-primary)]/80 font-medium">
-        Imaginez ce qu'on peut faire… avec 100 leads qualifiés sur votre marché.
+        Imaginez ce qu&apos;on peut faire… avec 100 leads qualifiés sur votre marché.
       </p>
     </div>
   </section>
@@ -242,10 +247,12 @@ const ClientLogos = () => (
           key={i}
             className="flex items-center justify-center transition-transform duration-300 hover:scale-105"
         >
-          <img
+          <Image
             src={src}
             alt={`Logo client ${i + 1}`}
-              className="h-16 md:h-20 w-auto max-w-full object-contain opacity-80 hover:opacity-100 transition-opacity"
+            width={80}
+            height={80}
+            className="h-16 md:h-20 w-auto max-w-full object-contain opacity-80 hover:opacity-100 transition-opacity"
           />
         </div>
       ))}
@@ -301,7 +308,7 @@ const HowItWorks = () => (
               </svg>
             ),
             title: "Étape 4 – Vous payez uniquement ce qui est livré",
-            desc: "Aucun setup, aucun engagement. Juste des leads facturés à l'unité."
+            desc: "Aucun setup, aucun engagement. Juste des leads facturés à l&apos;unité."
           }
         ].map((step, i) => (
           <div 
@@ -345,7 +352,7 @@ const verticals = [
     )
   },
   { 
-    title: "Recherche de crédit d'impôt (CII / CIR / JEI)",
+    title: "Recherche de crédit d&apos;impôt (CII / CIR / JEI)",
     icon: (
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
         <path strokeLinecap="round" strokeLinejoin="round" d="M9 14.25l6-6m4.5-3.493V21.75l-3.75-1.5-3.75 1.5-3.75-1.5-3.75 1.5V4.757c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0111.186 0c1.1.128 1.907 1.077 1.907 2.185zM9.75 9h.008v.008H9.75V9zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm4.125 4.5h.008v.008h-.008V13.5zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
@@ -580,10 +587,10 @@ const CallToAction = () => (
         <h2 className="text-3xl md:text-4xl font-heading mb-6 text-[var(--color-text-primary)]">Chaque mois, des centaines de décideurs cherchent :</h2>
         <ul className="text-lg text-left mx-auto mb-6 text-[var(--color-text-primary)]/90 font-medium space-y-1 pl-4 list-disc">
           <li>un financement</li>
-          <li>un crédit d'impôt</li>
+          <li>un crédit d&apos;impôt</li>
           <li>une solution SaaS</li>
           <li>un partenaire en crédit-bail</li>
-          <li>une optimisation d'assurance…</li>
+          <li>une optimisation d&apos;assurance…</li>
         </ul>
         <p className="text-lg mb-2 text-[var(--color-text-primary)]/80">Nous captons ces demandes.<br/>Vous sélectionnez votre volume, on vous livre les leads.</p>
         <p className="text-base mb-8 text-[var(--color-text-primary)]/70">Réservez un call, on vous montre notre système de génération de leads en totale transparence et nous négocions le prix par lead.</p>
