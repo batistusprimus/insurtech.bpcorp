@@ -1,4 +1,4 @@
-# Finance BP Corp - Plateforme de Leads B2B
+# Insurtech BP Corp - Plateforme de Leads B2B
 
 Plateforme de vente de leads B2B qualifiés à la performance (CPL) pour les courtiers, fintechs et assureurs.
 

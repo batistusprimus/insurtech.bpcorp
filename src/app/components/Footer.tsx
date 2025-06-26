@@ -8,21 +8,11 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-[var(--color-text-primary)]/60">
           <div className="flex flex-col md:flex-row items-center gap-4 md:gap-8">
-            <span>© {new Date().getFullYear()} Finance BP Corp</span>
+            <span>© {new Date().getFullYear()} BP LES CANNISSENT KFT</span>
             <span className="hidden md:inline">•</span>
-            <a 
-              href="/mentions-legales" 
-              className="hover:text-[#10B981] transition-colors"
-            >
-              Mentions légales
-            </a>
+            <a href="/mentions-legales" className="hover:underline">Mentions légales</a>
             <span className="hidden md:inline">•</span>
-            <a 
-              href="/politique-confidentialite" 
-              className="hover:text-[#10B981] transition-colors"
-            >
-              Politique de confidentialité
-            </a>
+            <a href="/politique-confidentialite" className="hover:underline">Politique de confidentialité</a>
           </div>
           <div className="flex items-center gap-2">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4">

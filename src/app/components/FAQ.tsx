@@ -28,7 +28,7 @@ const FAQ = () => {
     },
     {
       question: "Combien de leads vais-je recevoir ?",
-      answer: "Le volume dépend de votre marché, de vos critères, et des slots disponibles. On commence généralement entre 30 et 100 leads par mois."
+      answer: "100 minimum jusqu'à 5.000 par mois."
     },
     {
       question: "RGPD, sécurité et protection des données",
@@ -40,7 +40,7 @@ const FAQ = () => {
     },
     {
       question: "Et si je n'ai pas encore de tunnel ou d'équipe commerciale ?",
-      answer: "Pas de souci. En option, nous proposons :\n\n• Un CRM opérationnel clé en main\n• Une équipe de setters ou closers à la demande\n• Un tunnel de conversion personnalisé (en GHL ou Notion)"
+      answer: "Nous ne travaillons qu'avec des clients disposant déjà d'une équipe commerciale structurée."
     }
   ];
 

@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Finance BP Corp",
+  title: "Insurtech BP Corp",
   description: "Vente de leads B2B qualifiés à la performance (CPL)",
 };
 

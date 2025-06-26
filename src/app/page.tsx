@@ -21,17 +21,18 @@ const Hero = () => (
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4">
           <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
         </svg>
-        0€ Frais de lancement → Leadflow stable → rentabilité immédiate
+        Climate Risk Leads™
       </div>
 
       {/* Titre principal avec gradient */}
       <h1 className="text-4xl md:text-6xl font-heading font-bold mb-4 leading-tight bg-gradient-to-r from-[var(--color-text-primary)] via-[#10B981] to-[var(--color-text-primary)] bg-clip-text text-transparent">
-        Accédez à un flux continu de demandes de financement qualifiées.
+        Des leads qualifiés. Exposés. Prêts à souscrire.
       </h1>
 
       {/* Sous-titre avec animation */}
       <h2 className="text-xl md:text-2xl mb-12 font-medium text-[var(--color-text-primary)]/80 max-w-3xl mx-auto leading-relaxed">
-        Vous recevez chaque semaine les coordonnées d&apos;entreprises en recherche active. À vous de signer.
+        Vous vendez une solution d'assurance climatique ou paramétrique ?<br />
+        Nous livrons des leads d'entreprises directement exposées aux risques climatiques.
       </h2>
 
       {/* CTA avec animation et effet de hover amélioré */}
@@ -61,7 +62,7 @@ const Hero = () => (
 
       {/* Public cible */}
       <p className="mt-8 text-lg text-[var(--color-text-primary)]/80 font-medium">
-        Fintechs, réseaux de courtiers, sociétés de financement
+        Modèle 100 % performance. Aucun engagement. Aucun Acompte.
       </p>
 
       {/* Stats ou social proof */}
@@ -122,7 +123,7 @@ const SocialProof = () => (
       <div className="text-center mb-16">
         <div className="inline-flex items-center gap-2 mb-4 px-4 py-1.5 rounded-full bg-[#10B981]/10 text-[#10B981] text-sm font-semibold tracking-wide border border-[#10B981]/20">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
+            <path strokeLinecap="round" strokeLinejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c1.164.093 1.636 1.545.749 2.305l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
           </svg>
           Cas Client
         </div>
@@ -162,7 +163,7 @@ const SocialProof = () => (
                 <div className="flex">
                   {[...Array(5)].map((_, i) => (
                     <svg key={i} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#10B981" className="w-5 h-5">
-                      <path fillRule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z" clipRule="evenodd" />
+                      <path fillRule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" clipRule="evenodd" />
                     </svg>
                   ))}
                 </div>
@@ -170,7 +171,7 @@ const SocialProof = () => (
               </div>
 
               <h3 className="text-2xl md:text-3xl font-heading mb-6 leading-tight">
-                300.000€ générés en 75 jours grâce à une stratégie… de contenu.
+                285 leads qualifiés directement à prendre en appel en 75 jours grâce à une stratégie… de contenu.
               </h3>
 
               <div className="prose prose-lg mb-6 text-[var(--color-text-primary)]/80">
@@ -183,7 +184,7 @@ const SocialProof = () => (
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
-                  <span>35 posts, 1.7M vues, 4 posts viraux, +4.000 abonnés, 300.000€ générés</span>
+                  <span>35 posts, 1.7M vues, 4 posts viraux, +4.000 abonnés, 285 leads qualifiés</span>
                 </div>
               </div>
 
@@ -207,7 +208,7 @@ const SocialProof = () => (
 
       {/* Bottom text */}
       <p className="text-center text-lg mt-12 max-w-2xl mx-auto text-[var(--color-text-primary)]/80 font-medium">
-        Imaginez ce qu&apos;on peut faire… avec 100 leads qualifiés sur votre marché.
+        Nous sommes en mesure de générer de 100 à 5.000 leads sur votre verticale risque
       </p>
     </div>
   </section>
@@ -281,7 +282,7 @@ const HowItWorks = () => (
               </svg>
             ),
             title: "Étape 1 – Vous nous partagez votre besoin et votre volume",
-            desc: "Exemple : 30 leads/mois dans le financement pro."
+            desc: "Minimum 100 leads sur votre verticale risque."
           },
           { 
             icon: (
@@ -290,7 +291,7 @@ const HowItWorks = () => (
               </svg>
             ),
             title: "Étape 2 – On vous livre des leads triés sur le volet",
-            desc: "Décideurs identifiés, email + tel, besoin exprimé, budget validé."
+            desc: "Décideurs identifiés, email + tel, besoin d'assurance exprimé, budget validé."
           },
           { 
             icon: (
@@ -298,8 +299,8 @@ const HowItWorks = () => (
                 <path strokeLinecap="round" strokeLinejoin="round" d="M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18-2.087.277-4.216.42-6.378.42s-4.291-.143-6.378-.42c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.18 2.18 0 00.75-1.661V8.706c0-1.081-.768-2.015-1.837-2.175a48.114 48.114 0 00-3.413-.387m4.5 8.006c-.194.165-.42.295-.673.38A23.978 23.978 0 0112 15.75c-2.648 0-5.195-.429-7.577-1.22a2.016 2.016 0 01-.673-.38m0 0A2.18 2.18 0 013 12.489V8.706c0-1.081.768-2.015 1.837-2.175a48.111 48.111 0 013.413-.387m7.5 0V5.25A2.25 2.25 0 0013.5 3h-3a2.25 2.25 0 00-2.25 2.25v.894m7.5 0a48.667 48.667 0 00-7.5 0M12 12.75h.008v.008H12v-.008z" />
               </svg>
             ),
-            title: "Étape 3 – Vous traitez (ou on traite pour vous)",
-            desc: "Vous gérez les leads ou on met à dispo notre équipe de closing."
+            title: "Étape 3 – Vous validez et gérez vos leads",
+            desc: "Vous pilotez la relation commerciale avec chaque prospect livré."
           },
           { 
             icon: (
@@ -308,7 +309,7 @@ const HowItWorks = () => (
               </svg>
             ),
             title: "Étape 4 – Vous payez uniquement ce qui est livré",
-            desc: "Aucun setup, aucun engagement. Juste des leads facturés à l&apos;unité."
+            desc: "Aucun setup, aucun engagement. Juste des leads facturés à l'unité."
           }
         ].map((step, i) => (
           <div 
@@ -335,53 +336,33 @@ const HowItWorks = () => (
 
 // 4. VERTICALES DISPONIBLES
 const verticals = [
-  { 
-    title: "Besoin de financement entreprise",
-    icon: (
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 003 15h-.75M15 10.5a3 3 0 11-6 0 3 3 0 016 0zm3 0h.008v.008H18V10.5zm-12 0h.008v.008H6V10.5z" />
-      </svg>
-    )
+  {
+    title: "🌾 Cultures sensibles et coopératives agricoles",
+    desc: "Sécheresse, grêle, gel tardif, pertes d'exploitation."
   },
-  { 
-    title: "Demande de crédit-bail matériel",
-    icon: (
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 00-3.213-9.193 2.056 2.056 0 00-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 00-10.026 0 1.106 1.106 0 00-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12" />
-      </svg>
-    )
+  {
+    title: "🏗️ Bâtiments, chantiers et infrastructures exposées",
+    desc: "Inondation, instabilité du sol, tempêtes, contraintes réglementaires."
   },
-  { 
-    title: "Recherche de crédit d&apos;impôt (CII / CIR / JEI)",
-    icon: (
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M9 14.25l6-6m4.5-3.493V21.75l-3.75-1.5-3.75 1.5-3.75-1.5-3.75 1.5V4.757c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0111.186 0c1.1.128 1.907 1.077 1.907 2.185zM9.75 9h.008v.008H9.75V9zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm4.125 4.5h.008v.008h-.008V13.5zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
-      </svg>
-    )
+  {
+    title: "🔥 Sites sensibles et actifs industriels à risques",
+    desc: "Forêts, entrepôts, installations minières ou zones à forte sinistralité."
   },
-  { 
-    title: "Financement de logiciel ou SaaS",
-    icon: (
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M6.429 9.75L2.25 12l4.179 2.25m0-4.5l5.571 3 5.571-3m-11.142 0L2.25 7.5 12 2.25l9.75 5.25-4.179 2.25m0 0L21.75 12l-4.179 2.25m0 0l4.179 2.25L12 21.75 2.25 16.5l4.179-2.25m11.142 0l-5.571 3-5.571-3" />
-      </svg>
-    )
+  {
+    title: "🌍 Grands comptes multi-sites & zones à exposition internationale",
+    desc: "Cartographie des risques, offres sur-mesure, contrats indexés."
   },
-  { 
-    title: "Crédit immobilier professionnel",
-    icon: (
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 3.75h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008z" />
-      </svg>
-    )
+  {
+    title: "⚡ Energies renouvelables & climat-dépendantes",
+    desc: "Solaire, éolien, hydraulique — performance et couverture météo."
   },
-  { 
-    title: "Rachat de créances / affacturage",
-    icon: (
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0118 16.5h-2.25m-7.5 0h7.5m-7.5 0l-1 3m8.5-3l1 3m0 0l.5 1.5m-.5-1.5h-9.5m0 0l-.5 1.5m.75-9l3-3 2.148 2.148A12.061 12.061 0 0116.5 7.605" />
-      </svg>
-    )
+  {
+    title: "📊 Solutions paramétriques et assurance à base d'indicateurs météo",
+    desc: "Données satellite, IA prédictive, intégration monitoring/assurance."
+  },
+  {
+    title: "🎪 Événementiel et projets ponctuels à haute dépendance météo",
+    desc: "Festivals, exploitations saisonnières, lancements à date fixe."
   },
 ];
 
@@ -405,31 +386,20 @@ const Verticals = () => (
           Les demandes que nous servons le plus
         </h2>
         <p className="text-xl text-[var(--color-text-primary)]/80 max-w-2xl mx-auto leading-relaxed">
-          Nous générons des leads ultra qualifiés sur ces besoins précis.
+          Nous générons des leads ultra qualifiés sur ces besoins précis :
         </p>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8 mb-16">
         {verticals.map((v, i) => (
           <div 
             key={i} 
             className="group relative p-8 bg-white rounded-2xl border border-[#10B981]/20 hover:border-[#10B981] transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
           >
-            {/* Decorative corner accent */}
-            <div className="absolute top-0 right-0 w-16 h-16 overflow-hidden">
-              <div className="absolute top-0 right-0 w-8 h-8 bg-[#10B981]/5 transform rotate-45 translate-x-4 -translate-y-4 group-hover:bg-[#10B981]/10 transition-colors duration-300" />
-            </div>
-
-            <div className="flex items-start gap-5">
-              <div className="flex-shrink-0 w-14 h-14 bg-gradient-to-br from-[#10B981]/10 to-[#10B981]/5 rounded-xl flex items-center justify-center text-[#10B981] group-hover:from-[#10B981] group-hover:to-[#059669] group-hover:text-white transition-all duration-300 transform group-hover:scale-110">
-                {v.icon}
-              </div>
-              <div>
-                <h3 className="font-heading text-xl text-[var(--color-text-primary)] group-hover:text-[#10B981] transition-colors duration-300 leading-tight">
-                  {v.title}
-                </h3>
-                <div className="mt-2 h-0.5 w-0 bg-[#10B981] group-hover:w-full transition-all duration-300" />
-              </div>
+            <div>
+              <h3 className="font-heading text-xl text-[var(--color-text-primary)] group-hover:text-[#10B981] transition-colors duration-300 leading-tight">
+                {v.title}
+              </h3>
             </div>
           </div>
         ))}
@@ -485,7 +455,7 @@ const About = () => (
             Nous sommes votre partenaire de croissance B2B, spécialisé dans la génération de leads ultra-qualifiés.
           </p>
           <p className="text-xl leading-relaxed text-[var(--color-text-primary)]/70">
-            Notre système a déjà permis de générer plus de 5.000 leads qualifiés en 2024, avec un taux de conversion moyen de 35% sur des marchés premium : le financement, les entreprises techs, le recrutement, les agences B2B et les investisseurs.
+            Notre système a déjà permis de générer plus de 5.000 leads qualifiés en 2024, avec un taux de conversion moyen de 35% sur des marchés premium : l'assurance, les entreprises techs, le recrutement, les agences B2B et les investisseurs.
           </p>
         </div>
 
@@ -585,12 +555,14 @@ const CallToAction = () => (
           Prêt à capter les demandes de votre marché ?
         </div>
         <h2 className="text-3xl md:text-4xl font-heading mb-6 text-[var(--color-text-primary)]">Chaque mois, des centaines de décideurs cherchent :</h2>
-        <ul className="text-lg text-left mx-auto mb-6 text-[var(--color-text-primary)]/90 font-medium space-y-1 pl-4 list-disc">
-          <li>un financement</li>
-          <li>un crédit d&apos;impôt</li>
-          <li>une solution SaaS</li>
-          <li>un partenaire en crédit-bail</li>
-          <li>une optimisation d&apos;assurance…</li>
+        <ul className="text-lg text-left mx-auto mb-6 text-[var(--color-text-primary)]/90 font-medium space-y-2 pl-4">
+          <li>🌾 Cultures agricoles & coopératives (sécheresse, grêle, gel)</li>
+          <li>🏗️ Bâtiments & chantiers exposés (inondation, tempête, sol)</li>
+          <li>🔥 Sites industriels & forêts à risques</li>
+          <li>🌍 Grands comptes multi-sites, offres sur-mesure</li>
+          <li>⚡ Energies renouvelables (solaire, éolien, hydro)</li>
+          <li>📊 Assurance paramétrique & météo</li>
+          <li>🎪 Événementiel météo-sensible</li>
         </ul>
         <p className="text-lg mb-2 text-[var(--color-text-primary)]/80">Nous captons ces demandes.<br/>Vous sélectionnez votre volume, on vous livre les leads.</p>
         <p className="text-base mb-8 text-[var(--color-text-primary)]/70">Réservez un call, on vous montre notre système de génération de leads en totale transparence et nous négocions le prix par lead.</p>
