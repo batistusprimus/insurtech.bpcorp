@@ -13,7 +13,7 @@ export default function PolitiqueConfidentialite() {
           <li>Nom, prénom</li>
           <li>Email professionnel</li>
           <li>Numéro de téléphone</li>
-          <li>Nom de l'entreprise</li>
+          <li>Nom de l&apos;entreprise</li>
           <li>Fonction</li>
           <li>Message libre ou demande spécifique</li>
         </ul>
@@ -32,8 +32,8 @@ export default function PolitiqueConfidentialite() {
 
       <section className="mb-8">
         <h2 className="text-xl font-semibold mb-4">3. Cookies</h2>
-        <p className="mb-4">Nous utilisons uniquement des cookies essentiels au fonctionnement du site ou à des mesures d'audience anonymisées.</p>
-        <p>Aucun cookie publicitaire ou tracking tiers n'est activé sans votre consentement explicite.</p>
+        <p className="mb-4">Nous utilisons uniquement des cookies essentiels au fonctionnement du site ou à des mesures d&apos;audience anonymisées.</p>
+        <p>Aucun cookie publicitaire ou tracking tiers n&apos;est activé sans votre consentement explicite.</p>
       </section>
 
       <section className="mb-8">

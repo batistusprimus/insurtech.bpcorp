@@ -7,12 +7,12 @@ const FAQ = () => {
 
   const faqItems = [
     {
-      question: "Est-ce que je dois m'engager sur plusieurs mois ?",
+      question: "Est-ce que je dois m&apos;engager sur plusieurs mois ?",
       answer: "Non. Vous ne payez que les leads reçus. Aucun engagement, aucun abonnement. Paiement à la performance uniquement."
     },
     {
-      question: "C'est quoi un \"lead qualifié\" chez vous ?",
-      answer: "Un lead est considéré comme qualifié et facturable s'il respecte les 4 conditions suivantes :\n\n• Email professionnel et numéro de téléphone valides\n• Profil conforme à votre ICP (fonction, secteur, taille d'entreprise)\n• Intérêt exprimé (réponse, clic, demande d'infos claire)\n• Budget ou intention de passage à l'action"
+      question: "C&apos;est quoi un \"lead qualifié\" chez vous ?",
+      answer: "Un lead est considéré comme qualifié et facturable s&apos;il respecte les 4 conditions suivantes :\n\n• Email professionnel et numéro de téléphone valides\n• Profil conforme à votre ICP (fonction, secteur, taille d&apos;entreprise)\n• Intérêt exprimé (réponse, clic, demande d&apos;infos claire)\n• Budget ou intention de passage à l&apos;action"
     },
     {
       question: "Combien de temps pour démarrer ?",
@@ -20,7 +20,7 @@ const FAQ = () => {
     },
     {
       question: "Que contient la livraison ?",
-      answer: "Chaque lead contient :\n\n• Nom complet\n• Poste & entreprise\n• Email pro\n• Téléphone direct\n• Détail de la demande\n• Niveau d'intérêt / budget (si disponible)\n\nLivraison via Google Sheet, Notion ou CRM connecté."
+      answer: "Chaque lead contient :\n\n• Nom complet\n• Poste & entreprise\n• Email pro\n• Téléphone direct\n• Détail de la demande\n• Niveau d&apos;intérêt / budget (si disponible)\n\nLivraison via Google Sheet, Notion ou CRM connecté."
     },
     {
       question: "Puis-je refuser un lead ?",
@@ -28,19 +28,19 @@ const FAQ = () => {
     },
     {
       question: "Combien de leads vais-je recevoir ?",
-      answer: "100 minimum jusqu'à 5.000 par mois."
+      answer: "100 minimum jusqu&apos;à 5.000 par mois."
     },
     {
       question: "RGPD, sécurité et protection des données",
       answer: "Toutes nos données sont collectées de manière légale, éthique et sécurisée :\n\n• Aucune donnée sensible ou personnelle non consentie\n• Aucune prospection vers les particuliers\n• Hébergement sécurisé (serveurs EU)\n• Données supprimables à la demande du prospect ou du client\n• Conformité RGPD assurée à chaque étape"
     },
     {
-      question: "Puis-je réserver un créneau d'exclusivité ?",
+      question: "Puis-je réserver un créneau d&apos;exclusivité ?",
       answer: "Oui. Chaque verticale est limitée à un nombre restreint de partenaires. Quand vous réservez un slot, vous bloquez votre volume et votre exclusivité."
     },
     {
-      question: "Et si je n'ai pas encore de tunnel ou d'équipe commerciale ?",
-      answer: "Nous ne travaillons qu'avec des clients disposant déjà d'une équipe commerciale structurée."
+      question: "Et si je n&apos;ai pas encore de tunnel ou d&apos;équipe commerciale ?",
+      answer: "Nous ne travaillons qu&apos;avec des clients disposant déjà d&apos;une équipe commerciale structurée."
     }
   ];
 

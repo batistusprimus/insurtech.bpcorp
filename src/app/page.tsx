@@ -31,8 +31,8 @@ const Hero = () => (
 
       {/* Sous-titre avec animation */}
       <h2 className="text-xl md:text-2xl mb-12 font-medium text-[var(--color-text-primary)]/80 max-w-3xl mx-auto leading-relaxed">
-        Vous vendez une solution d'assurance climatique ou paramétrique ?<br />
-        Nous livrons des leads d'entreprises directement exposées aux risques climatiques.
+        Vous vendez une solution d&apos;assurance climatique ou paramétrique ?<br />
+        Nous livrons des leads d&apos;entreprises directement exposées aux risques climatiques.
       </h2>
 
       {/* CTA avec animation et effet de hover amélioré */}
@@ -291,7 +291,7 @@ const HowItWorks = () => (
               </svg>
             ),
             title: "Étape 2 – On vous livre des leads triés sur le volet",
-            desc: "Décideurs identifiés, email + tel, besoin d'assurance exprimé, budget validé."
+            desc: "Décideurs identifiés, email + tel, besoin d&apos;assurance exprimé, budget validé."
           },
           { 
             icon: (
@@ -309,7 +309,7 @@ const HowItWorks = () => (
               </svg>
             ),
             title: "Étape 4 – Vous payez uniquement ce qui est livré",
-            desc: "Aucun setup, aucun engagement. Juste des leads facturés à l'unité."
+            desc: "Aucun setup, aucun engagement. Juste des leads facturés à l&apos;unité."
           }
         ].map((step, i) => (
           <div 
@@ -338,7 +338,7 @@ const HowItWorks = () => (
 const verticals = [
   {
     title: "🌾 Cultures sensibles et coopératives agricoles",
-    desc: "Sécheresse, grêle, gel tardif, pertes d'exploitation."
+    desc: "Sécheresse, grêle, gel tardif, pertes d&apos;exploitation."
   },
   {
     title: "🏗️ Bâtiments, chantiers et infrastructures exposées",
@@ -357,7 +357,7 @@ const verticals = [
     desc: "Solaire, éolien, hydraulique — performance et couverture météo."
   },
   {
-    title: "📊 Solutions paramétriques et assurance à base d'indicateurs météo",
+    title: "📊 Solutions paramétriques et assurance à base d&apos;indicateurs météo",
     desc: "Données satellite, IA prédictive, intégration monitoring/assurance."
   },
   {
@@ -455,7 +455,7 @@ const About = () => (
             Nous sommes votre partenaire de croissance B2B, spécialisé dans la génération de leads ultra-qualifiés.
           </p>
           <p className="text-xl leading-relaxed text-[var(--color-text-primary)]/70">
-            Notre système a déjà permis de générer plus de 5.000 leads qualifiés en 2024, avec un taux de conversion moyen de 35% sur des marchés premium : l'assurance, les entreprises techs, le recrutement, les agences B2B et les investisseurs.
+            Notre système a déjà permis de générer plus de 5.000 leads qualifiés en 2024, avec un taux de conversion moyen de 35% sur des marchés premium : l&apos;assurance, les entreprises techs, le recrutement, les agences B2B et les investisseurs.
           </p>
         </div>
 
