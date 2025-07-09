@@ -1,591 +1,1080 @@
 import React from "react";
 import Image from "next/image";
-import FAQ from './components/FAQ';
-
-// 1. HERO
-const Hero = () => (
-  <section
-    id="hero"
-    className="relative min-h-[85vh] flex items-center justify-center py-24 px-4 overflow-hidden bg-gradient-to-b from-white via-[#f7f8fa] to-[#e9ecf3]"
-  >
-    {/* Background decorative elements */}
-    <div className="absolute inset-0 pointer-events-none">
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#10B981]/5 rounded-full blur-3xl animate-pulse" />
-      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-[#10B981]/5 rounded-full blur-3xl animate-pulse delay-1000" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-to-r from-[#10B981]/10 to-transparent rounded-full blur-3xl opacity-50" />
-    </div>
-
-    <div className="relative max-w-5xl mx-auto text-center">
-      {/* Badge rassurant avec animation */}
-      <div className="inline-flex items-center gap-2 mb-6 px-4 py-1.5 rounded-full bg-[#10B981]/10 text-[#10B981] text-sm font-semibold tracking-wide border border-[#10B981]/20 hover:border-[#10B981]/40 transition-all duration-300 hover:scale-105">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4">
-          <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-        </svg>
-        Climate Risk Leads™
-      </div>
-
-      {/* Titre principal avec gradient */}
-      <h1 className="text-4xl md:text-6xl font-heading font-bold mb-4 leading-tight bg-gradient-to-r from-[var(--color-text-primary)] via-[#10B981] to-[var(--color-text-primary)] bg-clip-text text-transparent">
-        Des leads qualifiés. Exposés. Prêts à souscrire.
-      </h1>
-
-      {/* Sous-titre avec animation */}
-      <h2 className="text-xl md:text-2xl mb-12 font-medium text-[var(--color-text-primary)]/80 max-w-3xl mx-auto leading-relaxed">
-        Vous vendez une solution d&apos;assurance climatique ou paramétrique ?<br />
-        Nous livrons des leads d&apos;entreprises directement exposées aux risques climatiques.
-      </h2>
-
-      {/* CTA avec animation et effet de hover amélioré */}
-      <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-        <a
-          href="https://app.iclosed.io/e/baptistepiocelle/contact"
-          className="group relative inline-flex items-center gap-3 px-8 py-4 bg-[#10B981] text-white font-bold rounded-full text-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-0.5"
-        >
-          <span className="relative z-10 flex items-center gap-2">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5 group-hover:scale-110 transition-transform">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M3 17v2a2 2 0 002 2h14a2 2 0 002-2v-2M16 11.37V7a4 4 0 10-8 0v4.37M12 17v-4m0 0l-2 2m2-2l2 2" />
-            </svg>
-            Estimer mon ROI potentiel
-          </span>
-          <div className="absolute inset-0 rounded-full bg-gradient-to-r from-[#10B981] to-[#059669] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-        </a>
-        <a
-          href="#how-it-works"
-          className="inline-flex items-center gap-2 px-6 py-3 text-[var(--color-text-primary)] font-medium hover:text-[#10B981] transition-colors"
-        >
-          <span>Découvrir comment ça marche</span>
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4 group-hover:translate-x-1 transition-transform">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-          </svg>
-        </a>
-      </div>
-
-      {/* Public cible */}
-      <p className="mt-8 text-lg text-[var(--color-text-primary)]/80 font-medium">
-        Modèle 100 % performance. Aucun engagement. Aucun Acompte.
-      </p>
-
-      {/* Stats ou social proof */}
-      <div className="mt-16 grid grid-cols-3 gap-8 max-w-2xl mx-auto">
-        {[
-          { 
-            number: "100%", 
-            label: "Satisfaction",
-            icon: (
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-            )
-          },
-          { 
-            number: "0€", 
-            label: "Au lancement",
-            icon: (
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 003 15h-.75M15 10.5a3 3 0 11-6 0 3 3 0 016 0zm3 0h.008v.008H18V10.5zm-12 0h.008v.008H6V10.5z" />
-              </svg>
-            )
-          },
-          { 
-            number: "100%", 
-            label: "Performance",
-            icon: (
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0118 16.5h-2.25m-7.5 0h7.5m-7.5 0l-1 3m8.5-3l1 3m0 0l.5 1.5m-.5-1.5h-9.5m0 0l-.5 1.5m.75-9l3-3 2.148 2.148A12.061 12.061 0 0116.5 7.605" />
-              </svg>
-            )
-          },
-        ].map((stat, i) => (
-          <div key={i} className="text-center">
-            <div className="flex items-center justify-center gap-2 mb-2">
-              <div className="text-[#10B981]">{stat.icon}</div>
-              <div className="text-2xl md:text-3xl font-bold text-[#10B981]">{stat.number}</div>
-            </div>
-            <div className="text-sm text-[var(--color-text-primary)]/60">{stat.label}</div>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-);
-
-// 2. PREUVES SOCIALES (remplacée par Cas Client)
-const SocialProof = () => (
-  <section id="social-proof" className="relative py-32 bg-gradient-to-b from-[#f7f8fa] via-white to-[#f7f8fa] overflow-hidden">
-    {/* Background decorative elements */}
-    <div className="absolute inset-0 pointer-events-none">
-      <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-[#10B981]/5 rounded-full blur-3xl transform translate-x-1/2 -translate-y-1/2" />
-      <div className="absolute bottom-0 left-0 w-1/3 h-1/3 bg-[#10B981]/5 rounded-full blur-3xl transform -translate-x-1/2 translate-y-1/2" />
-    </div>
-
-    <div className="relative max-w-6xl mx-auto px-4">
-      {/* Section header */}
-      <div className="text-center mb-16">
-        <div className="inline-flex items-center gap-2 mb-4 px-4 py-1.5 rounded-full bg-[#10B981]/10 text-[#10B981] text-sm font-semibold tracking-wide border border-[#10B981]/20">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c1.164.093 1.636 1.545.749 2.305l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
-          </svg>
-          Cas Client
-        </div>
-        <h2 className="text-3xl md:text-4xl font-heading mb-4 bg-gradient-to-r from-[var(--color-text-primary)] to-[#10B981] bg-clip-text text-transparent">
-          De la stratégie de contenu à la génération de leads
-        </h2>
-      </div>
-
-      {/* Testimonial card */}
-      <div className="group relative bg-white rounded-2xl shadow-xl border border-[#10B981]/20 hover:border-[#10B981]/40 transition-all duration-300 hover:shadow-2xl overflow-hidden">
-        {/* Decorative elements */}
-        <div className="absolute top-0 right-0 w-64 h-64 bg-[#10B981]/5 rounded-full blur-3xl transform translate-x-1/2 -translate-y-1/2 group-hover:bg-[#10B981]/10 transition-colors duration-300" />
-        <div className="absolute -top-4 -right-4 w-24 h-24 bg-[#10B981]/10 rounded-full blur-xl" />
-        
-        <div className="relative p-8 md:p-12">
-          <div className="flex flex-col md:flex-row gap-8 items-start">
-            {/* Profile image with decorative border */}
-            <div className="relative flex-shrink-0">
-              <div className="absolute inset-0 bg-gradient-to-br from-[#10B981] to-[#059669] rounded-full blur-lg opacity-20 group-hover:opacity-30 transition-opacity duration-300" />
-              <Image
-                src="/anais-remaoun-ezgif.com-webp-to-jpg-converter.jpg"
-                alt="Anaïs Remaoun, CEO de Audit & Coverage"
-                width={160}
-                height={160}
-                className="relative w-32 h-32 md:w-40 md:h-40 rounded-full object-cover border-4 border-white shadow-lg"
-              />
-              <div className="absolute -bottom-2 -right-2 w-12 h-12 bg-[#10B981] rounded-full flex items-center justify-center text-white shadow-lg">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-6 h-6">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" />
-                </svg>
-              </div>
-            </div>
-
-            {/* Content */}
-            <div className="flex-1">
-              <div className="flex items-center gap-2 mb-4">
-                <div className="flex">
-                  {[...Array(5)].map((_, i) => (
-                    <svg key={i} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#10B981" className="w-5 h-5">
-                      <path fillRule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" clipRule="evenodd" />
-                    </svg>
-                  ))}
-                </div>
-                <span className="text-sm font-medium text-[#10B981]">Cas Client</span>
-              </div>
-
-              <h3 className="text-2xl md:text-3xl font-heading mb-6 leading-tight">
-                285 leads qualifiés directement à prendre en appel en 75 jours grâce à une stratégie… de contenu.
-              </h3>
-
-              <div className="prose prose-lg mb-6 text-[var(--color-text-primary)]/80">
-                <p className="mb-4">
-                  Avant même de lancer notre modèle Pay Per Lead, on livrait déjà des résultats à la performance.
-                  <br />
-                  Avec Anaïs, on a conçu et piloté une stratégie de contenu LinkedIn.
-                </p>
-                <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#10B981]/5 rounded-lg text-[#10B981] font-medium">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                  <span>35 posts, 1.7M vues, 4 posts viraux, +4.000 abonnés, 285 leads qualifiés</span>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-3">
-                <div className="flex-1">
-                  <div className="font-semibold text-[var(--color-text-primary)]">Anaïs Remaoun</div>
-                  <div className="text-sm text-[var(--color-text-primary)]/60">CEO de Audit & Coverage</div>
-                </div>
-                <Image
-                  src="/audit_and_coverage_logo.jpeg"
-                  alt="Logo Audit & Coverage"
-                  width={40}
-                  height={40}
-                  className="h-10 w-auto opacity-90"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Bottom text */}
-      <p className="text-center text-lg mt-12 max-w-2xl mx-auto text-[var(--color-text-primary)]/80 font-medium">
-        Nous sommes en mesure de générer de 100 à 5.000 leads sur votre verticale risque
-      </p>
-    </div>
-  </section>
-);
-
-// Section Logos Clients
-const ClientLogos = () => (
-  <section className="py-16 bg-gradient-to-b from-[#f7f8fa] via-[#e9ecf3] to-white relative overflow-hidden">
-    {/* Background decorative elements */}
-    <div className="absolute inset-0 pointer-events-none">
-      <div className="absolute top-1/2 left-1/4 w-96 h-96 bg-[#10B981]/5 rounded-full blur-3xl transform -translate-y-1/2" />
-      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-[#10B981]/5 rounded-full blur-3xl transform translate-y-1/2" />
-    </div>
-
-    <div className="relative max-w-7xl mx-auto px-4">
-      <div className="text-center mb-12">
-        <div className="inline-flex items-center gap-2 mb-4 px-4 py-1.5 rounded-full bg-[#10B981]/10 text-[#10B981] text-sm font-semibold tracking-wide border border-[#10B981]/20">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
-          </svg>
-          Nos Clients
-        </div>
-        <h2 className="text-3xl md:text-4xl font-heading mb-4 bg-gradient-to-r from-[var(--color-text-primary)] to-[#10B981] bg-clip-text text-transparent">
-          Ils nous font confiance
-        </h2>
-      </div>
-
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 md:gap-12 items-center">
-      {[
-        '/66586da221e592872a514716_ecf4541d-3c8f-4731-ace6-7f59afa16df4.png',
-        '/66586f5324a5f96213323991_e06827a1-d54d-4cff-8f39-d480a4d23967.png',
-        '/665871bc5f8d9b87ce190b59_1443ebad-ae25-4240-b1e3-1bf8bf237c3a.png',
-        '/665876e344b512bddc35112e_77189863-0a3b-48f3-9b9d-cf294d14d568.png',
-        '/6658713033c7316a7e38d620_548af79d-89fc-4542-a939-4eb1fabae0c8.png',
-      ].map((src, i) => (
-        <div
-          key={i}
-            className="flex items-center justify-center transition-transform duration-300 hover:scale-105"
-        >
-          <Image
-            src={src}
-            alt={`Logo client ${i + 1}`}
-            width={80}
-            height={80}
-            className="h-16 md:h-20 w-auto max-w-full object-contain opacity-80 hover:opacity-100 transition-opacity"
-          />
-        </div>
-      ))}
-      </div>
-    </div>
-  </section>
-);
-
-// 3. COMMENT ÇA MARCHE
-const HowItWorks = () => (
-  <section id="how-it-works" className="py-24 bg-gradient-to-b from-[#f7f8fa] via-white to-[#f7f8fa]">
-    <div className="max-w-6xl mx-auto px-4">
-      <div className="text-center mb-16">
-        <div className="inline-block mb-4 px-4 py-1 rounded-full bg-[#10B981]/20 text-[#10B981] text-sm font-semibold tracking-wide">
-          Notre Processus
-        </div>
-        <h2 className="text-3xl md:text-4xl font-heading mb-4">Un système ultra simple.<br />Zéro friction, 100 % résultats.</h2>
-      </div>
-      
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-        {[
-          { 
-            icon: (
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-8 h-8">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z" />
-              </svg>
-            ),
-            title: "Étape 1 – Vous nous partagez votre besoin et votre volume",
-            desc: "Minimum 100 leads sur votre verticale risque."
-          },
-          { 
-            icon: (
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-8 h-8">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
-              </svg>
-            ),
-            title: "Étape 2 – On vous livre des leads triés sur le volet",
-            desc: "Décideurs identifiés, email + tel, besoin d&apos;assurance exprimé, budget validé."
-          },
-          { 
-            icon: (
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-8 h-8">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18-2.087.277-4.216.42-6.378.42s-4.291-.143-6.378-.42c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.18 2.18 0 00.75-1.661V8.706c0-1.081-.768-2.015-1.837-2.175a48.114 48.114 0 00-3.413-.387m4.5 8.006c-.194.165-.42.295-.673.38A23.978 23.978 0 0112 15.75c-2.648 0-5.195-.429-7.577-1.22a2.016 2.016 0 01-.673-.38m0 0A2.18 2.18 0 013 12.489V8.706c0-1.081.768-2.015 1.837-2.175a48.111 48.111 0 013.413-.387m7.5 0V5.25A2.25 2.25 0 0013.5 3h-3a2.25 2.25 0 00-2.25 2.25v.894m7.5 0a48.667 48.667 0 00-7.5 0M12 12.75h.008v.008H12v-.008z" />
-              </svg>
-            ),
-            title: "Étape 3 – Vous validez et gérez vos leads",
-            desc: "Vous pilotez la relation commerciale avec chaque prospect livré."
-          },
-          { 
-            icon: (
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-8 h-8">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-            ),
-            title: "Étape 4 – Vous payez uniquement ce qui est livré",
-            desc: "Aucun setup, aucun engagement. Juste des leads facturés à l&apos;unité."
-          }
-        ].map((step, i) => (
-          <div 
-            key={i} 
-            className="group relative p-8 bg-white rounded-2xl shadow-sm border border-[#10B981]/20 hover:border-[#10B981] transition-all duration-300 hover:shadow-lg"
-          >
-            <div className="absolute -top-4 left-8 w-12 h-12 bg-[#10B981] rounded-xl flex items-center justify-center text-white transform group-hover:scale-110 transition-transform duration-300">
-              {step.icon}
-            </div>
-            <div className="mt-6">
-              <h3 className="text-lg font-heading mb-3 text-[var(--color-text-primary)] group-hover:text-[#10B981] transition-colors duration-300">
-                {step.title}
-              </h3>
-              <p className="text-[var(--color-text-primary)]/70 leading-relaxed">
-                {step.desc}
-              </p>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-);
-
-// 4. VERTICALES DISPONIBLES
-const verticals = [
-  {
-    title: "🌾 Cultures sensibles et coopératives agricoles",
-    desc: "Sécheresse, grêle, gel tardif, pertes d&apos;exploitation."
-  },
-  {
-    title: "🏗️ Bâtiments, chantiers et infrastructures exposées",
-    desc: "Inondation, instabilité du sol, tempêtes, contraintes réglementaires."
-  },
-  {
-    title: "🔥 Sites sensibles et actifs industriels à risques",
-    desc: "Forêts, entrepôts, installations minières ou zones à forte sinistralité."
-  },
-  {
-    title: "🌍 Grands comptes multi-sites & zones à exposition internationale",
-    desc: "Cartographie des risques, offres sur-mesure, contrats indexés."
-  },
-  {
-    title: "⚡ Energies renouvelables & climat-dépendantes",
-    desc: "Solaire, éolien, hydraulique — performance et couverture météo."
-  },
-  {
-    title: "📊 Solutions paramétriques et assurance à base d&apos;indicateurs météo",
-    desc: "Données satellite, IA prédictive, intégration monitoring/assurance."
-  },
-  {
-    title: "🎪 Événementiel et projets ponctuels à haute dépendance météo",
-    desc: "Festivals, exploitations saisonnières, lancements à date fixe."
-  },
-];
-
-const Verticals = () => (
-  <section id="verticals" className="py-32 bg-gradient-to-b from-[#f7f8fa] via-white to-[#f7f8fa] relative overflow-hidden">
-    {/* Background decorative elements */}
-    <div className="absolute inset-0 pointer-events-none">
-      <div className="absolute top-0 left-1/4 w-64 h-64 bg-[#10B981]/5 rounded-full blur-3xl transform -translate-y-1/2" />
-      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-[#10B981]/5 rounded-full blur-3xl transform translate-y-1/2" />
-    </div>
-
-    <div className="max-w-7xl mx-auto px-4 relative">
-      <div className="text-center mb-20">
-        <div className="inline-flex items-center gap-2 mb-6 px-4 py-1.5 rounded-full bg-[#10B981]/10 text-[#10B981] text-sm font-semibold tracking-wide border border-[#10B981]/20">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z" />
-          </svg>
-          Nos Expertises
-        </div>
-        <h2 className="text-4xl md:text-5xl font-heading mb-6 bg-gradient-to-r from-[var(--color-text-primary)] to-[#10B981] bg-clip-text text-transparent">
-          Les demandes que nous servons le plus
-        </h2>
-        <p className="text-xl text-[var(--color-text-primary)]/80 max-w-2xl mx-auto leading-relaxed">
-          Nous générons des leads ultra qualifiés sur ces besoins précis :
-        </p>
-      </div>
-
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8 mb-16">
-        {verticals.map((v, i) => (
-          <div 
-            key={i} 
-            className="group relative p-8 bg-white rounded-2xl border border-[#10B981]/20 hover:border-[#10B981] transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
-          >
-            <div>
-              <h3 className="font-heading text-xl text-[var(--color-text-primary)] group-hover:text-[#10B981] transition-colors duration-300 leading-tight">
-                {v.title}
-              </h3>
-            </div>
-          </div>
-        ))}
-      </div>
-
-      <div className="text-center">
-        <div className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-[#10B981]/10 to-[#10B981]/5 rounded-full text-[#10B981] font-medium border border-[#10B981]/20 hover:border-[#10B981]/40 transition-colors duration-300">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M20.25 7.5l-.625 10.632a2.25 2.25 0 01-2.247 2.118H6.622a2.25 2.25 0 01-2.247-2.118L3.75 7.5M10 11.25h4M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z" />
-          </svg>
-          <span className="text-lg">Pour chaque demande : une machine dédiée. Vous arrivez. On vous livre.</span>
-        </div>
-      </div>
-    </div>
-  </section>
-);
-
-// Section About
-const About = () => (
-  <section className="py-32 bg-gradient-to-b from-[#f7f8fa] via-white to-[#f7f8fa] relative overflow-hidden">
-    {/* Background decorative elements with enhanced animations */}
-    <div className="absolute inset-0 pointer-events-none">
-      <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-gradient-to-br from-[#10B981]/10 via-[#10B981]/5 to-transparent rounded-full blur-3xl transform -translate-y-1/2 animate-pulse" />
-      <div className="absolute bottom-0 right-1/4 w-[600px] h-[600px] bg-gradient-to-br from-[#10B981]/10 via-[#10B981]/5 to-transparent rounded-full blur-3xl transform translate-y-1/2 animate-pulse delay-1000" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-to-r from-[#10B981]/5 via-transparent to-[#10B981]/5 rounded-full blur-3xl opacity-30 animate-pulse delay-500" />
-    </div>
-
-    <div className="relative max-w-7xl mx-auto px-4">
-      <div className="text-center mb-24">
-        {/* Badge sur-titre */}
-        <div className="inline-flex items-center gap-2 mb-6 px-4 py-1.5 rounded-full bg-[#10B981]/10 text-[#10B981] text-sm font-semibold tracking-wide border border-[#10B981]/20">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0118 16.5h-2.25m-7.5 0h7.5m-7.5 0l-1 3m8.5-3l1 3m0 0l.5 1.5m-.5-1.5h-9.5m0 0l-.5 1.5m.75-9l3-3 2.148 2.148A12.061 12.061 0 0116.5 7.605" />
-          </svg>
-          Performance & Résultats
-        </div>
-
-        {/* Titre principal */}
-        <h2 className="text-4xl md:text-6xl font-heading mb-6 bg-gradient-to-r from-[var(--color-text-primary)] via-[#10B981] to-[var(--color-text-primary)] bg-clip-text text-transparent">
-          Des leads qui convertissent, pas juste des contacts
-        </h2>
-
-        {/* Sous-titre */}
-        <h3 className="text-2xl md:text-3xl font-heading mb-16 text-[var(--color-text-primary)]/80">
-          Une approche data-driven pour transformer vos opportunités en clients
-        </h3>
-        
-        {/* Description */}
-        <div className="prose prose-lg mx-auto text-[var(--color-text-primary)]/80 max-w-3xl mb-24">
-          <p className="text-2xl mb-8 leading-relaxed font-medium">
-            Nous ne sommes pas une agence de leads classique.
-            <br />
-            Nous sommes votre partenaire de croissance B2B, spécialisé dans la génération de leads ultra-qualifiés.
-          </p>
-          <p className="text-xl leading-relaxed text-[var(--color-text-primary)]/70">
-            Notre système a déjà permis de générer plus de 5.000 leads qualifiés en 2024, avec un taux de conversion moyen de 35% sur des marchés premium : l&apos;assurance, les entreprises techs, le recrutement, les agences B2B et les investisseurs.
-          </p>
-        </div>
-
-        {/* Key Features - Modern Design */}
-        <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
-            {[
-              {
-                icon: "🎯",
-                title: "Acquisition ciblée",
-                description: "Des campagnes multi-canal optimisées pour votre marché spécifique",
-                stats: [
-                  { number: "35M+", label: "Vues qualifiées" },
-                  { number: "175K+", label: "Décideurs touchés" }
-                ]
-              },
-              {
-                icon: "⚡",
-                title: "Qualification premium",
-                description: "Chaque lead est validé sur 5 critères : budget, besoin, timing, décision et urgence",
-                stats: [
-                  { number: "5.000+", label: "Leads convertis" },
-                  { number: "35%", label: "Taux de conversion" }
-                ]
-              },
-              {
-                icon: "💎",
-                title: "ROI garanti",
-                description: "Payez uniquement les leads qualifiés. Aucun frais caché, aucun engagement.",
-                stats: [
-                  { number: "17M€+", label: "CA généré" },
-                  { number: "100%", label: "Clients satisfaits" }
-                ]
-              }
-            ].map((feature, i) => (
-              <div 
-                key={i}
-                className="group relative"
-              >
-                {/* Enhanced glass effect with gradient border */}
-                <div className="absolute inset-0 bg-gradient-to-br from-white/80 to-white/40 backdrop-blur-xl rounded-3xl border border-white/20 shadow-xl transform group-hover:scale-[1.02] transition-all duration-500" />
-                <div className="absolute inset-0 bg-gradient-to-br from-[#10B981]/5 via-transparent to-[#10B981]/5 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                
-                <div className="relative p-8 md:p-10">
-                  {/* Enhanced icon with gradient background */}
-                  <div className="inline-flex items-center justify-center w-20 h-20 mb-8 rounded-2xl bg-gradient-to-br from-[#10B981]/10 to-[#10B981]/5 transform group-hover:scale-110 transition-transform duration-500">
-                    <span className="text-4xl transform group-hover:scale-110 transition-transform duration-300">
-                      {feature.icon}
-                    </span>
-                  </div>
-                  
-                  {/* Enhanced title with gradient */}
-                  <h3 className="text-2xl md:text-3xl font-heading mb-4 bg-gradient-to-r from-[#10B981] to-[#059669] bg-clip-text text-transparent">
-                    {feature.title}
-                  </h3>
-                  
-                  {/* Enhanced description */}
-                  <p className="text-lg text-[var(--color-text-primary)]/70 mb-10 leading-relaxed">
-                    {feature.description}
-                  </p>
-
-                  {/* Enhanced stats with better visual hierarchy */}
-                  <div className="grid grid-cols-2 gap-6">
-                    {feature.stats.map((stat, j) => (
-                      <div key={j} className="text-center transform group-hover:translate-y-[-2px] transition-transform duration-300">
-                        <div className="text-3xl font-bold bg-gradient-to-r from-[#10B981] to-[#059669] bg-clip-text text-transparent mb-2">
-                          {stat.number}
-                        </div>
-                        <div className="text-sm font-medium text-[var(--color-text-primary)]/60">
-                          {stat.label}
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-);
-
-// 5. CTA FINAL
-const CallToAction = () => (
-  <section id="cta" className="py-24 bg-gradient-to-b from-[#f7f8fa] via-white to-[#d1fae5] text-center relative overflow-hidden">
-    <div className="absolute inset-0 pointer-events-none">
-      <div className="absolute top-1/2 left-1/2 w-[600px] h-[600px] bg-[#10B981]/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
-    </div>
-    <div className="relative max-w-2xl mx-auto px-6">
-      <div className="rounded-3xl shadow-xl border border-[#10B981]/20 bg-white/90 backdrop-blur-md p-10 flex flex-col items-center">
-        <div className="inline-flex items-center gap-2 mb-4 px-4 py-1.5 rounded-full bg-[#10B981]/10 text-[#10B981] text-base font-semibold">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 9.75V7.5A4.5 4.5 0 008 7.5v2.25m8.25 0A2.25 2.25 0 0121 12v6.75A2.25 2.25 0 0118.75 21H5.25A2.25 2.25 0 013 18.75V12a2.25 2.25 0 012.25-2.25h13.5z" />
-          </svg>
-          Prêt à capter les demandes de votre marché ?
-        </div>
-        <h2 className="text-3xl md:text-4xl font-heading mb-6 text-[var(--color-text-primary)]">Chaque mois, des centaines de décideurs cherchent :</h2>
-        <ul className="text-lg text-left mx-auto mb-6 text-[var(--color-text-primary)]/90 font-medium space-y-2 pl-4">
-          <li>🌾 Cultures agricoles & coopératives (sécheresse, grêle, gel)</li>
-          <li>🏗️ Bâtiments & chantiers exposés (inondation, tempête, sol)</li>
-          <li>🔥 Sites industriels & forêts à risques</li>
-          <li>🌍 Grands comptes multi-sites, offres sur-mesure</li>
-          <li>⚡ Energies renouvelables (solaire, éolien, hydro)</li>
-          <li>📊 Assurance paramétrique & météo</li>
-          <li>🎪 Événementiel météo-sensible</li>
-        </ul>
-        <p className="text-lg mb-2 text-[var(--color-text-primary)]/80">Nous captons ces demandes.<br/>Vous sélectionnez votre volume, on vous livre les leads.</p>
-        <p className="text-base mb-8 text-[var(--color-text-primary)]/70">Réservez un call, on vous montre notre système de génération de leads en totale transparence et nous négocions le prix par lead.</p>
-        <a
-          href="https://app.iclosed.io/e/baptistepiocelle/contact"
-          className="inline-block px-10 py-4 bg-[#10B981] text-white font-bold rounded-full text-lg shadow-lg hover:bg-[#059669] transition-colors focus:outline-none focus:ring-2 focus:ring-[#10B981]"
-        >Réserver mon call</a>
-      </div>
-    </div>
-  </section>
-);
+import ContactCTA from "./components/ContactCTA";
+import { 
+  Zap, 
+  Target, 
+  DollarSign, 
+  Satellite, 
+  Database, 
+  UserCheck, 
+  TrendingUp, 
+  RefreshCw,
+  CheckCircle,
+  Phone,
+  Mail,
+  Clock,
+  Shield,
+  Users,
+  Star,
+  Building2,
+  BarChart3,
+  Globe,
+  MapPin,
+  Eye,
+  X,
+  FileText,
+  Briefcase,
+  CreditCard
+} from "lucide-react";
 
 export default function Home() {
   return (
-    <main className="min-h-screen">
-      <Hero />
-      <SocialProof />
-      <ClientLogos />
-      <HowItWorks />
-      <Verticals />
-      <About />
-      <FAQ />
-      <CallToAction />
+    <main className="min-h-screen bg-gray-50">
+      {/* HERO SECTION */}
+      <section className="relative bg-gradient-to-br from-gray-50 via-white to-blue-50 border-b border-gray-200 overflow-hidden">
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute top-0 left-0 w-96 h-96 bg-blue-600 rounded-full mix-blend-multiply filter blur-xl animate-pulse"></div>
+          <div className="absolute top-0 right-0 w-96 h-96 bg-purple-600 rounded-full mix-blend-multiply filter blur-xl animate-pulse animation-delay-2000"></div>
+          <div className="absolute -bottom-8 left-20 w-96 h-96 bg-green-600 rounded-full mix-blend-multiply filter blur-xl animate-pulse animation-delay-4000"></div>
+        </div>
+        
+        <div className="relative max-w-7xl mx-auto px-6 py-24 lg:py-32">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+            <div className="lg:col-span-7">
+              {/* Badge */}
+              <div className="mb-8">
+                <span className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-600 to-blue-700 text-white text-sm font-semibold rounded-full shadow-lg border border-blue-500/20">
+                  <Globe className="w-4 h-4 mr-2" />
+                  Texas - 24h Delivery
+                </span>
+              </div>
+              
+              {/* Main Headline */}
+              <h1 className="text-5xl lg:text-7xl font-bold mb-8 text-gray-900 leading-tight tracking-normal">
+                Get Qualified Leads From Climate-Exposed Businesses in Texas — 
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-800"> Delivered in 24h</span>
+              </h1>
+              
+              {/* Value Propositions */}
+              <div className="space-y-6 mb-10 text-lg text-gray-700">
+                <div className="flex items-start p-4 bg-white/60 backdrop-blur-sm rounded-xl border border-gray-200/50 shadow-sm">
+                  <div className="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center mr-4 mt-0.5 flex-shrink-0">
+                    <CheckCircle className="w-5 h-5 text-blue-600" />
+                  </div>
+                  <div>
+                  <span><strong className="text-gray-900">Sentinel Climate Intelligence</strong> detects disaster zones in real time</span>
+                  </div>
+                </div>
+                <div className="flex items-start p-4 bg-white/60 backdrop-blur-sm rounded-xl border border-gray-200/50 shadow-sm">
+                  <div className="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center mr-4 mt-0.5 flex-shrink-0">
+                    <CheckCircle className="w-5 h-5 text-green-600" />
+                  </div>
+                  <div>
+                  <span>Our <strong className="text-gray-900">SCI engine</strong> identifies and qualifies exposed companies</span>
+                  </div>
+                </div>
+                <div className="flex items-start p-4 bg-white/60 backdrop-blur-sm rounded-xl border border-gray-200/50 shadow-sm">
+                  <div className="w-8 h-8 bg-purple-100 rounded-lg flex items-center justify-center mr-4 mt-0.5 flex-shrink-0">
+                    <CheckCircle className="w-5 h-5 text-purple-600" />
+                  </div>
+                  <div>
+                  <span><strong className="text-gray-900">BPCGROUP</strong> delivers sales-ready leads. You only pay per result</span>
+                  </div>
+                </div>
+              </div>
+              
+              {/* CTA Buttons */}
+              <div className="flex flex-col sm:flex-row gap-6 mb-16">
+                <ContactCTA 
+                  type="leads" 
+                  variant="primary" 
+                  size="lg"
+                  className="group inline-flex items-center justify-center px-10 py-5 bg-gradient-to-r from-blue-600 to-blue-700 text-white font-bold rounded-xl hover:from-blue-700 hover:to-blue-800 transition-all duration-300 text-lg shadow-xl hover:shadow-2xl transform hover:-translate-y-1"
+                >
+                  <span>Request Leads</span>
+                  <TrendingUp className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                </ContactCTA>
+                <a href="#coverage" className="group inline-flex items-center justify-center px-10 py-5 bg-white text-gray-700 font-bold rounded-xl border-2 border-gray-300 hover:border-blue-300 hover:bg-blue-50 transition-all duration-300 text-lg shadow-lg hover:shadow-xl">
+                  <Eye className="w-5 h-5 mr-2 group-hover:scale-110 transition-transform" />
+                  <span>View Coverage</span>
+                </a>
+              </div>
+            </div>
+            
+            {/* Right Panel */}
+            <div className="lg:col-span-5">
+              <div className="bg-white/80 backdrop-blur-sm border border-gray-200/60 rounded-2xl p-10 shadow-2xl">
+                <div className="flex items-center mb-8">
+                  <div className="w-12 h-12 bg-gradient-to-r from-blue-600 to-blue-700 rounded-xl flex items-center justify-center mr-4">
+                    <Target className="w-6 h-6 text-white" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-gray-900 tracking-normal">Why It Works</h3>
+                </div>
+                
+                <div className="space-y-6 mb-8">
+                  <p className="text-gray-700 leading-relaxed text-lg">
+                    When businesses get hit by a climate event, they need insurance, recovery, and legal services — 
+                    <strong className="text-gray-900"> immediately</strong>.
+                  </p>
+                  <p className="text-gray-700 leading-relaxed text-lg">
+                    We help you reach them before anyone else.
+                  </p>
+                </div>
+                
+                <div className="space-y-4">
+                  <div className="flex items-center p-3 bg-red-50 rounded-lg border border-red-200">
+                    <X className="w-5 h-5 text-red-500 mr-3" />
+                    <span className="text-gray-700 font-medium">No databases</span>
+                  </div>
+                  <div className="flex items-center p-3 bg-red-50 rounded-lg border border-red-200">
+                    <X className="w-5 h-5 text-red-500 mr-3" />
+                    <span className="text-gray-700 font-medium">No cold outreach</span>
+                  </div>
+                  <div className="flex items-center p-3 bg-green-50 rounded-lg border border-green-200">
+                    <CheckCircle className="w-5 h-5 text-green-600 mr-3" />
+                    <span className="text-gray-700 font-bold">Only real leads generated by real-world impact</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* HOW IT WORKS */}
+      <section className="relative py-24 bg-gradient-to-b from-gray-50 to-white overflow-hidden">
+        {/* Background Elements */}
+        <div className="absolute inset-0 opacity-3">
+          <div className="absolute top-1/4 left-0 w-64 h-64 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-1/4 right-0 w-64 h-64 bg-green-200 rounded-full mix-blend-multiply filter blur-3xl animate-pulse animation-delay-2000"></div>
+        </div>
+        
+        <div className="relative max-w-7xl mx-auto px-6">
+          {/* Header */}
+          <div className="text-center mb-20">
+            <div className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-600 to-blue-700 text-white text-sm font-semibold rounded-full shadow-lg mb-8">
+              <RefreshCw className="w-4 h-4 mr-2" />
+              Process Overview
+            </div>
+            <h2 className="text-5xl font-bold text-gray-900 mb-6 tracking-normal">
+              How It Works
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+              A 3-step process to transform climate disasters into business opportunities
+            </p>
+          </div>
+
+          {/* Steps Grid */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+            {/* Step 1 */}
+            <div className="group relative">
+              {/* Connection Line */}
+              <div className="hidden lg:block absolute top-1/2 -right-6 w-12 h-0.5 bg-gradient-to-r from-blue-600 to-green-600 transform -translate-y-1/2 z-0"></div>
+              
+              <div className="relative bg-white/80 backdrop-blur-sm border border-gray-200/60 rounded-2xl p-10 text-center hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 z-10">
+                {/* Step Number */}
+                <div className="relative w-24 h-24 bg-gradient-to-br from-blue-600 to-blue-700 text-white rounded-2xl flex items-center justify-center mx-auto mb-8 text-3xl font-bold shadow-xl group-hover:scale-110 transition-transform duration-300">
+                  <span>1</span>
+                  <div className="absolute inset-0 bg-white/20 rounded-2xl"></div>
+              </div>
+                
+                {/* Content */}
+                <h3 className="text-2xl font-bold text-gray-900 mb-6 tracking-normal">
+                Sentinel detects the event
+              </h3>
+                <p className="text-gray-700 mb-8 leading-relaxed text-lg">
+                Flood, storm, drought or fire — our system identifies the exact zones affected.
+              </p>
+                
+                {/* Feature Card */}
+                <div className="bg-gradient-to-r from-blue-50 to-blue-100 rounded-xl p-6 border border-blue-200/50">
+                  <div className="w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center mx-auto mb-4 shadow-lg">
+                    <Satellite className="w-6 h-6 text-white" />
+                  </div>
+                  <p className="text-blue-800 font-bold">Real-time detection 24/7</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Step 2 */}
+            <div className="group relative">
+              {/* Connection Line */}
+              <div className="hidden lg:block absolute top-1/2 -right-6 w-12 h-0.5 bg-gradient-to-r from-green-600 to-purple-600 transform -translate-y-1/2 z-0"></div>
+              
+              <div className="relative bg-white/80 backdrop-blur-sm border border-gray-200/60 rounded-2xl p-10 text-center hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 z-10">
+                {/* Step Number */}
+                <div className="relative w-24 h-24 bg-gradient-to-br from-green-600 to-green-700 text-white rounded-2xl flex items-center justify-center mx-auto mb-8 text-3xl font-bold shadow-xl group-hover:scale-110 transition-transform duration-300">
+                  <span>2</span>
+                  <div className="absolute inset-0 bg-white/20 rounded-2xl"></div>
+              </div>
+                
+                {/* Content */}
+                <h3 className="text-2xl font-bold text-gray-900 mb-6 tracking-normal">
+                Clyma enriches the companies
+              </h3>
+                <p className="text-gray-700 mb-8 leading-relaxed text-lg">
+                Name, contact, phone, role, ICP fit, interest, budget (when declared).
+              </p>
+                
+                {/* Feature Card */}
+                <div className="bg-gradient-to-r from-green-50 to-green-100 rounded-xl p-6 border border-green-200/50">
+                  <div className="w-12 h-12 bg-green-600 rounded-xl flex items-center justify-center mx-auto mb-4 shadow-lg">
+                    <Database className="w-6 h-6 text-white" />
+                  </div>
+                  <p className="text-green-800 font-bold">Automated enrichment</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Step 3 */}
+            <div className="group relative">
+              <div className="relative bg-white/80 backdrop-blur-sm border border-gray-200/60 rounded-2xl p-10 text-center hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 z-10">
+                {/* Step Number */}
+                <div className="relative w-24 h-24 bg-gradient-to-br from-purple-600 to-purple-700 text-white rounded-2xl flex items-center justify-center mx-auto mb-8 text-3xl font-bold shadow-xl group-hover:scale-110 transition-transform duration-300">
+                  <span>3</span>
+                  <div className="absolute inset-0 bg-white/20 rounded-2xl"></div>
+              </div>
+                
+                {/* Content */}
+                <h3 className="text-2xl font-bold text-gray-900 mb-6 tracking-normal">
+                You receive qualified leads in {`<`}24h
+              </h3>
+                <p className="text-gray-700 mb-8 leading-relaxed text-lg">
+                Format: CSV or CRM-ready. Volume adjusted to your needs.
+              </p>
+                
+                {/* Feature Card */}
+                <div className="bg-gradient-to-r from-purple-50 to-purple-100 rounded-xl p-6 border border-purple-200/50">
+                  <div className="w-12 h-12 bg-purple-600 rounded-xl flex items-center justify-center mx-auto mb-4 shadow-lg">
+                    <FileText className="w-6 h-6 text-white" />
+                  </div>
+                  <p className="text-purple-800 font-bold">Guaranteed delivery</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          {/* Bottom CTA */}
+          <div className="text-center mt-16">
+            <div className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-gray-100 to-gray-200 rounded-xl border border-gray-300/50">
+              <Clock className="w-5 h-5 text-gray-600 mr-3" />
+              <span className="text-gray-700 font-semibold">Complete process takes less than 24 hours</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* WHAT YOU GET */}
+      <section className="relative py-24 bg-gradient-to-b from-white to-gray-50 overflow-hidden">
+        {/* Background Elements */}
+        <div className="absolute inset-0 opacity-3">
+          <div className="absolute top-1/3 right-0 w-64 h-64 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-1/3 left-0 w-64 h-64 bg-green-200 rounded-full mix-blend-multiply filter blur-3xl animate-pulse animation-delay-2000"></div>
+        </div>
+        
+        <div className="relative max-w-7xl mx-auto px-6">
+          {/* Header */}
+          <div className="text-center mb-20">
+            <div className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-green-600 to-green-700 text-white text-sm font-semibold rounded-full shadow-lg mb-8">
+              <CheckCircle className="w-4 h-4 mr-2" />
+              Deliverables
+            </div>
+            <h2 className="text-5xl font-bold text-gray-900 mb-6 tracking-normal">
+                What You Get
+              </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+              Complete, verified, and ready-to-use lead data delivered to your specifications
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+            {/* Left Column - Features */}
+              <div className="space-y-8">
+              <div className="group p-6 bg-white/80 backdrop-blur-sm border border-gray-200/60 rounded-2xl hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                <div className="flex items-start">
+                  <div className="w-12 h-12 bg-gradient-to-br from-blue-600 to-blue-700 rounded-xl flex items-center justify-center mr-6 mt-1 flex-shrink-0 shadow-lg group-hover:scale-110 transition-transform">
+                    <Building2 className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold text-gray-900 mb-3 tracking-normal">Business name & decision-maker</h3>
+                    <p className="text-gray-700 leading-relaxed text-lg">Direct contact with key decision makers</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="group p-6 bg-white/80 backdrop-blur-sm border border-gray-200/60 rounded-2xl hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                <div className="flex items-start">
+                  <div className="w-12 h-12 bg-gradient-to-br from-green-600 to-green-700 rounded-xl flex items-center justify-center mr-6 mt-1 flex-shrink-0 shadow-lg group-hover:scale-110 transition-transform">
+                    <UserCheck className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold text-gray-900 mb-3 tracking-normal">Email & phone verified manually</h3>
+                    <p className="text-gray-700 leading-relaxed text-lg">Contact data validated by our team</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="group p-6 bg-white/80 backdrop-blur-sm border border-gray-200/60 rounded-2xl hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                <div className="flex items-start">
+                  <div className="w-12 h-12 bg-gradient-to-br from-purple-600 to-purple-700 rounded-xl flex items-center justify-center mr-6 mt-1 flex-shrink-0 shadow-lg group-hover:scale-110 transition-transform">
+                    <Target className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold text-gray-900 mb-3 tracking-normal">Declared interest (insurance, legal, recovery)</h3>
+                    <p className="text-gray-700 leading-relaxed text-lg">Specific needs identified according to your sector</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="group p-6 bg-white/80 backdrop-blur-sm border border-gray-200/60 rounded-2xl hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                <div className="flex items-start">
+                  <div className="w-12 h-12 bg-gradient-to-br from-orange-600 to-orange-700 rounded-xl flex items-center justify-center mr-6 mt-1 flex-shrink-0 shadow-lg group-hover:scale-110 transition-transform">
+                    <MapPin className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold text-gray-900 mb-3 tracking-normal">Geo-targeted (ZIP-level)</h3>
+                    <p className="text-gray-700 leading-relaxed text-lg">Geographic precision for optimal targeting</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="group p-6 bg-white/80 backdrop-blur-sm border border-gray-200/60 rounded-2xl hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                <div className="flex items-start">
+                  <div className="w-12 h-12 bg-gradient-to-br from-red-600 to-red-700 rounded-xl flex items-center justify-center mr-6 mt-1 flex-shrink-0 shadow-lg group-hover:scale-110 transition-transform">
+                    <Zap className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold text-gray-900 mb-3 tracking-normal">Ready to contact, no setup needed</h3>
+                    <p className="text-gray-700 leading-relaxed text-lg">Immediate integration into your workflow</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Column - Sample Lead */}
+            <div className="relative">
+              <div className="bg-white/80 backdrop-blur-sm border border-gray-200/60 rounded-2xl p-10 shadow-2xl">
+                {/* Header */}
+                <div className="flex items-center justify-center mb-8">
+                  <div className="w-12 h-12 bg-gradient-to-r from-blue-600 to-blue-700 rounded-xl flex items-center justify-center mr-4">
+                    <FileText className="w-6 h-6 text-white" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-gray-900 tracking-normal">
+                Sample Lead Delivered
+              </h3>
+                </div>
+
+                {/* Lead Card */}
+                <div className="bg-gradient-to-br from-gray-50 to-white border border-gray-200/60 rounded-xl p-8 space-y-6 shadow-lg">
+                  <div className="flex justify-between items-center py-3 border-b border-gray-200/50">
+                    <span className="text-gray-600 font-semibold">Company:</span>
+                    <span className="font-bold text-gray-900 text-lg">Austin Manufacturing Co.</span>
+                  </div>
+                  <div className="flex justify-between items-center py-3 border-b border-gray-200/50">
+                    <span className="text-gray-600 font-semibold">Contact:</span>
+                    <span className="font-bold text-gray-900 text-lg">Sarah Johnson, CFO</span>
+                  </div>
+                  <div className="flex justify-between items-center py-3 border-b border-gray-200/50">
+                    <span className="text-gray-600 font-semibold">Email:</span>
+                    <span className="font-bold text-blue-600 text-lg">s.johnson@austinmfg.com</span>
+                  </div>
+                  <div className="flex justify-between items-center py-3 border-b border-gray-200/50">
+                    <span className="text-gray-600 font-semibold">Phone:</span>
+                    <span className="font-bold text-gray-900 text-lg">(512) 555-0123</span>
+                  </div>
+                  <div className="flex justify-between items-center py-3 border-b border-gray-200/50">
+                    <span className="text-gray-600 font-semibold">Event:</span>
+                    <span className="font-bold text-red-600 text-lg">Flood - Austin, TX 78701</span>
+                </div>
+                  <div className="flex justify-between items-center py-3 border-b border-gray-200/50">
+                    <span className="text-gray-600 font-semibold">Need:</span>
+                    <span className="font-bold text-purple-600 text-lg">Property damage insurance</span>
+                </div>
+                  <div className="flex justify-between items-center py-3">
+                    <span className="text-gray-600 font-semibold">Status:</span>
+                    <span className="font-bold text-green-600 text-lg">Ready to contact</span>
+                </div>
+                </div>
+
+                {/* Bottom Info */}
+                <div className="mt-8 text-center">
+                  <div className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-green-50 to-green-100 rounded-xl border border-green-200/50">
+                    <CheckCircle className="w-5 h-5 text-green-600 mr-3" />
+                    <span className="text-green-800 font-semibold">Verified & Ready to Use</span>
+                </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* PRICING MODEL */}
+      <section className="relative py-24 bg-gradient-to-b from-gray-50 to-white overflow-hidden">
+        {/* Background Elements */}
+        <div className="absolute inset-0 opacity-3">
+          <div className="absolute top-1/4 right-0 w-64 h-64 bg-green-200 rounded-full mix-blend-multiply filter blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-1/4 left-0 w-64 h-64 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl animate-pulse animation-delay-2000"></div>
+        </div>
+        
+        <div className="relative max-w-7xl mx-auto px-6">
+          {/* Header */}
+          <div className="text-center mb-20">
+            <div className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-green-600 to-green-700 text-white text-sm font-semibold rounded-full shadow-lg mb-8">
+              <DollarSign className="w-4 h-4 mr-2" />
+              Performance-Based Pricing
+            </div>
+            <h2 className="text-5xl font-bold text-gray-900 mb-6 tracking-normal">
+              Pricing Model
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+              Pay only for qualified leads that generate results
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            {/* Left Card - Pay Per Lead */}
+            <div className="group relative">
+              <div className="bg-white/80 backdrop-blur-sm border border-gray-200/60 rounded-2xl p-10 shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:-translate-y-2">
+                {/* Header */}
+                <div className="flex items-center mb-8">
+                  <div className="w-16 h-16 bg-gradient-to-br from-green-600 to-green-700 rounded-2xl flex items-center justify-center mr-6 shadow-xl group-hover:scale-110 transition-transform">
+                    <CheckCircle className="w-8 h-8 text-white" />
+                  </div>
+                  <h3 className="text-3xl font-bold text-gray-900 tracking-normal">
+                Pay only per qualified lead
+              </h3>
+                </div>
+                
+                {/* Benefits List */}
+                <div className="space-y-6">
+                  <div className="flex items-center p-4 bg-green-50 rounded-xl border border-green-200/50">
+                    <div className="w-8 h-8 bg-green-600 rounded-lg flex items-center justify-center mr-4">
+                      <CheckCircle className="w-5 h-5 text-white" />
+                    </div>
+                    <span className="text-gray-800 text-lg font-semibold">No setup fees</span>
+                  </div>
+                  <div className="flex items-center p-4 bg-green-50 rounded-xl border border-green-200/50">
+                    <div className="w-8 h-8 bg-green-600 rounded-lg flex items-center justify-center mr-4">
+                      <CheckCircle className="w-5 h-5 text-white" />
+                    </div>
+                    <span className="text-gray-800 text-lg font-semibold">No commitment</span>
+                  </div>
+                  <div className="flex items-center p-4 bg-green-50 rounded-xl border border-green-200/50">
+                    <div className="w-8 h-8 bg-green-600 rounded-lg flex items-center justify-center mr-4">
+                      <CheckCircle className="w-5 h-5 text-white" />
+                    </div>
+                    <span className="text-gray-800 text-lg font-semibold">Prepaid discount available</span>
+                  </div>
+                  <div className="flex items-center p-4 bg-green-50 rounded-xl border border-green-200/50">
+                    <div className="w-8 h-8 bg-green-600 rounded-lg flex items-center justify-center mr-4">
+                      <CheckCircle className="w-5 h-5 text-white" />
+                </div>
+                    <span className="text-gray-800 text-lg font-semibold">Monthly volume adjustable</span>
+                </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Card - CPL Factors */}
+            <div className="group relative">
+              <div className="bg-white/80 backdrop-blur-sm border border-gray-200/60 rounded-2xl p-10 shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:-translate-y-2">
+                {/* Header */}
+                <div className="flex items-center mb-8">
+                  <div className="w-16 h-16 bg-gradient-to-br from-blue-600 to-blue-700 rounded-2xl flex items-center justify-center mr-6 shadow-xl group-hover:scale-110 transition-transform">
+                    <BarChart3 className="w-8 h-8 text-white" />
+                  </div>
+                  <h3 className="text-3xl font-bold text-gray-900 tracking-normal">
+                CPL depends on:
+              </h3>
+                </div>
+                
+                {/* Factors */}
+                <div className="space-y-8">
+                  <div className="p-6 bg-blue-50 rounded-xl border border-blue-200/50">
+                    <div className="flex items-center mb-4">
+                      <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center mr-4">
+                        <TrendingUp className="w-5 h-5 text-white" />
+                      </div>
+                      <h4 className="text-xl font-bold text-gray-900 tracking-normal">Volume</h4>
+                    </div>
+                    <p className="text-gray-700 leading-relaxed text-lg">Higher volume = lower cost per lead</p>
+                  </div>
+                  
+                  <div className="p-6 bg-purple-50 rounded-xl border border-purple-200/50">
+                    <div className="flex items-center mb-4">
+                      <div className="w-10 h-10 bg-purple-600 rounded-lg flex items-center justify-center mr-4">
+                        <Zap className="w-5 h-5 text-white" />
+                      </div>
+                      <h4 className="text-xl font-bold text-gray-900 tracking-normal">Type of event</h4>
+                    </div>
+                    <p className="text-gray-700 leading-relaxed text-lg">Urgency and severity of climate disaster</p>
+                  </div>
+                  
+                  <div className="p-6 bg-orange-50 rounded-xl border border-orange-200/50">
+                    <div className="flex items-center mb-4">
+                      <div className="w-10 h-10 bg-orange-600 rounded-lg flex items-center justify-center mr-4">
+                        <MapPin className="w-5 h-5 text-white" />
+                      </div>
+                      <h4 className="text-xl font-bold text-gray-900 tracking-normal">Region</h4>
+                    </div>
+                    <p className="text-gray-700 leading-relaxed text-lg">Data availability and geographic complexity</p>
+                </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          {/* Bottom CTA */}
+          <div className="text-center mt-16">
+            <div className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-gray-100 to-gray-200 rounded-xl border border-gray-300/50">
+              <CreditCard className="w-5 h-5 text-gray-600 mr-3" />
+              <span className="text-gray-700 font-semibold">Transparent pricing with no hidden costs</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* GEOGRAPHIC FOCUS */}
+      <section id="coverage" className="relative py-32 bg-black text-white overflow-hidden">
+        {/* Animated Background */}
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-900 via-purple-900 to-black"></div>
+          <div className="absolute top-0 left-0 w-full h-full opacity-20">
+            <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-white rounded-full animate-ping"></div>
+            <div className="absolute top-1/3 right-1/3 w-1 h-1 bg-blue-400 rounded-full animate-ping animation-delay-1000"></div>
+            <div className="absolute bottom-1/4 left-1/2 w-1.5 h-1.5 bg-purple-400 rounded-full animate-ping animation-delay-2000"></div>
+            <div className="absolute top-1/2 right-1/4 w-1 h-1 bg-green-400 rounded-full animate-ping animation-delay-3000"></div>
+          </div>
+        </div>
+        
+        <div className="relative max-w-7xl mx-auto px-6">
+          {/* Header */}
+          <div className="text-center mb-20">
+            <div className="inline-flex items-center px-6 py-3 bg-white/10 backdrop-blur-sm text-white text-sm font-semibold rounded-full border border-white/20 mb-8">
+              <Globe className="w-4 h-4 mr-2" />
+              Coverage Map
+            </div>
+            <h2 className="text-6xl font-bold text-white mb-6 tracking-normal">
+                Geographic Focus
+              </h2>
+            <p className="text-2xl text-blue-200 max-w-4xl mx-auto leading-relaxed">
+              Hyperlocal targeting with precision down to ZIP code level
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+            {/* Left Column - Texas Focus */}
+            <div className="lg:col-span-7">
+              {/* Main Texas Card */}
+              <div className="relative p-10 bg-gradient-to-br from-blue-600/20 to-purple-600/20 backdrop-blur-sm border border-white/20 rounded-3xl mb-12">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/10 rounded-full blur-3xl"></div>
+                <div className="relative">
+                  <div className="flex items-center mb-8">
+                    <div className="w-20 h-20 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mr-6 shadow-2xl">
+                      <MapPin className="w-10 h-10 text-white" />
+                    </div>
+                <div>
+                      <h3 className="text-4xl font-bold text-white mb-2 tracking-normal">Texas Only</h3>
+                      <p className="text-xl text-blue-200">Hyperlocal targeting</p>
+                    </div>
+                  </div>
+                  <p className="text-xl text-blue-100 leading-relaxed mb-8">
+                    We operate by county & ZIP code using Sentinel{"'"}s disaster mapping for maximum precision.
+                  </p>
+                  
+                  {/* Stats Grid */}
+                  <div className="grid grid-cols-2 gap-8 mb-8">
+                    <div className="text-center p-6 bg-white/5 rounded-2xl border border-white/10">
+                      <div className="text-5xl font-bold text-blue-400 mb-2">254</div>
+                      <div className="text-blue-200 font-semibold">Counties covered</div>
+                    </div>
+                    <div className="text-center p-6 bg-white/5 rounded-2xl border border-white/10">
+                      <div className="text-5xl font-bold text-green-400 mb-2">2.3M</div>
+                      <div className="text-green-200 font-semibold">Businesses tracked</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Next Areas */}
+              <div className="space-y-6">
+                <h4 className="text-2xl font-bold text-white mb-6 tracking-normal">Coming Soon:</h4>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  <div className="group p-6 bg-white/5 border border-white/20 rounded-2xl hover:bg-white/10 transition-all duration-300">
+                    <div className="flex items-center">
+                      <MapPin className="w-8 h-8 text-blue-400 mr-4" />
+                      <span className="text-xl font-bold text-white">Florida</span>
+                    </div>
+                  </div>
+                  <div className="group p-6 bg-white/5 border border-white/20 rounded-2xl hover:bg-white/10 transition-all duration-300">
+                    <div className="flex items-center">
+                      <MapPin className="w-8 h-8 text-blue-400 mr-4" />
+                      <span className="text-xl font-bold text-white">Louisiana</span>
+                    </div>
+                  </div>
+                  <div className="group p-6 bg-white/5 border border-white/20 rounded-2xl hover:bg-white/10 transition-all duration-300">
+                    <div className="flex items-center">
+                      <MapPin className="w-8 h-8 text-blue-400 mr-4" />
+                      <span className="text-xl font-bold text-white">Oklahoma</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* CTA Button */}
+              <div className="mt-12">
+                <a href="/pages/coverage" className="group inline-flex items-center px-12 py-6 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold rounded-2xl hover:from-blue-700 hover:to-purple-700 transition-all duration-300 text-xl shadow-2xl hover:shadow-blue-500/25 transform hover:-translate-y-1">
+                  <Eye className="w-6 h-6 mr-3 group-hover:scale-110 transition-transform" />
+                  View Real-Time Coverage
+                </a>
+              </div>
+            </div>
+
+            {/* Right Column - Monitoring Dashboard */}
+            <div className="lg:col-span-5">
+              <div className="bg-gradient-to-br from-gray-900/80 to-black/80 backdrop-blur-sm border border-white/20 rounded-3xl p-10 shadow-2xl">
+                {/* Header */}
+                <div className="text-center mb-10">
+                  <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-green-600 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-xl">
+                    <Satellite className="w-8 h-8 text-white" />
+                  </div>
+                  <h3 className="text-3xl font-bold text-white mb-2 tracking-normal">
+                    Live Monitoring
+              </h3>
+                  <p className="text-green-300 font-semibold">24/7 Active Surveillance</p>
+                </div>
+
+                {/* Stats Grid */}
+                <div className="grid grid-cols-2 gap-6 mb-10">
+                  <div className="text-center p-6 bg-white/5 rounded-2xl border border-white/20">
+                    <div className="text-4xl font-bold text-blue-400 mb-2">24/7</div>
+                    <div className="text-blue-200 text-sm font-semibold">Active monitoring</div>
+                  </div>
+                  <div className="text-center p-6 bg-white/5 rounded-2xl border border-white/20">
+                    <div className="text-4xl font-bold text-blue-400 mb-2">15min</div>
+                    <div className="text-blue-200 text-sm font-semibold">Scan frequency</div>
+                  </div>
+                </div>
+
+                {/* Events List */}
+                <div className="bg-white/5 rounded-2xl p-8 border border-white/20">
+                  <h4 className="text-xl font-bold text-white mb-6 tracking-normal text-center">Monitored Events</h4>
+                  <div className="grid grid-cols-2 gap-4">
+                    <div className="flex items-center p-3 bg-white/5 rounded-xl border border-white/20">
+                      <div className="w-3 h-3 bg-blue-400 rounded-full mr-3 animate-pulse"></div>
+                      <span className="text-blue-200 font-semibold">Floods</span>
+                    </div>
+                    <div className="flex items-center p-3 bg-white/5 rounded-xl border border-white/20">
+                      <div className="w-3 h-3 bg-blue-400 rounded-full mr-3 animate-pulse"></div>
+                      <span className="text-blue-200 font-semibold">Tornadoes</span>
+                    </div>
+                    <div className="flex items-center p-3 bg-white/5 rounded-xl border border-white/20">
+                      <div className="w-3 h-3 bg-blue-400 rounded-full mr-3 animate-pulse"></div>
+                      <span className="text-blue-200 font-semibold">Wildfires</span>
+                    </div>
+                    <div className="flex items-center p-3 bg-white/5 rounded-xl border border-white/20">
+                      <div className="w-3 h-3 bg-blue-400 rounded-full mr-3 animate-pulse"></div>
+                      <span className="text-blue-200 font-semibold">Hail</span>
+                    </div>
+                    <div className="flex items-center p-3 bg-white/5 rounded-xl border border-white/20">
+                      <div className="w-3 h-3 bg-blue-400 rounded-full mr-3 animate-pulse"></div>
+                      <span className="text-blue-200 font-semibold">Droughts</span>
+                </div>
+                    <div className="flex items-center p-3 bg-white/5 rounded-xl border border-white/20">
+                      <div className="w-3 h-3 bg-blue-400 rounded-full mr-3 animate-pulse"></div>
+                      <span className="text-blue-200 font-semibold">Hurricanes</span>
+                </div>
+              </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* WHO IT'S FOR */}
+      <section className="relative py-24 bg-gradient-to-b from-white to-gray-50 overflow-hidden">
+        {/* Subtle Background Pattern */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute top-1/4 left-0 w-64 h-64 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl"></div>
+          <div className="absolute bottom-1/4 right-0 w-64 h-64 bg-gray-200 rounded-full mix-blend-multiply filter blur-3xl"></div>
+        </div>
+        
+        <div className="relative max-w-7xl mx-auto px-6">
+          {/* Header */}
+          <div className="text-center mb-20">
+            <div className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-gray-800 to-gray-900 text-white text-sm font-semibold rounded-full shadow-lg mb-8">
+              <Users className="w-4 h-4 mr-2" />
+              Target Markets
+            </div>
+            <h2 className="text-5xl font-bold text-gray-900 mb-6 tracking-normal">
+              Who It{"'"}s For
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+              Specialized solutions for B2B professionals seeking high-intent prospects
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            {/* Insurance Providers Card */}
+            <div className="group relative">
+              <div className="bg-white/90 backdrop-blur-sm border border-gray-200/60 rounded-2xl p-10 shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2">
+                {/* Header */}
+                <div className="flex items-center mb-8">
+                  <div className="w-20 h-20 bg-gradient-to-br from-blue-600 to-blue-700 rounded-2xl flex items-center justify-center mr-6 shadow-xl group-hover:scale-110 transition-transform">
+                    <Shield className="w-10 h-10 text-white" />
+              </div>
+                  <div>
+                    <h3 className="text-3xl font-bold text-gray-900 mb-2 tracking-normal">
+                Commercial Insurance Providers
+              </h3>
+                    <p className="text-blue-600 font-semibold">Primary Market</p>
+                  </div>
+                </div>
+                
+                {/* Description */}
+                <p className="text-gray-700 mb-8 text-lg leading-relaxed">
+                  Reach damaged businesses at the exact moment they{"'"}re seeking insurance coverage with our real-time disaster detection system.
+                </p>
+                
+                {/* Services Grid */}
+                <div className="grid grid-cols-1 gap-4 mb-8">
+                  <div className="flex items-center p-4 bg-blue-50 rounded-xl border border-blue-200/50">
+                    <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center mr-4">
+                      <CheckCircle className="w-5 h-5 text-white" />
+                    </div>
+                    <span className="text-gray-800 font-semibold">Property damage insurance</span>
+                  </div>
+                  <div className="flex items-center p-4 bg-blue-50 rounded-xl border border-blue-200/50">
+                    <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center mr-4">
+                      <CheckCircle className="w-5 h-5 text-white" />
+                    </div>
+                    <span className="text-gray-800 font-semibold">Business interruption</span>
+                  </div>
+                  <div className="flex items-center p-4 bg-blue-50 rounded-xl border border-blue-200/50">
+                    <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center mr-4">
+                      <CheckCircle className="w-5 h-5 text-white" />
+                    </div>
+                    <span className="text-gray-800 font-semibold">Commercial liability</span>
+                  </div>
+                </div>
+
+                {/* ROI Indicator */}
+                <div className="bg-gradient-to-r from-blue-50 to-blue-100 rounded-xl p-6 border border-blue-200/50">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <p className="text-blue-800 font-bold text-lg">High Conversion Rate</p>
+                      <p className="text-blue-700 text-sm">Immediate need = higher close rate</p>
+                    </div>
+                    <div className="text-right">
+                      <div className="text-3xl font-bold text-blue-600">85%</div>
+                      <div className="text-blue-700 text-sm">Avg. response rate</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* B2B Brokers Card */}
+            <div className="group relative">
+              <div className="bg-white/90 backdrop-blur-sm border border-gray-200/60 rounded-2xl p-10 shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2">
+                {/* Header */}
+                <div className="flex items-center mb-8">
+                  <div className="w-20 h-20 bg-gradient-to-br from-gray-700 to-gray-800 rounded-2xl flex items-center justify-center mr-6 shadow-xl group-hover:scale-110 transition-transform">
+                    <Briefcase className="w-10 h-10 text-white" />
+              </div>
+                  <div>
+                    <h3 className="text-3xl font-bold text-gray-900 mb-2 tracking-normal">
+                B2B Brokers & Agents
+              </h3>
+                    <p className="text-gray-600 font-semibold">Secondary Market</p>
+                  </div>
+                </div>
+                
+                {/* Description */}
+                <p className="text-gray-700 mb-8 text-lg leading-relaxed">
+                  Grow your portfolio with qualified clients having immediate and urgent needs for recovery and support services.
+                </p>
+                
+                {/* Services Grid */}
+                <div className="grid grid-cols-1 gap-4 mb-8">
+                  <div className="flex items-center p-4 bg-gray-50 rounded-xl border border-gray-200/50">
+                    <div className="w-8 h-8 bg-gray-700 rounded-lg flex items-center justify-center mr-4">
+                      <CheckCircle className="w-5 h-5 text-white" />
+                    </div>
+                    <span className="text-gray-800 font-semibold">Recovery services</span>
+                  </div>
+                  <div className="flex items-center p-4 bg-gray-50 rounded-xl border border-gray-200/50">
+                    <div className="w-8 h-8 bg-gray-700 rounded-lg flex items-center justify-center mr-4">
+                      <CheckCircle className="w-5 h-5 text-white" />
+                    </div>
+                    <span className="text-gray-800 font-semibold">Legal counsel</span>
+                  </div>
+                  <div className="flex items-center p-4 bg-gray-50 rounded-xl border border-gray-200/50">
+                    <div className="w-8 h-8 bg-gray-700 rounded-lg flex items-center justify-center mr-4">
+                      <CheckCircle className="w-5 h-5 text-white" />
+                    </div>
+                    <span className="text-gray-800 font-semibold">Financial services</span>
+                  </div>
+                </div>
+
+                {/* ROI Indicator */}
+                <div className="bg-gradient-to-r from-gray-50 to-gray-100 rounded-xl p-6 border border-gray-200/50">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <p className="text-gray-800 font-bold text-lg">Portfolio Growth</p>
+                      <p className="text-gray-700 text-sm">High-value clients with urgent needs</p>
+                    </div>
+                    <div className="text-right">
+                      <div className="text-3xl font-bold text-gray-700">3.2x</div>
+                      <div className="text-gray-600 text-sm">Avg. deal size</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Bottom CTA */}
+          <div className="text-center mt-16">
+            <div className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-gray-100 to-gray-200 rounded-xl border border-gray-300/50">
+              <Target className="w-5 h-5 text-gray-600 mr-3" />
+              <span className="text-gray-700 font-semibold">Both markets benefit from our real-time disaster intelligence</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* POWERED BY BPCGROUP */}
+      <section className="relative py-24 bg-gradient-to-b from-gray-50 to-white overflow-hidden">
+        {/* Subtle Background Pattern */}
+        <div className="absolute inset-0 opacity-3">
+          <div className="absolute top-1/4 right-0 w-64 h-64 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl"></div>
+          <div className="absolute bottom-1/4 left-0 w-64 h-64 bg-purple-200 rounded-full mix-blend-multiply filter blur-3xl"></div>
+        </div>
+        
+        <div className="relative max-w-7xl mx-auto px-6">
+          {/* Header */}
+          <div className="text-center mb-20">
+            <div className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-gray-800 to-gray-900 text-white text-sm font-semibold rounded-full shadow-lg mb-8">
+              <Building2 className="w-4 h-4 mr-2" />
+              Technology Stack
+            </div>
+            <h2 className="text-5xl font-bold text-gray-900 mb-6 tracking-normal">
+              Powered by BPCGROUP
+            </h2>
+            <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+              Our proprietary technology stack combines real-time intelligence, AI-powered enrichment, and performance-based delivery
+            </p>
+          </div>
+
+          {/* Technology Flow */}
+          <div className="mb-20">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+              {/* Step 1: Detection */}
+              <div className="group relative">
+                {/* Connection Line */}
+                <div className="hidden lg:block absolute top-1/2 -right-4 w-8 h-0.5 bg-gradient-to-r from-blue-600 to-green-600 transform -translate-y-1/2 z-0"></div>
+                
+                <div className="relative bg-white/90 backdrop-blur-sm border border-gray-200/60 rounded-2xl p-8 text-center shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2">
+                  {/* Step Number */}
+                  <div className="w-16 h-16 bg-gradient-to-br from-blue-600 to-blue-700 text-white rounded-2xl flex items-center justify-center mx-auto mb-6 text-2xl font-bold shadow-xl group-hover:scale-110 transition-transform">
+                    1
+                  </div>
+                  
+                  {/* Icon */}
+                  <div className="w-20 h-20 bg-blue-100 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                <Satellite className="w-10 h-10 text-blue-600" />
+              </div>
+                  
+                  {/* Content */}
+                  <h3 className="text-2xl font-bold text-gray-900 mb-4 tracking-normal">
+                Sentinel Climate Intelligence
+              </h3>
+                  <p className="text-gray-600 mb-6 leading-relaxed">
+                    Real-time climate event detection with geographic precision down to ZIP code level.
+                  </p>
+                  
+                  {/* Key Features */}
+                  <div className="space-y-3 text-sm">
+                    <div className="flex items-center justify-center">
+                      <CheckCircle className="w-4 h-4 text-blue-600 mr-2" />
+                      <span className="text-gray-700">24/7 monitoring</span>
+                    </div>
+                    <div className="flex items-center justify-center">
+                      <CheckCircle className="w-4 h-4 text-blue-600 mr-2" />
+                      <span className="text-gray-700">15-minute updates</span>
+                    </div>
+                    <div className="flex items-center justify-center">
+                      <CheckCircle className="w-4 h-4 text-blue-600 mr-2" />
+                      <span className="text-gray-700">7 disaster types</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Step 2: Enrichment */}
+              <div className="group relative">
+                {/* Connection Line */}
+                <div className="hidden lg:block absolute top-1/2 -right-4 w-8 h-0.5 bg-gradient-to-r from-green-600 to-purple-600 transform -translate-y-1/2 z-0"></div>
+                
+                <div className="relative bg-white/90 backdrop-blur-sm border border-gray-200/60 rounded-2xl p-8 text-center shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2">
+                  {/* Step Number */}
+                  <div className="w-16 h-16 bg-gradient-to-br from-green-600 to-green-700 text-white rounded-2xl flex items-center justify-center mx-auto mb-6 text-2xl font-bold shadow-xl group-hover:scale-110 transition-transform">
+                    2
+            </div>
+
+                  {/* Icon */}
+                  <div className="w-20 h-20 bg-green-100 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                <Database className="w-10 h-10 text-green-600" />
+                  </div>
+                  
+                  {/* Content */}
+                  <h3 className="text-2xl font-bold text-gray-900 mb-4 tracking-normal">
+                    Clyma™ AI Engine
+                  </h3>
+                  <p className="text-gray-600 mb-6 leading-relaxed">
+                    Advanced AI-powered lead enrichment and qualification with verified contact data.
+                  </p>
+                  
+                  {/* Key Features */}
+                  <div className="space-y-3 text-sm">
+                    <div className="flex items-center justify-center">
+                      <CheckCircle className="w-4 h-4 text-green-600 mr-2" />
+                      <span className="text-gray-700">Contact verification</span>
+                    </div>
+                    <div className="flex items-center justify-center">
+                      <CheckCircle className="w-4 h-4 text-green-600 mr-2" />
+                      <span className="text-gray-700">Intent scoring</span>
+                    </div>
+                    <div className="flex items-center justify-center">
+                      <CheckCircle className="w-4 h-4 text-green-600 mr-2" />
+                      <span className="text-gray-700">Budget analysis</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Step 3: Delivery */}
+              <div className="group relative">
+                <div className="relative bg-white/90 backdrop-blur-sm border border-gray-200/60 rounded-2xl p-8 text-center shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2">
+                  {/* Step Number */}
+                  <div className="w-16 h-16 bg-gradient-to-br from-purple-600 to-purple-700 text-white rounded-2xl flex items-center justify-center mx-auto mb-6 text-2xl font-bold shadow-xl group-hover:scale-110 transition-transform">
+                    3
+            </div>
+
+                  {/* Icon */}
+                  <div className="w-20 h-20 bg-purple-100 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                <TrendingUp className="w-10 h-10 text-purple-600" />
+                  </div>
+                  
+                  {/* Content */}
+                  <h3 className="text-2xl font-bold text-gray-900 mb-4 tracking-normal">
+                    PayPerLeads™
+                  </h3>
+                  <p className="text-gray-600 mb-6 leading-relaxed">
+                    100% performance-based model with guaranteed delivery and no upfront costs.
+                  </p>
+                  
+                  {/* Key Features */}
+                  <div className="space-y-3 text-sm">
+                    <div className="flex items-center justify-center">
+                      <CheckCircle className="w-4 h-4 text-purple-600 mr-2" />
+                      <span className="text-gray-700">Pay per result</span>
+                    </div>
+                    <div className="flex items-center justify-center">
+                      <CheckCircle className="w-4 h-4 text-purple-600 mr-2" />
+                      <span className="text-gray-700">24h delivery</span>
+                    </div>
+                    <div className="flex items-center justify-center">
+                      <CheckCircle className="w-4 h-4 text-purple-600 mr-2" />
+                      <span className="text-gray-700">No commitment</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Value Proposition */}
+          <div className="bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl p-10 text-center shadow-2xl border border-gray-700/50">
+            <div className="flex items-center justify-center mb-8">
+              <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center mr-6">
+                <Shield className="w-8 h-8 text-white" />
+              </div>
+              <h3 className="text-3xl font-bold text-white tracking-normal">
+              Our Promise
+            </h3>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-lg">
+              <div className="flex flex-col items-center p-6 bg-white/5 rounded-xl border border-white/10">
+                <X className="w-8 h-8 text-red-400 mb-3" />
+                <span className="text-white font-semibold text-center">No noise</span>
+                <span className="text-gray-300 text-sm text-center mt-2">Only qualified prospects</span>
+              </div>
+              <div className="flex flex-col items-center p-6 bg-white/5 rounded-xl border border-white/10">
+                <CheckCircle className="w-8 h-8 text-green-400 mb-3" />
+                <span className="text-white font-semibold text-center">High-intent prospects</span>
+                <span className="text-gray-300 text-sm text-center mt-2">Climate-impacted businesses</span>
+              </div>
+              <div className="flex flex-col items-center p-6 bg-white/5 rounded-xl border border-white/10">
+                <Zap className="w-8 h-8 text-blue-400 mb-3" />
+                <span className="text-white font-semibold text-center">Speed advantage</span>
+                <span className="text-gray-300 text-sm text-center mt-2">Before competitors react</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FINAL CTA */}
+      <section id="request-leads" className="py-24 bg-gradient-to-r from-blue-700 to-blue-900 relative overflow-hidden">
+        {/* Background Elements */}
+        <div className="absolute inset-0 opacity-10 pointer-events-none">
+          <div className="absolute top-1/3 left-1/4 w-96 h-96 bg-blue-400 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500 rounded-full blur-3xl animate-pulse animation-delay-2000"></div>
+        </div>
+        <div className="relative max-w-4xl mx-auto px-6 text-center">
+          <h2 className="text-5xl lg:text-6xl font-bold text-white mb-8 tracking-tight drop-shadow-xl">
+            Start converting crisis into contracts
+          </h2>
+          <p className="text-2xl text-blue-100 mb-12 leading-relaxed max-w-2xl mx-auto">
+            Our leads are waiting for your offer. Get in touch and receive qualified, ready-to-contact prospects in less than 24 hours.
+          </p>
+          
+          <div className="flex flex-col sm:flex-row gap-6 justify-center mb-16">
+            <a 
+              href="https://app.iclosed.io/e/baptistepiocelle/contact"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center px-10 py-5 bg-white text-blue-700 font-bold rounded-lg hover:bg-gray-50 transition-colors text-xl shadow-lg border-2 border-blue-400/30"
+            >
+              Request Leads
+            </a>
+            <a href="mailto:baptiste@bpcorp.eu" className="inline-flex items-center justify-center px-10 py-5 bg-gradient-to-r from-blue-800 to-blue-600 text-white font-bold rounded-lg border-2 border-blue-400 hover:bg-blue-900 transition-colors text-xl shadow-lg">
+              <Mail className="w-6 h-6 mr-3" />
+              Email Us
+            </a>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-blue-100">
+            <div className="text-center flex flex-col items-center justify-center">
+              <Mail className="w-8 h-8 mx-auto mb-3" />
+              <p className="font-bold text-lg">Direct Email</p>
+              <p className="text-lg">baptiste@bpcorp.eu</p>
+            </div>
+            <div className="text-center flex flex-col items-center justify-center">
+              <Clock className="w-8 h-8 mx-auto mb-3" />
+              <p className="font-bold text-lg">Guaranteed Response</p>
+              <p className="text-lg">Within 2h during business hours</p>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
   );
 }
