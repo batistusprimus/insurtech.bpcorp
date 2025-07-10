@@ -59,7 +59,7 @@ export default function Home() {
             <div className="flex flex-col items-center">
               <div className="text-4xl mb-4"><NumberIcon className="text-blue-600" size={48} number={2} /></div>
               <h3 className="font-semibold text-lg mb-2">We Qualify</h3>
-              <p className="text-gray-600">Our proprietary engine, Clyma™, enriches and verifies business contacts in the exposed area.</p>
+              <p className="text-gray-600">Our AI system identifies and verifies business contacts in the exposed area with precision.</p>
             </div>
             <div className="flex flex-col items-center">
               <div className="text-4xl mb-4"><NumberIcon className="text-blue-600" size={48} number={3} /></div>

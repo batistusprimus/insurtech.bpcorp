@@ -53,19 +53,19 @@ const Footer = () => {
               </div>
             </div>
             
-            <p className="text-gray-300 mb-6 leading-relaxed">
+            <p className="text-gray-300 mb-6 leading-relaxed text-overflow-safe">
               Transform weather events into business opportunities with our real-time climate intelligence and qualified B2B leads.
             </p>
             
             {/* Contact Info */}
             <div className="space-y-3">
               <div className="flex items-center text-gray-300">
-                <BuildingIcon className="mr-3" size={20} />
-                <span>1077 Budapest, Rózsa utca 38/A, Hungary</span>
+                <BuildingIcon className="mr-3 flex-shrink-0" size={20} />
+                <span className="text-overflow-safe">1077 Budapest, Rózsa utca 38/A, Hungary</span>
               </div>
               <div className="flex items-center text-gray-300">
-                <EmailIcon className="mr-3" size={20} />
-                <a href="mailto:baptiste@bpcorp.eu" className="hover:text-blue-300 transition-colors">
+                <EmailIcon className="mr-3 flex-shrink-0" size={20} />
+                <a href="mailto:baptiste@bpcorp.eu" className="hover:text-blue-300 transition-colors text-overflow-safe">
                   baptiste@bpcorp.eu
                 </a>
               </div>
@@ -75,14 +75,14 @@ const Footer = () => {
           {/* Navigation Sections */}
           {navigationSections.map((section) => (
             <div key={section.title}>
-              <h4 className="text-lg font-semibold mb-4 text-white">{section.title}</h4>
+              <h4 className="text-lg font-semibold mb-4 text-white text-overflow-safe">{section.title}</h4>
               <ul className="space-y-3">
                 {section.links.map((link) => (
                   <li key={link.name}>
                     <Link 
                       href={link.href}
                       prefetch={true}
-                      className="text-gray-300 hover:text-blue-300 transition-colors duration-200"
+                      className="text-gray-300 hover:text-blue-300 transition-colors duration-200 text-overflow-safe"
                     >
                       {link.name}
                     </Link>

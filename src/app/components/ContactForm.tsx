@@ -111,17 +111,17 @@ export default function ContactForm({ type, title, description, onSubmit }: Cont
     <div className="max-w-2xl mx-auto">
       <div className="bg-white rounded-2xl shadow-xl border border-gray-200 p-8">
         <div className="text-center mb-8">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">{title}</h2>
-          <p className="text-gray-600">{description}</p>
+          <h2 className="text-responsive-3xl font-bold text-gray-900 mb-4 text-overflow-safe">{title}</h2>
+          <p className="text-gray-600 text-overflow-safe">{description}</p>
         </div>
 
         {submitStatus === 'success' && (
           <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg">
             <div className="flex items-center">
               <div className="text-green-600 mr-3">✅</div>
-              <div>
-                <p className="text-green-800 font-semibold">Thank you!</p>
-                <p className="text-green-700 text-sm">
+              <div className="text-overflow-safe">
+                <p className="text-green-800 font-semibold text-overflow-safe">Thank you!</p>
+                <p className="text-green-700 text-sm text-overflow-safe">
                   {type === 'leads' 
                     ? 'We\'ll review your request and get back to you within 24 hours with qualified leads.'
                     : 'We\'ll get back to you within 24 hours.'
@@ -136,9 +136,9 @@ export default function ContactForm({ type, title, description, onSubmit }: Cont
           <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg">
             <div className="flex items-center">
               <div className="text-red-600 mr-3">❌</div>
-              <div>
-                <p className="text-red-800 font-semibold">Something went wrong</p>
-                <p className="text-red-700 text-sm">Please try again or contact us directly.</p>
+              <div className="text-overflow-safe">
+                <p className="text-red-800 font-semibold text-overflow-safe">Something went wrong</p>
+                <p className="text-red-700 text-sm text-overflow-safe">Please try again or contact us directly.</p>
               </div>
             </div>
           </div>
@@ -346,7 +346,7 @@ export default function ContactForm({ type, title, description, onSubmit }: Cont
             <button
               type="submit"
               disabled={isSubmitting}
-              className={`w-full py-4 px-6 rounded-xl font-bold text-lg transition-all duration-300 transform hover:scale-105 shadow-xl ${
+              className={`w-full btn-responsive-lg rounded-xl font-bold transition-all duration-300 transform hover:scale-105 shadow-xl text-overflow-safe ${
                 isSubmitting
                   ? 'bg-gray-400 cursor-not-allowed'
                   : 'bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white'
@@ -364,7 +364,7 @@ export default function ContactForm({ type, title, description, onSubmit }: Cont
           </div>
 
           <div className="text-center text-sm text-gray-500">
-            <p>We respect your privacy. Your information will never be shared with third parties.</p>
+            <p className="text-overflow-safe">We respect your privacy. Your information will never be shared with third parties.</p>
           </div>
         </form>
       </div>

@@ -20,7 +20,7 @@ export default function Navigation({ items, className = '', onItemClick }: Navig
           key={item.name}
           href={item.href}
           prefetch={true}
-          className={`text-gray-700 hover:text-blue-600 px-2 py-2 text-sm font-medium transition-colors duration-200 whitespace-nowrap ${
+          className={`text-gray-700 hover:text-blue-600 px-2 py-2 text-sm font-medium transition-colors duration-200 whitespace-nowrap text-overflow-safe ${
             pathname === item.href ? 'text-blue-600 font-semibold' : ''
           } ${className.includes('space-y-1') ? 'hover:bg-gray-50 block px-3 py-2 rounded-md text-base' : ''}`}
           onClick={onItemClick}

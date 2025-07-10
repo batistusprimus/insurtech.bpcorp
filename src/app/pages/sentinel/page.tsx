@@ -16,23 +16,120 @@ import {
 export default function SentinelPage() {
   return (
     <div className="min-h-screen bg-white">
-      {/* Hero Section - Simplified */}
-      <div className="bg-blue-900 text-white py-20">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-5xl font-bold mb-6">
-            Sentinel Shield™
-          </h1>
-          <p className="text-xl mb-8">
-            Our intelligence system that detects areas impacted by weather events and identifies exposed businesses to provide you with qualified leads.
-          </p>
-          <a 
-            href="https://app.iclosed.io/e/baptistepiocelle/contact"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="bg-white text-blue-900 font-bold py-3 px-8 rounded-lg hover:bg-gray-100 transition-colors"
-          >
-            Request Leads
-          </a>
+      {/* Hero Section - Enhanced */}
+      <div className="relative bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-900 text-white overflow-hidden">
+        {/* Background Pattern */}
+        <div className="absolute inset-0 bg-black/10"></div>
+        <div className="absolute inset-0 opacity-20" style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+          backgroundSize: '60px 60px'
+        }}></div>
+        
+        <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Left Content */}
+            <div className="text-center lg:text-left">
+              <div className="inline-flex items-center px-4 py-2 bg-blue-700/30 backdrop-blur-sm rounded-full text-sm font-medium mb-6 border border-blue-600/30">
+                <ShieldIcon className="w-4 h-4 mr-2" />
+                AI-Powered Weather Intelligence
+              </div>
+              
+              <h1 className="text-4xl lg:text-6xl font-bold mb-6 leading-tight">
+                <span className="block text-white">Sentinel</span>
+                <span className="block bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">Shield™</span>
+              </h1>
+              
+              <p className="text-xl lg:text-2xl mb-8 text-blue-100 leading-relaxed max-w-2xl">
+                Transform weather chaos into qualified B2B leads. Our AI system detects impacted areas and identifies exposed businesses in real-time.
+              </p>
+              
+              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                <a 
+                  href="https://app.iclosed.io/e/baptistepiocelle/contact"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center bg-white text-blue-900 font-bold py-4 px-8 rounded-lg hover:bg-gray-100 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+                >
+                  <TargetIcon className="w-5 h-5 mr-2" />
+                  Request Qualified Leads
+                </a>
+                <button className="inline-flex items-center justify-center bg-transparent border-2 border-white/30 text-white font-semibold py-4 px-8 rounded-lg hover:bg-white/10 transition-all duration-200 backdrop-blur-sm">
+                  <ChartIcon className="w-5 h-5 mr-2" />
+                  View Demo
+                </button>
+              </div>
+              
+              {/* Trust Indicators */}
+              <div className="mt-12 flex flex-wrap justify-center lg:justify-start gap-8 text-sm text-blue-200">
+                <div className="flex items-center">
+                  <CheckIcon className="w-4 h-4 mr-2 text-green-400" />
+                  <span>91.7% Predictive Accuracy</span>
+                </div>
+                <div className="flex items-center">
+                  <CheckIcon className="w-4 h-4 mr-2 text-green-400" />
+                  <span>Texas-Focused</span>
+                </div>
+                <div className="flex items-center">
+                  <CheckIcon className="w-4 h-4 mr-2 text-green-400" />
+                  <span>CRM-Ready Data</span>
+                </div>
+              </div>
+            </div>
+            
+            {/* Right Visual */}
+            <div className="relative lg:block">
+              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20 shadow-2xl">
+                <div className="space-y-6">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center space-x-3">
+                      <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
+                      <span className="text-sm font-medium">Live Monitoring</span>
+                    </div>
+                    <div className="text-xs text-blue-200">Real-time</div>
+                  </div>
+                  
+                  <div className="space-y-4">
+                    <div className="bg-white/5 rounded-lg p-4">
+                      <div className="flex items-center justify-between mb-2">
+                        <span className="text-sm font-medium">Weather Events Detected</span>
+                        <span className="text-2xl font-bold text-green-400">3</span>
+                      </div>
+                      <div className="w-full bg-white/10 rounded-full h-2">
+                        <div className="bg-green-400 h-2 rounded-full" style={{width: '75%'}}></div>
+                      </div>
+                    </div>
+                    
+                    <div className="bg-white/5 rounded-lg p-4">
+                      <div className="flex items-center justify-between mb-2">
+                        <span className="text-sm font-medium">Businesses Identified</span>
+                        <span className="text-2xl font-bold text-blue-400">247</span>
+                      </div>
+                      <div className="w-full bg-white/10 rounded-full h-2">
+                        <div className="bg-blue-400 h-2 rounded-full" style={{width: '85%'}}></div>
+                      </div>
+                    </div>
+                    
+                    <div className="bg-white/5 rounded-lg p-4">
+                      <div className="flex items-center justify-between mb-2">
+                        <span className="text-sm font-medium">Leads Generated</span>
+                        <span className="text-2xl font-bold text-purple-400">89</span>
+                      </div>
+                      <div className="w-full bg-white/10 rounded-full h-2">
+                        <div className="bg-purple-400 h-2 rounded-full" style={{width: '60%'}}></div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div className="pt-4 border-t border-white/10">
+                    <div className="flex items-center justify-between text-xs text-blue-200">
+                      <span>Last Updated: 2 min ago</span>
+                      <span>Texas Coverage</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
