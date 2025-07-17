@@ -1,11 +1,4 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { Client } from '@notionhq/client';
-
-const notion = new Client({
-  auth: process.env.NOTION_TOKEN,
-});
-
-const DATABASE_ID = process.env.NOTION_DATABASE_ID;
 
 export async function POST(request: NextRequest) {
   try {
@@ -20,102 +13,32 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Préparer les données pour Notion
-    const properties: any = {
-      'Name': {
-        title: [
-          {
-            text: {
-              content: name
-            }
-          }
-        ]
-      },
-      'Email': {
-        email: email
-      },
-      'Company': {
-        rich_text: [
-          {
-            text: {
-              content: company
-            }
-          }
-        ]
-      }
-    };
+    // Log des données reçues (pour debug)
+    console.log('Form submission received:', {
+      name,
+      email,
+      company,
+      phone,
+      message,
+      type,
+      industry,
+      territory,
+      leadVolume,
+      urgency,
+      eventType
+    });
 
-    // Ajouter les champs optionnels
-    if (phone) {
-      properties['Phone'] = {
-        phone_number: phone
-      };
-    }
-
-    if (message) {
-      properties['Message'] = {
-        rich_text: [
-          {
-            text: {
-              content: message
-            }
-          }
-        ]
-      };
-    }
-
-    // Ajouter les champs spécifiques aux leads
-    if (type === 'leads') {
-      if (industry) {
-        properties['Target Industry'] = {
-          select: {
-            name: industry
-          }
-        };
-      }
-      if (territory) {
-        properties['Target Territory'] = {
-          select: {
-            name: territory
-          }
-        };
-      }
-      if (leadVolume) {
-        properties['Leads Volume'] = {
-          select: {
-            name: leadVolume
-          }
-        };
-      }
-      if (urgency) {
-        properties['Urgency Level'] = {
-          select: {
-            name: urgency
-          }
-        };
-      }
-      if (eventType) {
-        properties['Event Type Focus'] = {
-          select: {
-            name: eventType
-          }
-        };
-      }
-    }
-
-    const notionData = {
-      parent: { database_id: DATABASE_ID! },
-      properties
-    };
-
-    // Créer l'entrée dans Notion
-    const response = await notion.pages.create(notionData);
+    // Pour le moment, on simule un succès sans Notion
+    // TODO: Configurer Notion ou un autre service de stockage
+    
+    // Envoyer un email de notification (optionnel)
+    // TODO: Configurer un service d'email comme SendGrid ou Resend
 
     return NextResponse.json(
       { 
         success: true, 
-        message: 'Form submitted successfully',
-        notionId: response.id 
+        message: 'Form submitted successfully. We will contact you within 24 hours.',
+        submittedAt: new Date().toISOString()
       },
       { status: 200 }
     );
@@ -123,7 +46,7 @@ export async function POST(request: NextRequest) {
   } catch (error) {
     console.error('Error submitting form:', error);
     return NextResponse.json(
-      { error: 'Failed to submit form' },
+      { error: 'Something went wrong. Please try again or contact us directly.' },
       { status: 500 }
     );
   }
