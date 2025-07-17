@@ -1,4 +1,5 @@
 import React from 'react';
+import ContactCTA from '../../components/ContactCTA';
 import { SatelliteIcon, TrendingUpIcon, ListIcon, PhoneIcon, CircleIcon, ChartIcon } from '../../components/Icons';
 
 export default function ResourcesPage() {
@@ -205,21 +206,25 @@ export default function ResourcesPage() {
                       </div>
 
                       {/* Action Button */}
-                      <a 
-                        href={resource.actionType === 'primary' 
-                          ? "https://app.iclosed.io/e/baptistepiocelle/contact"
-                          : "/pages/contact"
-                        }
-                        target={resource.actionType === 'primary' ? "_blank" : undefined}
-                        rel={resource.actionType === 'primary' ? "noopener noreferrer" : undefined}
-                        className={`inline-flex items-center px-6 py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 ${
-                          resource.actionType === 'primary' 
-                            ? 'bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white shadow-lg hover:shadow-xl' 
-                            : 'bg-gray-100 hover:bg-gray-200 text-gray-800 border border-gray-300'
-                        }`}
-                      >
-                        → {resource.action}
-                      </a>
+                      {resource.actionType === 'primary' ? (
+                        <ContactCTA 
+                          type="contact" 
+                          variant="primary" 
+                          size="md"
+                          className="inline-flex items-center px-6 py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white shadow-lg hover:shadow-xl"
+                        >
+                          → {resource.action}
+                        </ContactCTA>
+                      ) : (
+                        <ContactCTA 
+                          type="contact" 
+                          variant="outline" 
+                          size="md"
+                          className="inline-flex items-center px-6 py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 bg-gray-100 hover:bg-gray-200 text-gray-800 border border-gray-300"
+                        >
+                          → {resource.action}
+                        </ContactCTA>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -241,14 +246,14 @@ export default function ResourcesPage() {
               → Download the full Sentinel Intelligence Toolkit (.zip)<br />
               Includes: Methodology guide, sample leads, industry briefs, 7-day exposure forecast.
             </p>
-            <a 
-              href="https://app.iclosed.io/e/baptistepiocelle/contact"
-              target="_blank"
-              rel="noopener noreferrer"
+            <ContactCTA 
+              type="contact" 
+              variant="primary" 
+              size="lg"
               className="inline-block bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold py-4 px-8 rounded-xl text-lg transition-all duration-300 transform hover:scale-105 shadow-xl"
             >
               🔘 Request Access
-            </a>
+            </ContactCTA>
           </div>
         </div>
       </div>

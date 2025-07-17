@@ -1,4 +1,5 @@
 import React from 'react';
+import ContactCTA from '../../components/ContactCTA';
 import { LightningIcon, TornadoIcon, TrendingUpIcon, SatelliteIcon, BuildingIcon, ListIcon, ChartIcon } from '../../components/Icons';
 
 export default function BlogPage() {
@@ -144,14 +145,14 @@ export default function BlogPage() {
               
               {/* CTA Button */}
               <div className="mt-8">
-                <a 
-                  href="https://app.iclosed.io/e/baptistepiocelle/contact"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <ContactCTA 
+                  type="contact" 
+                  variant="primary" 
+                  size="lg"
                   className="inline-block bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold py-4 px-8 rounded-xl text-lg transition-all duration-300 transform hover:scale-105 shadow-xl"
                 >
                   Read Latest Briefs
-                </a>
+                </ContactCTA>
               </div>
             </div>
           </div>
@@ -179,9 +180,7 @@ export default function BlogPage() {
                     <p className="text-lg text-gray-700 mb-6">
                       {brief.description}
                     </p>
-                    <button className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold py-3 px-6 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg">
-                      → {brief.action}
-                    </button>
+
                   </div>
                 </div>
               </div>
@@ -264,9 +263,7 @@ export default function BlogPage() {
               <p className="text-xl mb-8 opacity-90">
                 Subscribe to the Sentinel Dispatch – the only climate ops report built for Texas B2B operators.
               </p>
-              <button className="bg-white text-blue-600 font-bold py-4 px-8 rounded-xl text-lg transition-all duration-300 transform hover:scale-105 shadow-xl">
-                🔘 Request Briefing Access
-              </button>
+
             </div>
           </div>
         </div>

@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import ContactCTA from "../components/ContactCTA";
 import { CheckIcon, NumberIcon, TargetIcon, RocketIcon, PhoneIcon, TrendingUpIcon, LockIcon } from "../components/Icons";
 
 export default function Home() {
@@ -14,14 +15,14 @@ export default function Home() {
           We detect disaster zones in real time and deliver verified leads of exposed businesses—so your sales team reaches them when it matters most.
         </h2>
         <div className="flex flex-col sm:flex-row gap-4 justify-center mb-10">
-          <a 
-            href="https://app.iclosed.io/e/baptistepiocelle/contact"
-            target="_blank"
-            rel="noopener noreferrer"
+          <ContactCTA 
+            type="contact" 
+            variant="primary" 
+            size="lg"
             className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-8 rounded-full shadow-lg text-lg transition-all"
           >
             Request Leads Now
-          </a>
+          </ContactCTA>
           <a href="/pages/coverage" className="bg-white border border-blue-600 text-blue-600 font-bold py-4 px-8 rounded-full shadow text-lg hover:bg-blue-50 transition-all">
             See Coverage Map
           </a>
@@ -124,17 +125,22 @@ export default function Home() {
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Ready to Reach Businesses That Need You?</h2>
           <p className="text-lg mb-8 text-gray-700">View available leads in your region or request a custom package now.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a 
-              href="https://app.iclosed.io/e/baptistepiocelle/contact"
-              target="_blank"
-              rel="noopener noreferrer"
+            <ContactCTA 
+              type="contact" 
+              variant="primary" 
+              size="lg"
               className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-8 rounded-full shadow-lg text-lg transition-all"
             >
               Request Leads
-            </a>
-            <a href="/pages/contact" className="bg-white border border-blue-600 text-blue-600 font-bold py-4 px-8 rounded-full shadow text-lg hover:bg-blue-50 transition-all">
+            </ContactCTA>
+            <ContactCTA 
+              type="contact" 
+              variant="outline" 
+              size="lg"
+              className="bg-white border border-blue-600 text-blue-600 font-bold py-4 px-8 rounded-full shadow text-lg hover:bg-blue-50 transition-all"
+            >
               Book a Strategy Call
-            </a>
+            </ContactCTA>
           </div>
         </div>
       </section>

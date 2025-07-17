@@ -88,7 +88,7 @@ export default function Home() {
               {/* CTA Buttons */}
               <div className="flex flex-col sm:flex-row gap-responsive-md mb-16">
                 <ContactCTA 
-                  type="leads" 
+                  type="contact" 
                   variant="primary" 
                   size="lg"
                   className="group inline-flex items-center justify-center btn-responsive-lg bg-gradient-to-r from-blue-600 to-blue-700 text-white font-bold rounded-xl hover:from-blue-700 hover:to-blue-800 transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:-translate-y-1 text-overflow-safe"
@@ -1047,27 +1047,18 @@ export default function Home() {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-responsive-md justify-center mb-16">
-            <a 
-              href="https://app.iclosed.io/e/baptistepiocelle/contact"
-              target="_blank"
-              rel="noopener noreferrer"
+            <ContactCTA 
+              type="contact" 
+              variant="primary" 
+              size="lg"
               className="inline-flex items-center justify-center btn-responsive-lg bg-white text-blue-700 font-bold rounded-lg hover:bg-gray-50 transition-colors shadow-lg border-2 border-blue-400/30 text-overflow-safe"
             >
               Request Leads
-            </a>
-            <a href="mailto:baptiste@bpcorp.eu" className="inline-flex items-center justify-center btn-responsive-lg bg-gradient-to-r from-blue-800 to-blue-600 text-white font-bold rounded-lg border-2 border-blue-400 hover:bg-blue-900 transition-colors shadow-lg text-overflow-safe">
-              <Mail className="w-6 h-6 mr-3 flex-shrink-0" />
-              Email Us
-            </a>
+            </ContactCTA>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-responsive-md text-blue-100">
-            <div className="text-center flex flex-col items-center justify-center">
-              <Mail className="w-8 h-8 mx-auto mb-3 flex-shrink-0" />
-              <p className="font-bold text-responsive-lg text-overflow-safe">Direct Email</p>
-              <p className="text-responsive-lg text-overflow-safe">baptiste@bpcorp.eu</p>
-            </div>
-            <div className="text-center flex flex-col items-center justify-center">
+          <div className="text-center">
+            <div className="flex flex-col items-center justify-center">
               <Clock className="w-8 h-8 mx-auto mb-3 flex-shrink-0" />
               <p className="font-bold text-responsive-lg text-overflow-safe">Guaranteed Response</p>
               <p className="text-responsive-lg text-overflow-safe">Within 2h during business hours</p>

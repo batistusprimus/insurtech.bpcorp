@@ -5,16 +5,20 @@ import ContactForm from '../../components/ContactForm';
 import { ShieldIcon, TargetIcon, PhoneIcon, EmailIcon } from '../../components/Icons';
 
 export default function ContactPage() {
-  const [activeTab, setActiveTab] = useState<'leads' | 'contact'>('leads');
 
   const handleLeadsSubmit = (data: any) => {
     console.log('Leads request submitted:', data);
     // Here you would typically send the data to your API
   };
 
-  const handleContactSubmit = (data: any) => {
-    console.log('Contact form submitted:', data);
-    // Here you would typically send the data to your API
+  const scrollToForm = () => {
+    // Scroll to the form section
+    setTimeout(() => {
+      const formSection = document.querySelector('.py-24.bg-white');
+      if (formSection) {
+        formSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }, 100);
   };
 
   return (
@@ -62,51 +66,14 @@ export default function ContactPage() {
       {/* Contact Forms Section */}
       <div className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Tab Navigation */}
-          <div className="flex justify-center mb-12">
-            <div className="bg-gray-100 rounded-xl p-2 flex">
-              <button
-                onClick={() => setActiveTab('leads')}
-                className={`px-8 py-3 rounded-lg font-semibold transition-all duration-300 ${
-                  activeTab === 'leads'
-                    ? 'bg-white text-blue-600 shadow-lg'
-                    : 'text-gray-600 hover:text-gray-900'
-                }`}
-              >
-                <TargetIcon className="inline mr-2" size={20} />
-                Request Leads
-              </button>
-              <button
-                onClick={() => setActiveTab('contact')}
-                className={`px-8 py-3 rounded-lg font-semibold transition-all duration-300 ${
-                  activeTab === 'contact'
-                    ? 'bg-white text-blue-600 shadow-lg'
-                    : 'text-gray-600 hover:text-gray-900'
-                }`}
-              >
-                <ShieldIcon className="inline mr-2" size={20} />
-                General Contact
-              </button>
-            </div>
-          </div>
-
           {/* Form Content */}
           <div className="mb-16">
-            {activeTab === 'leads' ? (
-              <ContactForm
-                type="leads"
-                title="Request Qualified Leads"
-                description="Tell us about your target market and we'll deliver verified B2B contacts within 7 days."
-                onSubmit={handleLeadsSubmit}
-              />
-            ) : (
-              <ContactForm
-                type="contact"
-                title="Get in Touch"
-                description="Have questions about Sentinel Shield? We're here to help."
-                onSubmit={handleContactSubmit}
-              />
-            )}
+            <ContactForm
+              type="leads"
+              title="Request Qualified Leads"
+              description="Tell us about your target market and we'll deliver verified B2B contacts within 7 days."
+              onSubmit={handleLeadsSubmit}
+            />
           </div>
 
           {/* Additional Contact Information */}
@@ -146,32 +113,14 @@ export default function ContactPage() {
 
             <div className="bg-gradient-to-br from-gray-50 to-blue-50 rounded-2xl p-8 border border-gray-200">
               <h3 className="text-2xl font-bold text-gray-900 mb-6">Other Ways to Connect</h3>
-              <div className="space-y-6">
+              <div className="flex items-center justify-center">
                 <div className="flex items-center space-x-4">
                   <div className="w-12 h-12 bg-blue-500 rounded-xl flex items-center justify-center">
                     <EmailIcon className="text-white" size={24} />
                   </div>
                   <div>
                     <p className="font-semibold text-gray-900">Email</p>
-                    <p className="text-gray-600">hello@sentinel-shield.com</p>
-                  </div>
-                </div>
-                <div className="flex items-center space-x-4">
-                  <div className="w-12 h-12 bg-green-500 rounded-xl flex items-center justify-center">
-                    <PhoneIcon className="text-white" size={24} />
-                  </div>
-                  <div>
-                    <p className="font-semibold text-gray-900">Phone</p>
-                    <p className="text-gray-600">+1 (713) 555-0123</p>
-                  </div>
-                </div>
-                <div className="flex items-center space-x-4">
-                  <div className="w-12 h-12 bg-purple-500 rounded-xl flex items-center justify-center">
-                    <ShieldIcon className="text-white" size={24} />
-                  </div>
-                  <div>
-                    <p className="font-semibold text-gray-900">Office</p>
-                    <p className="text-gray-600">Houston, Texas</p>
+                    <a href="mailto:leads@bpcorp.eu" className="text-gray-600 hover:text-blue-600 transition-colors">leads@bpcorp.eu</a>
                   </div>
                 </div>
               </div>
@@ -239,7 +188,7 @@ export default function ContactPage() {
             Join the companies already using Sentinel Shield to turn weather events into business opportunities.
           </p>
           <button 
-            onClick={() => setActiveTab('leads')}
+            onClick={scrollToForm}
             className="bg-white text-blue-600 font-bold py-4 px-8 rounded-xl text-lg transition-all duration-300 transform hover:scale-105 shadow-xl"
           >
             Request Your First Leads

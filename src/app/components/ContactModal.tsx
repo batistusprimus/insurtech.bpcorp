@@ -7,11 +7,11 @@ import { ShieldIcon, TargetIcon, XIcon } from './Icons';
 interface ContactModalProps {
   isOpen: boolean;
   onClose: () => void;
-  defaultType?: 'leads' | 'contact';
+  defaultType?: 'leads' | 'contact' | 'email';
 }
 
 export default function ContactModal({ isOpen, onClose, defaultType = 'leads' }: ContactModalProps) {
-  const [activeTab, setActiveTab] = useState<'leads' | 'contact'>(defaultType);
+  const [activeTab, setActiveTab] = useState<'leads' | 'contact'>(defaultType === 'email' ? 'contact' : defaultType || 'leads');
 
   const handleLeadsSubmit = (data: any) => {
     console.log('Leads request submitted:', data);

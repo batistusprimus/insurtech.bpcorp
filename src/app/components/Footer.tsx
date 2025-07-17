@@ -65,8 +65,8 @@ const Footer = () => {
               </div>
               <div className="flex items-center text-gray-300">
                 <EmailIcon className="mr-3 flex-shrink-0" size={20} />
-                <a href="mailto:baptiste@bpcorp.eu" className="hover:text-blue-300 transition-colors text-overflow-safe">
-                  baptiste@bpcorp.eu
+                <a href="mailto:leads@bpcorp.eu" className="hover:text-blue-300 transition-colors text-overflow-safe">
+                  leads@bpcorp.eu
                 </a>
               </div>
             </div>

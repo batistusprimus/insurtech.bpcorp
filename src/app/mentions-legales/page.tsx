@@ -71,7 +71,7 @@ export default function LegalNotice() {
                   </div>
                   <div className="flex justify-between">
                     <span className="font-semibold text-gray-700">Email:</span>
-                    <span className="text-gray-900">baptiste@bpcorp.eu</span>
+                    <span className="text-gray-900">leads@bpcorp.eu</span>
                   </div>
                   <div className="flex justify-between">
                     <span className="font-semibold text-gray-700">Publication Director:</span>

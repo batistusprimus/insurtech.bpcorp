@@ -5,7 +5,7 @@ import ContactModal from './ContactModal';
 import { TargetIcon, ShieldIcon } from './Icons';
 
 interface ContactCTAProps {
-  type?: 'leads' | 'contact';
+  type?: 'leads' | 'contact' | 'email';
   variant?: 'primary' | 'secondary' | 'outline';
   size?: 'sm' | 'md' | 'lg';
   className?: string;
@@ -41,11 +41,11 @@ export default function ContactCTA({
   const IconComponent = type === 'leads' ? TargetIcon : ShieldIcon;
 
   const handleClick = () => {
-    if (type === 'leads') {
-      // Redirect to iClosed for leads
-      window.open('https://app.iclosed.io/e/baptistepiocelle/contact', '_blank');
+    if (type === 'email') {
+      // Open email client directly
+      window.location.href = 'mailto:leads@bpcorp.eu';
     } else {
-      // Open modal for general contact
+      // Open modal for leads and general contact
       setIsModalOpen(true);
     }
   };

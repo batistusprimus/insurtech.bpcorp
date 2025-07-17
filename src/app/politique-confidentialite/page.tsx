@@ -65,7 +65,7 @@ export default function PrivacyPolicyPage() {
             <h3>6. Contact Us</h3>
             <p>If you have any questions about this Privacy Policy, please contact us at:</p>
             <p>
-              <strong>Email:</strong> <a href="mailto:baptiste@bpcorp.eu" className="text-blue-600 hover:text-blue-800">baptiste@bpcorp.eu</a><br />
+              <strong>Email:</strong> <a href="mailto:leads@bpcorp.eu" className="text-blue-600 hover:text-blue-800">leads@bpcorp.eu</a><br />
               <strong>Address:</strong> 1077 Budapest, Rózsa utca 38/A, Hungary
             </p>
           </div>

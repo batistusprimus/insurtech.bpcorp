@@ -1,4 +1,5 @@
 import React from 'react';
+import ContactCTA from '../../components/ContactCTA';
 import { 
   SearchIcon, 
   LightningIcon, 
@@ -44,19 +45,15 @@ export default function SentinelPage() {
               </p>
               
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                <a 
-                  href="https://app.iclosed.io/e/baptistepiocelle/contact"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <ContactCTA 
+                  type="contact" 
+                  variant="primary" 
+                  size="lg"
                   className="inline-flex items-center justify-center bg-white text-blue-900 font-bold py-4 px-8 rounded-lg hover:bg-gray-100 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
                 >
                   <TargetIcon className="w-5 h-5 mr-2" />
                   Request Qualified Leads
-                </a>
-                <button className="inline-flex items-center justify-center bg-transparent border-2 border-white/30 text-white font-semibold py-4 px-8 rounded-lg hover:bg-white/10 transition-all duration-200 backdrop-blur-sm">
-                  <ChartIcon className="w-5 h-5 mr-2" />
-                  View Demo
-                </button>
+                </ContactCTA>
               </div>
               
               {/* Trust Indicators */}
@@ -407,14 +404,14 @@ export default function SentinelPage() {
           <p className="text-xl mb-8">
             We'll show you what's happening—where, when, and who to call.
           </p>
-          <a 
-            href="https://app.iclosed.io/e/baptistepiocelle/contact"
-            target="_blank"
-            rel="noopener noreferrer"
+          <ContactCTA 
+            type="contact" 
+            variant="primary" 
+            size="lg"
             className="bg-white text-blue-900 font-bold py-3 px-8 rounded-lg hover:bg-gray-100 transition-colors"
           >
             Request Leads
-          </a>
+          </ContactCTA>
         </div>
       </div>
     </div>

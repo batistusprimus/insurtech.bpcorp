@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import ContactCTA from '../../components/ContactCTA';
 import { TargetIcon, TrendingUpIcon, CheckIcon, TimerIcon } from '../../components/Icons';
 
 export default function LeadGenPage() {
@@ -99,14 +100,14 @@ export default function LeadGenPage() {
             Join the companies already using Sentinel Shield to turn weather events into business opportunities.
           </p>
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
-            <a 
-              href="https://app.iclosed.io/e/baptistepiocelle/contact"
-              target="_blank"
-              rel="noopener noreferrer"
+            <ContactCTA 
+              type="contact" 
+              variant="primary" 
+              size="lg"
               className="inline-block bg-white text-blue-600 font-bold py-4 px-8 rounded-xl text-lg transition-all duration-300 transform hover:scale-105 shadow-xl"
             >
               Request Leads Now
-            </a>
+            </ContactCTA>
             <Link 
               href="/pages/contact"
               className="inline-block bg-transparent border-2 border-white text-white font-bold py-4 px-8 rounded-xl text-lg transition-all duration-300 transform hover:scale-105 hover:bg-white hover:text-blue-600"

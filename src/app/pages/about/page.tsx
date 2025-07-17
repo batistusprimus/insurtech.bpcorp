@@ -1,4 +1,5 @@
 import React from 'react';
+import ContactCTA from '../../components/ContactCTA';
 import { ShieldIcon, TargetIcon, TrendingUpIcon } from '../../components/Icons';
 
 export default function AboutPage() {
@@ -105,12 +106,7 @@ export default function AboutPage() {
                 </p>
               </div>
               
-              {/* CTA Button */}
-              <div className="mt-8">
-                <button className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold py-4 px-8 rounded-xl text-lg transition-all duration-300 transform hover:scale-105 shadow-xl">
-                  Learn More
-                </button>
-              </div>
+
             </div>
           </div>
         </div>
@@ -264,22 +260,14 @@ export default function AboutPage() {
       {/* CTA Section */}
       <div className="py-24 bg-gradient-to-br from-blue-600 to-indigo-700">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="space-y-8">
-            <a 
-              href="https://app.iclosed.io/e/baptistepiocelle/contact"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block bg-white text-blue-600 font-bold py-4 px-8 rounded-xl text-lg transition-all duration-300 transform hover:scale-105 shadow-xl mr-4"
-            >
-              🔘 Request Leads
-            </a>
-            <a 
-              href="/pages/contact"
-              className="inline-block bg-transparent border-2 border-white text-white font-bold py-4 px-8 rounded-xl text-lg transition-all duration-300 transform hover:scale-105 hover:bg-white hover:text-blue-600"
-            >
-              🔘 Join Our Beta Network
-            </a>
-          </div>
+          <ContactCTA 
+            type="contact" 
+            variant="primary" 
+            size="lg"
+            className="inline-block bg-white text-blue-600 font-bold py-4 px-8 rounded-xl text-lg transition-all duration-300 transform hover:scale-105 shadow-xl"
+          >
+            🔘 Request Leads
+          </ContactCTA>
         </div>
       </div>
     </div>

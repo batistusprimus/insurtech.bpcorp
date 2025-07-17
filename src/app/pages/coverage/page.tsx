@@ -1,4 +1,5 @@
 import React from 'react';
+import ContactCTA from '../../components/ContactCTA';
 import { SatelliteIcon, TargetIcon, TornadoIcon, BuildingIcon, TrendingUpIcon, CheckIcon } from '../../components/Icons';
 
 export default function CoveragePage() {
@@ -127,17 +128,7 @@ export default function CoveragePage() {
                 </p>
               </div>
               
-              {/* CTA Button */}
-              <div className="mt-8">
-                <a 
-                  href="https://app.iclosed.io/e/baptistepiocelle/contact"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-block bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold py-4 px-8 rounded-xl text-lg transition-all duration-300 transform hover:scale-105 shadow-xl"
-                >
-                  View Active Zones
-                </a>
-              </div>
+
             </div>
           </div>
         </div>
@@ -266,9 +257,14 @@ export default function CoveragePage() {
               <p className="text-lg text-gray-700 mb-6">
                 📩 Send your zone request →
               </p>
-              <button className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold py-4 px-8 rounded-xl text-lg transition-all duration-300 transform hover:scale-105 shadow-xl">
+              <ContactCTA 
+                type="contact" 
+                variant="primary" 
+                size="lg"
+                className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold py-4 px-8 rounded-xl text-lg transition-all duration-300 transform hover:scale-105 shadow-xl"
+              >
                 Request Leads
-              </button>
+              </ContactCTA>
             </div>
           </div>
         </div>
@@ -305,14 +301,14 @@ export default function CoveragePage() {
       <div className="py-24 bg-gradient-to-br from-blue-600 to-indigo-700">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="space-y-8">
-            <a 
-              href="https://app.iclosed.io/e/baptistepiocelle/contact"
-              target="_blank"
-              rel="noopener noreferrer"
+            <ContactCTA 
+              type="contact" 
+              variant="primary" 
+              size="lg"
               className="inline-block bg-white text-blue-600 font-bold py-4 px-8 rounded-xl text-lg transition-all duration-300 transform hover:scale-105 shadow-xl mr-4"
             >
               🔘 Request Leads Now
-            </a>
+            </ContactCTA>
             <a 
               href="/pages/sentinel"
               className="inline-block bg-transparent border-2 border-white text-white font-bold py-4 px-8 rounded-xl text-lg transition-all duration-300 transform hover:scale-105 hover:bg-white hover:text-blue-600"

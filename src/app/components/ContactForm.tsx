@@ -40,25 +40,49 @@ export default function ContactForm({ type, title, description, onSubmit }: Cont
     setSubmitStatus('idle');
 
     try {
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 2000));
-      
-      onSubmit(formData);
-      setSubmitStatus('success');
-      setFormData({
-        firstName: '',
-        lastName: '',
-        email: '',
-        company: '',
-        phone: '',
-        industry: '',
-        territory: '',
-        message: '',
-        leadVolume: '',
-        urgency: '',
-        eventType: ''
+      // Préparer les données pour l'API
+      const submitData = {
+        ...formData,
+        name: `${formData.firstName} ${formData.lastName}`.trim(),
+        type
+      };
+
+      // Appel à l'API
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(submitData),
       });
+
+      if (!response.ok) {
+        throw new Error('Failed to submit form');
+      }
+
+      const result = await response.json();
+      
+      if (result.success) {
+        setSubmitStatus('success');
+        setFormData({
+          firstName: '',
+          lastName: '',
+          email: '',
+          company: '',
+          phone: '',
+          industry: '',
+          territory: '',
+          message: '',
+          leadVolume: '',
+          urgency: '',
+          eventType: ''
+        });
+        onSubmit(formData);
+      } else {
+        throw new Error(result.error || 'Failed to submit form');
+      }
     } catch (error) {
+      console.error('Form submission error:', error);
       setSubmitStatus('error');
     } finally {
       setIsSubmitting(false);

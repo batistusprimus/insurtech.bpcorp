@@ -1,4 +1,5 @@
 import React from 'react';
+import ContactCTA from '../../components/ContactCTA';
 import { SatelliteIcon, RocketIcon, ChartIcon, TargetIcon, GlobeIcon, ListIcon } from '../../components/Icons';
 
 export default function CareersPage() {
@@ -217,36 +218,12 @@ export default function CareersPage() {
               </div>
             </div>
             
-            <div className="text-center mt-12">
-              <p className="text-2xl font-bold text-blue-600 mb-4">
-                📩 careers@sentinelshield.io
-              </p>
-            </div>
+
           </div>
         </div>
       </div>
 
-      {/* CTA Section */}
-      <div className="py-24 bg-gradient-to-br from-blue-600 to-indigo-700">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="space-y-8">
-            <a 
-              href="https://app.iclosed.io/e/baptistepiocelle/contact"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block bg-white text-blue-600 font-bold py-4 px-8 rounded-xl text-lg transition-all duration-300 transform hover:scale-105 shadow-xl mr-4"
-            >
-              🔘 Request Leads
-            </a>
-            <a 
-              href="/pages/resources"
-              className="inline-block bg-transparent border-2 border-white text-white font-bold py-4 px-8 rounded-xl text-lg transition-all duration-300 transform hover:scale-105 hover:bg-white hover:text-blue-600"
-            >
-              🔘 Download Tech Stack Overview
-            </a>
-          </div>
-        </div>
-      </div>
+
     </div>
   );
 } 
