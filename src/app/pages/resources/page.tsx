@@ -1,6 +1,5 @@
 import React from 'react';
-import ContactCTA from '../../components/ContactCTA';
-import { SatelliteIcon, TrendingUpIcon, ListIcon, PhoneIcon, CircleIcon, ChartIcon } from '../../components/Icons';
+import { SatelliteIcon, TrendingUpIcon, ChartIcon } from '../../components/Icons';
 
 export default function ResourcesPage() {
   const resources = [
@@ -15,8 +14,7 @@ export default function ResourcesPage() {
         'Storm, flood, drought, and fire overlays',
         'Update frequency: Daily'
       ],
-      action: 'Request Access',
-      actionType: 'primary'
+      status: 'coming-soon'
     },
     {
       id: 2,
@@ -28,8 +26,7 @@ export default function ResourcesPage() {
         'Understand our scoring logic',
         'Use it in your own workflows'
       ],
-      action: 'Download Guide',
-      actionType: 'secondary'
+      status: 'coming-soon'
     },
     {
       id: 3,
@@ -42,8 +39,7 @@ export default function ResourcesPage() {
         'Industries with rising vulnerability',
         'Next 90 days: predicted zones'
       ],
-      action: 'View Bulletin',
-      actionType: 'secondary'
+      status: 'coming-soon'
     },
     {
       id: 4,
@@ -56,8 +52,7 @@ export default function ResourcesPage() {
         '"How to Reach Exposed Companies Before the News Breaks"',
         '"Timing > Targeting: When to Send, Not Just to Whom"'
       ],
-      action: 'Browse Briefs',
-      actionType: 'secondary'
+      status: 'coming-soon'
     },
     {
       id: 5,
@@ -66,11 +61,11 @@ export default function ResourcesPage() {
       title: 'The Sentinel Risk Score Widget (Beta)',
       description: 'Embed a simple widget on your CRM or dashboard to receive alerts when your territories become exposed.',
       features: [
-        'Plug-and-play',
-        'No data sharing required'
+        'Plug-and-play integration',
+        'No data sharing required',
+        'Real-time risk notifications'
       ],
-      action: 'Request Integration',
-      actionType: 'primary'
+      status: 'coming-soon'
     }
   ];
 
@@ -94,7 +89,7 @@ export default function ResourcesPage() {
               Resources & Reports
             </h1>
             <p className="text-2xl md:text-3xl text-blue-200 font-light max-w-4xl mx-auto leading-relaxed mb-12">
-              Actionable Intelligence You Can Use Today
+              Intelligence Tools & Insights Coming Soon
             </p>
           </div>
           
@@ -102,19 +97,19 @@ export default function ResourcesPage() {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-16">
             <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-8 text-center">
               <div className="text-4xl font-black text-blue-300 mb-2">5</div>
-              <div className="text-blue-100 font-semibold">Core Resources</div>
+              <div className="text-blue-100 font-semibold">Resources Planned</div>
             </div>
             <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-8 text-center">
-              <div className="text-4xl font-black text-green-300 mb-2">24/7</div>
-              <div className="text-green-100 font-semibold">Live Updates</div>
+              <div className="text-4xl font-black text-green-300 mb-2">Q1</div>
+              <div className="text-green-100 font-semibold">2025 Launch</div>
             </div>
             <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-8 text-center">
-              <div className="text-4xl font-black text-purple-300 mb-2">0</div>
-              <div className="text-purple-100 font-semibold">Gated Content</div>
+              <div className="text-4xl font-black text-purple-300 mb-2">100%</div>
+              <div className="text-purple-100 font-semibold">Free Access</div>
             </div>
             <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-8 text-center">
-              <div className="text-4xl font-black text-orange-300 mb-2">100%</div>
-              <div className="text-orange-100 font-semibold">Actionable</div>
+              <div className="text-4xl font-black text-orange-300 mb-2">Real</div>
+              <div className="text-orange-100 font-semibold">Time Data</div>
             </div>
           </div>
           
@@ -123,13 +118,13 @@ export default function ResourcesPage() {
             <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-12 text-center">
               <div className="space-y-6 text-lg text-blue-100 leading-relaxed">
                 <p className="text-2xl font-bold text-white">
-                  Every asset on this page is built for one purpose:
+                  We're building the most comprehensive weather intelligence platform for insurance professionals.
                 </p>
                 <p className="text-xl text-blue-200">
-                  Help you make better decisions faster when weather hits your territory.
+                  Access live risk maps, methodology guides, and actionable insights to help you identify and respond to weather-exposed opportunities faster than ever.
                 </p>
-                <p className="font-semibold text-white text-xl">
-                  No fluff. No gated PDFs. Just clarity.
+                <p className="font-semibold text-white text-lg">
+                  Coming in Q1 2025. No gated content. Just results.
                 </p>
               </div>
               
@@ -137,29 +132,19 @@ export default function ResourcesPage() {
               <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div className="bg-white/20 backdrop-blur-sm rounded-xl p-6 text-center">
                   <div className="text-3xl mb-3">🗺️</div>
-                  <div className="text-white font-semibold mb-2">Live Maps</div>
+                  <div className="text-white font-semibold mb-2">Live Risk Maps</div>
                   <div className="text-blue-200 text-sm">Real-time disaster tracking</div>
                 </div>
                 <div className="bg-white/20 backdrop-blur-sm rounded-xl p-6 text-center">
                   <div className="text-3xl mb-3">📊</div>
-                  <div className="text-white font-semibold mb-2">Risk Scores</div>
-                  <div className="text-blue-200 text-sm">Methodology & guides</div>
+                  <div className="text-white font-semibold mb-2">Risk Methodology</div>
+                  <div className="text-blue-200 text-sm">Scoring & calculation guides</div>
                 </div>
                 <div className="bg-white/20 backdrop-blur-sm rounded-xl p-6 text-center">
                   <div className="text-3xl mb-3">📈</div>
-                  <div className="text-white font-semibold mb-2">Reports</div>
-                  <div className="text-blue-200 text-sm">Quarterly insights & trends</div>
+                  <div className="text-white font-semibold mb-2">Strategic Insights</div>
+                  <div className="text-blue-200 text-sm">Executive briefs & trends</div>
                 </div>
-              </div>
-              
-              {/* CTA Button */}
-              <div className="mt-8">
-                <a 
-                  href="#resources"
-                  className="inline-block bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold py-4 px-8 rounded-xl text-lg transition-all duration-300 transform hover:scale-105 shadow-xl"
-                >
-                  Explore Resources
-                </a>
               </div>
             </div>
           </div>
@@ -169,6 +154,15 @@ export default function ResourcesPage() {
       {/* Resources Grid */}
       <div id="resources" className="py-24 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+              Upcoming Resources
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Comprehensive intelligence tools designed for insurance professionals to identify, assess, and respond to weather-related opportunities.
+            </p>
+          </div>
+          
           <div className="space-y-12">
             {resources.map((resource) => (
               <div key={resource.id} className="bg-white rounded-2xl shadow-xl border border-gray-200 overflow-hidden">
@@ -188,9 +182,20 @@ export default function ResourcesPage() {
 
                     {/* Right Column - Content */}
                     <div className="flex-1">
-                      <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
-                        {resource.title}
-                      </h3>
+                      <div className="flex items-start justify-between mb-4">
+                        <h3 className="text-2xl md:text-3xl font-bold text-gray-900">
+                          {resource.title}
+                        </h3>
+                        {resource.status === 'coming-soon' && (
+                          <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-amber-500 to-orange-500 text-white text-sm font-bold rounded-full">
+                            <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            Coming Soon
+                          </div>
+                        )}
+                      </div>
+                      
                       <p className="text-lg text-gray-700 mb-6 leading-relaxed">
                         {resource.description}
                       </p>
@@ -205,25 +210,14 @@ export default function ResourcesPage() {
                         ))}
                       </div>
 
-                      {/* Action Button */}
-                      {resource.actionType === 'primary' ? (
-                        <ContactCTA 
-                          type="contact" 
-                          variant="primary" 
-                          size="md"
-                          className="inline-flex items-center px-6 py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white shadow-lg hover:shadow-xl"
-                        >
-                          → {resource.action}
-                        </ContactCTA>
-                      ) : (
-                        <ContactCTA 
-                          type="contact" 
-                          variant="outline" 
-                          size="md"
-                          className="inline-flex items-center px-6 py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 bg-gray-100 hover:bg-gray-200 text-gray-800 border border-gray-300"
-                        >
-                          → {resource.action}
-                        </ContactCTA>
+                      {/* Status */}
+                      {resource.status === 'coming-soon' && (
+                        <div className="inline-flex items-center px-6 py-3 bg-gray-100 text-gray-600 font-semibold rounded-xl border border-gray-300">
+                          <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                          </svg>
+                          Available Q1 2025
+                        </div>
                       )}
                     </div>
                   </div>
@@ -234,26 +228,24 @@ export default function ResourcesPage() {
         </div>
       </div>
 
-      {/* Toolkit Section */}
+      {/* Newsletter Signup Section */}
       <div className="py-24 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-3xl p-12 border border-blue-200 shadow-xl">
-            <div className="text-6xl mb-6">📥</div>
+            <div className="text-6xl mb-6">🔔</div>
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-              Want Everything in One Place?
+              Be the First to Know
             </h2>
             <p className="text-lg text-gray-700 mb-8 leading-relaxed">
-              → Download the full Sentinel Intelligence Toolkit (.zip)<br />
-              Includes: Methodology guide, sample leads, industry briefs, 7-day exposure forecast.
+              Get notified when our intelligence platform launches in Q1 2025.<br />
+              Early access for insurance professionals serious about weather risk.
             </p>
-            <ContactCTA 
-              type="contact" 
-              variant="primary" 
-              size="lg"
-              className="inline-block bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold py-4 px-8 rounded-xl text-lg transition-all duration-300 transform hover:scale-105 shadow-xl"
-            >
-              🔘 Request Access
-            </ContactCTA>
+            <div className="inline-flex items-center px-6 py-3 bg-gray-100 text-gray-600 font-semibold rounded-xl border border-gray-300">
+              <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              Newsletter Coming Soon
+            </div>
           </div>
         </div>
       </div>
