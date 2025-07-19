@@ -39,7 +39,7 @@ export async function generateMetadata({ params }: ArticlePageProps) {
       type: 'article',
       publishedTime: article.publishedAt,
       modifiedTime: article.updatedAt,
-      authors: [article.author.name],
+      authors: article.author ? [article.author.name] : undefined,
       tags: article.tags,
     },
     twitter: {
@@ -148,19 +148,6 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
 
           {/* Meta Information */}
           <div className="flex flex-wrap items-center gap-6 bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-6">
-            {/* Author */}
-            <div className="flex items-center space-x-3">
-              <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-indigo-500 rounded-full flex items-center justify-center text-white font-bold">
-                {article.author.name.split(' ').map(n => n[0]).join('')}
-              </div>
-              <div>
-                <div className="font-semibold text-white">{article.author.name}</div>
-                <div className="text-blue-200 text-sm">{article.author.role}</div>
-              </div>
-            </div>
-
-            {/* Divider */}
-            <div className="hidden sm:block w-px h-8 bg-white/20"></div>
 
             {/* Reading Time */}
             <div className="flex items-center text-blue-200">

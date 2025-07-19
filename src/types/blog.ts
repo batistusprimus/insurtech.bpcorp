@@ -11,7 +11,7 @@ export interface BlogArticle {
   readTime: number; // en minutes
   featured: boolean;
   image?: string;
-  author: {
+  author?: {
     name: string;
     role: string;
     avatar?: string;

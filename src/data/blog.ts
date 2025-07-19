@@ -1,5 +1,13 @@
 import { BlogArticle, BlogCategory } from '@/types/blog';
 
+// Fonction pour calculer le temps de lecture automatiquement
+export const calculateReadTime = (content: string): number => {
+  const wordsPerMinute = 200; // Vitesse de lecture moyenne
+  const words = content.trim().split(/\s+/).length;
+  const readTime = Math.ceil(words / wordsPerMinute);
+  return Math.max(1, readTime); // Minimum 1 minute
+};
+
 export const blogCategories: BlogCategory[] = [
   {
     id: 'weather-intelligence',
@@ -147,13 +155,8 @@ For detailed regional analysis and customized risk assessments, contact our team
     tags: ['Texas', 'Weather Risk', 'Economic Impact', 'Q2 2025'],
     publishedAt: '2025-07-15T10:00:00Z',
     updatedAt: '2025-07-15T10:00:00Z',
-    readTime: 3,
+    readTime: 0, // Sera calculé automatiquement
     featured: true,
-    author: {
-      name: 'Sarah Chen',
-      role: 'Senior Weather Risk Analyst',
-      avatar: '/team/sarah-chen.jpg'
-    },
     seo: {
       metaTitle: '$8.2B Texas Weather Losses Q2 2025 - Complete Analysis | Sentinel Briefs',
       metaDescription: 'Comprehensive breakdown of $8.2B weather losses in Texas Q2 2025 by region, sector, and business size. Essential data for risk management.',
@@ -274,13 +277,8 @@ For ZIP-specific risk assessments and customized preparation plans, contact our 
     tags: ['High Risk Zones', 'Satellite Detection', 'August 2025', 'ZIP Codes'],
     publishedAt: '2025-08-01T06:00:00Z',
     updatedAt: '2025-08-01T06:00:00Z',
-    readTime: 3,
+    readTime: 0, // Sera calculé automatiquement
     featured: true,
-    author: {
-      name: 'Dr. Marcus Rodriguez',
-      role: 'Lead Meteorologist',
-      avatar: '/team/marcus-rodriguez.jpg'
-    },
     seo: {
       metaTitle: 'High-Risk Texas ZIP Codes August 2025 | Sentinel Weather Intelligence',
       metaDescription: 'Satellite-detected high-risk ZIP codes for August 2025. Real-time weather intelligence for Texas businesses and risk management.',
@@ -408,13 +406,8 @@ Next Steps: Contact our cold chain specialists at coldchain@sentinelbriefs.com f
     tags: ['Cold Chain', 'Manufacturing', 'Power Outages', 'Risk Management'],
     publishedAt: '2025-07-28T08:00:00Z',
     updatedAt: '2025-07-28T08:00:00Z',
-    readTime: 3,
+    readTime: 0, // Sera calculé automatiquement
     featured: true,
-    author: {
-      name: 'Jennifer Walsh',
-      role: 'Industrial Risk Specialist',
-      avatar: '/team/jennifer-walsh.jpg'
-    },
     seo: {
       metaTitle: 'Cold Chain Power Loss: $2M Daily Problem for Texas Manufacturing',
       metaDescription: 'How power outages cost Texas cold chain operations $2M daily. Industry analysis, mitigation strategies, and ROI calculations for manufacturers.',
@@ -567,13 +560,8 @@ Need immediate tornado response support? Emergency hotline: 1-512-TORNADO (1-512
     tags: ['Tornado Response', 'Emergency Management', 'Business Continuity', '24-Hour Plan'],
     publishedAt: '2025-07-20T07:00:00Z',
     updatedAt: '2025-07-20T07:00:00Z',
-    readTime: 3,
+    readTime: 0, // Sera calculé automatiquement
     featured: false,
-    author: {
-      name: 'Captain Rick Morrison',
-      role: 'Emergency Management Specialist',
-      avatar: '/team/rick-morrison.jpg'
-    },
     seo: {
       metaTitle: '24-Hour Tornado Response Playbook for Texas Businesses | Sentinel Briefs',
       metaDescription: 'Complete hour-by-hour tornado response guide for business leaders. Critical decisions, communications, and actions for the first 24 hours.',
@@ -779,13 +767,8 @@ Technical questions? Contact our meteorology team at science@sentinelbriefs.com`
     tags: ['Methodology', 'Accuracy', 'Weather Prediction', 'Data Science'],
     publishedAt: '2025-07-10T09:00:00Z',
     updatedAt: '2025-07-10T09:00:00Z',
-    readTime: 3,
+    readTime: 0, // Sera calculé automatiquement
     featured: false,
-    author: {
-      name: 'Dr. Elena Vasquez',
-      role: 'Chief Data Scientist',
-      avatar: '/team/elena-vasquez.jpg'
-    },
     seo: {
       metaTitle: 'Sentinel Weather Prediction Methodology: 91.7% Accuracy Explained',
       metaDescription: 'Deep dive into Sentinel\'s proprietary weather risk scoring methodology. Learn how we achieve 91.7% accuracy in weather predictions.',
@@ -795,9 +778,6 @@ Technical questions? Contact our meteorology team at science@sentinelbriefs.com`
 ];
 
 // Helper functions
-export const getFeaturedArticles = (): BlogArticle[] => {
-  return blogArticles.filter(article => article.featured);
-};
 
 export const getArticlesByCategory = (categorySlug: string): BlogArticle[] => {
   return blogArticles.filter(article => article.category.slug === categorySlug);
@@ -818,4 +798,15 @@ export const searchArticles = (query: string): BlogArticle[] => {
     article.description.toLowerCase().includes(lowercaseQuery) ||
     article.tags.some(tag => tag.toLowerCase().includes(lowercaseQuery))
   );
+};
+
+// Calculer automatiquement les temps de lecture pour tous les articles
+blogArticles.forEach(article => {
+  if (article.readTime === 0) {
+    article.readTime = calculateReadTime(article.content);
+  }
+});
+
+export const getFeaturedArticles = (): BlogArticle[] => {
+  return blogArticles.filter(article => article.featured);
 }; 
