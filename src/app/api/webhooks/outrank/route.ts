@@ -43,6 +43,16 @@ async function processOutrankArticle(article: OutrankArticle) {
       .replace(/\s+/g, '-')
       .substring(0, 100);
 
+    // Déterminer la catégorie basée sur les tags
+    let categorySlug = 'weather-intelligence'; // Catégorie par défaut
+    if (article.tags.some(tag => tag.toLowerCase().includes('manufacturing') || tag.toLowerCase().includes('industry'))) {
+      categorySlug = 'industry-exposure';
+    } else if (article.tags.some(tag => tag.toLowerCase().includes('playbook') || tag.toLowerCase().includes('guide'))) {
+      categorySlug = 'playbooks';
+    } else if (article.tags.some(tag => tag.toLowerCase().includes('report') || tag.toLowerCase().includes('analysis'))) {
+      categorySlug = 'sentinel-reports';
+    }
+
     // Structure de l'article pour notre système
     const newArticle = {
       id: `outrank-${article.id}`,
@@ -51,7 +61,7 @@ async function processOutrankArticle(article: OutrankArticle) {
       description: article.meta_description,
       content: article.content_markdown, // Utiliser le Markdown fourni
       tags: article.tags,
-      category: 'general', // Mapper selon vos catégories
+      category: categorySlug, // Slug de la catégorie
       publishedAt: new Date().toISOString(), // Toujours publié quand reçu
       scheduledAt: null,
       status: 'published' as const,
@@ -72,10 +82,32 @@ async function processOutrankArticle(article: OutrankArticle) {
       featured: false
     };
 
-    // TODO: Sauvegarder en base de données ou fichier
-    console.log('Article reçu d\'Outrank:', newArticle);
-    
-    return newArticle;
+    // Sauvegarder l'article via l'API interne
+    try {
+      const apiUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
+      const saveResponse = await fetch(`${apiUrl}/api/blog/articles`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(newArticle)
+      });
+
+      if (!saveResponse.ok) {
+        console.error('Erreur lors de la sauvegarde:', await saveResponse.text());
+        throw new Error('Failed to save article');
+      }
+
+      const savedArticle = await saveResponse.json();
+      console.log('✅ Article Outrank sauvegardé:', savedArticle.article?.title);
+      
+      return savedArticle.article;
+    } catch (saveError) {
+      console.error('Erreur sauvegarde article Outrank:', saveError);
+      // En cas d'erreur, au moins logger l'article
+      console.log('Article reçu d\'Outrank (non sauvegardé):', newArticle);
+      throw saveError;
+    }
   } catch (error) {
     console.error('Erreur lors du traitement de l\'article Outrank:', error);
     throw error;

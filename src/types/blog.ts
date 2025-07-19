@@ -21,6 +21,9 @@ export interface BlogArticle {
     metaDescription: string;
     keywords: string[];
   };
+  source?: 'manual' | 'outrank'; // Source de l'article (pour l'intégration Outrank)
+  createdAt?: string; // Pour les articles de l'API
+  status?: 'draft' | 'published' | 'scheduled' | 'archived'; // Statut de l'article
 }
 
 export interface BlogCategory {

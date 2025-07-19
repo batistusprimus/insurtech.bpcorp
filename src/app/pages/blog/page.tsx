@@ -1,22 +1,81 @@
 'use client';
 
-import React, { useState, useMemo } from 'react';
-import ContactCTA from '../../components/ContactCTA';
+import React, { useState, useMemo, useEffect } from 'react';
 import ArticleCard from '../../components/ArticleCard';
 import BlogFilters from '../../components/BlogFilters';
 import { SatelliteIcon, BuildingIcon, ListIcon, ChartIcon } from '../../components/Icons';
-import { blogArticles, blogCategories, getFeaturedArticles, getArticlesByCategory, searchArticles } from '@/data/blog';
-import { BlogFilters as BlogFiltersType } from '@/types/blog';
+import { blogCategories } from '@/data/blog';
+import { BlogFilters as BlogFiltersType, BlogArticle } from '@/types/blog';
 
 export default function BlogPage() {
   const [filters, setFilters] = useState<BlogFiltersType>({});
+  const [allArticles, setAllArticles] = useState<BlogArticle[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  const [lastRefresh, setLastRefresh] = useState<Date>(new Date());
+
+  // Charger les articles depuis l'API
+  useEffect(() => {
+    async function fetchArticles() {
+      try {
+        setLoading(true);
+        const response = await fetch(`/api/blog/articles?t=${Date.now()}`);
+        const data = await response.json();
+        const apiArticles = data.articles || [];
+        
+        // Charger aussi les articles statiques
+        const { blogArticles: staticArticles } = await import('@/data/blog');
+        
+        // Combiner API + statiques
+        const combined = [...apiArticles, ...staticArticles];
+        
+        setAllArticles(combined);
+        setError(null);
+        setLastRefresh(new Date());
+        console.log(`✅ ${combined.length} articles chargés`);
+      } catch (err) {
+        console.error('Erreur:', err);
+        const { blogArticles: staticArticles } = await import('@/data/blog');
+        setAllArticles(staticArticles);
+        setError('Erreur API, articles statiques affichés');
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchArticles();
+    const interval = setInterval(fetchArticles, 30000);
+    return () => clearInterval(interval);
+  }, []);
+
+  // Fonction de rafraîchissement manuel
+  const refreshArticles = async () => {
+    try {
+      setLoading(true);
+      const response = await fetch(`/api/blog/articles?t=${Date.now()}`);
+      const data = await response.json();
+      const apiArticles = data.articles || [];
+      const { blogArticles: staticArticles } = await import('@/data/blog');
+      const combined = [...apiArticles, ...staticArticles];
+      
+      setAllArticles(combined);
+      setError(null);
+      setLastRefresh(new Date());
+      console.log(`🔄 ${combined.length} articles rechargés`);
+    } catch (err) {
+      console.error('Erreur refresh:', err);
+      setError('Erreur refresh');
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const filteredArticles = useMemo(() => {
-    let articles = [...blogArticles];
+    let articles = [...allArticles];
 
     // Apply category filter
     if (filters.category) {
-      articles = getArticlesByCategory(filters.category);
+      articles = articles.filter(article => article.category.slug === filters.category);
     }
 
     // Apply featured filter
@@ -37,9 +96,11 @@ export default function BlogPage() {
 
     // Sort by date (newest first)
     return articles.sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime());
-  }, [filters]);
+  }, [allArticles, filters]);
 
-  const featuredArticles = getFeaturedArticles();
+  const featuredArticles = useMemo(() => {
+    return allArticles.filter(article => article.featured);
+  }, [allArticles]);
 
   const coreCategories = [
     {
@@ -162,14 +223,19 @@ export default function BlogPage() {
               
               {/* CTA Button */}
               <div className="mt-8">
-                <ContactCTA 
-                  type="contact" 
-                  variant="primary" 
-                  size="lg"
+                <button 
+                  onClick={() => {
+                    const featuredSection = document.getElementById('featured-briefs');
+                    const allBriefsSection = document.getElementById('all-briefs');
+                    const targetSection = featuredSection || allBriefsSection;
+                    if (targetSection) {
+                      targetSection.scrollIntoView({ behavior: 'smooth' });
+                    }
+                  }}
                   className="inline-block bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold py-4 px-8 rounded-xl text-lg transition-all duration-300 transform hover:scale-105 shadow-xl"
                 >
                   Read Latest Briefs
-                </ContactCTA>
+                </button>
               </div>
             </div>
           </div>
@@ -184,12 +250,65 @@ export default function BlogPage() {
             onFiltersChange={setFilters}
             currentFilters={filters}
           />
+          
+          {/* Status et Refresh */}
+          <div className="mt-8 flex flex-col sm:flex-row justify-between items-center bg-white rounded-xl p-4 shadow-sm border">
+            <div className="flex items-center space-x-4 mb-4 sm:mb-0">
+              <div className="text-sm text-gray-600">
+                📡 Dernière mise à jour: {lastRefresh.toLocaleTimeString('fr-FR')}
+              </div>
+              {allArticles.some(article => article.source === 'outrank') && (
+                <div className="text-sm text-green-600 font-semibold">
+                  ✨ {allArticles.filter(article => article.source === 'outrank').length} article(s) Outrank
+                </div>
+              )}
+            </div>
+            <button
+              onClick={refreshArticles}
+              disabled={loading}
+              className="inline-flex items-center px-4 py-2 bg-blue-600 hover:bg-blue-700 disabled:bg-gray-400 text-white font-semibold rounded-lg transition-colors duration-200"
+            >
+              {loading ? (
+                <>
+                  <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
+                  Rafraîchissement...
+                </>
+              ) : (
+                <>
+                  🔄 Rafraîchir
+                </>
+              )}
+            </button>
+          </div>
         </div>
       </div>
 
-      {/* Featured Briefs Section */}
-      {featuredArticles.length > 0 && (
+      {/* Error Message */}
+      {error && (
+        <div className="py-8 bg-yellow-50">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="bg-yellow-100 border border-yellow-400 text-yellow-700 px-4 py-3 rounded-xl">
+              <p className="text-sm">⚠️ {error}</p>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Loading State */}
+      {loading && (
         <div className="py-24 bg-gray-50">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center">
+              <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600 mb-4"></div>
+              <p className="text-gray-600">Loading latest intelligence briefs...</p>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Featured Briefs Section */}
+      {!loading && featuredArticles.length > 0 && (
+        <div id="featured-briefs" className="py-24 bg-gray-50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-8">
@@ -214,46 +333,53 @@ export default function BlogPage() {
       )}
 
       {/* All Articles Section */}
-      <div className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-8">
-              📚 All Intelligence Briefs
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              {filteredArticles.length} brief{filteredArticles.length !== 1 ? 's' : ''} found
-              {filters.category && ` in ${blogCategories.find(c => c.slug === filters.category)?.name}`}
-              {filters.searchQuery && ` matching "${filters.searchQuery}"`}
-            </p>
-          </div>
-          
-          {filteredArticles.length > 0 ? (
-            <div className="grid grid-cols-1 gap-8">
-              {filteredArticles.map((article) => (
-                <ArticleCard 
-                  key={article.id} 
-                  article={article} 
-                  featured={false} 
-                />
-              ))}
-            </div>
-          ) : (
-            <div className="text-center py-16">
-              <div className="text-6xl mb-4">🔍</div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">No briefs found</h3>
-              <p className="text-gray-600 mb-8">
-                Try adjusting your search criteria or browse all categories.
+      {!loading && (
+        <div id="all-briefs" className="py-24 bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-8">
+                📚 All Intelligence Briefs
+              </h2>
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                {filteredArticles.length} brief{filteredArticles.length !== 1 ? 's' : ''} found
+                {filters.category && ` in ${blogCategories.find(c => c.slug === filters.category)?.name}`}
+                {filters.searchQuery && ` matching "${filters.searchQuery}"`}
+                {allArticles.some(article => article.source === 'outrank') && (
+                  <span className="block text-sm text-green-600 mt-2">
+                    ✨ Includes latest articles from Outrank AI
+                  </span>
+                )}
               </p>
-              <button
-                onClick={() => setFilters({})}
-                className="inline-flex items-center px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-xl transition-colors duration-200"
-              >
-                Clear all filters
-              </button>
             </div>
-          )}
+            
+            {filteredArticles.length > 0 ? (
+              <div className="grid grid-cols-1 gap-8">
+                {filteredArticles.map((article) => (
+                  <ArticleCard 
+                    key={article.id} 
+                    article={article} 
+                    featured={false} 
+                  />
+                ))}
+              </div>
+            ) : (
+              <div className="text-center py-16">
+                <div className="text-6xl mb-4">🔍</div>
+                <h3 className="text-2xl font-bold text-gray-900 mb-4">No briefs found</h3>
+                <p className="text-gray-600 mb-8">
+                  Try adjusting your search criteria or browse all categories.
+                </p>
+                <button
+                  onClick={() => setFilters({})}
+                  className="inline-flex items-center px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-xl transition-colors duration-200"
+                >
+                  Clear all filters
+                </button>
+              </div>
+            )}
+          </div>
         </div>
-      </div>
+      )}
 
       {/* Core Categories Section */}
       <div className="py-24 bg-white">
