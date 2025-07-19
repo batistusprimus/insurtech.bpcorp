@@ -45,7 +45,7 @@ export default function ResourcesPage() {
       id: 4,
       icon: '💬',
       number: '4',
-      title: 'Strategic Briefs (2-min reads)',
+              title: 'Strategic Briefs',
       description: 'Designed for executives and commercial ops leaders.',
       features: [
         '"Why Urgency Beats Coverage"',

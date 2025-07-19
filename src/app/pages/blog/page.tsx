@@ -217,7 +217,7 @@ export default function BlogPage() {
               {/* Editorial Promise Badge */}
               <div className="mt-8">
                 <div className="inline-flex items-center px-6 py-3 bg-green-600/20 border border-green-400/30 rounded-full text-green-200 text-lg font-semibold backdrop-blur-sm">
-                  🕒 All posts are 3-min reads or less
+                  📊 Intelligence, Not Opinion
                 </div>
               </div>
               
