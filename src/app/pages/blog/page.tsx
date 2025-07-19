@@ -1,28 +1,45 @@
-import React from 'react';
+'use client';
+
+import React, { useState, useMemo } from 'react';
 import ContactCTA from '../../components/ContactCTA';
-import { LightningIcon, TornadoIcon, TrendingUpIcon, SatelliteIcon, BuildingIcon, ListIcon, ChartIcon } from '../../components/Icons';
+import ArticleCard from '../../components/ArticleCard';
+import BlogFilters from '../../components/BlogFilters';
+import { SatelliteIcon, BuildingIcon, ListIcon, ChartIcon } from '../../components/Icons';
+import { blogArticles, blogCategories, getFeaturedArticles, getArticlesByCategory, searchArticles } from '@/data/blog';
+import { BlogFilters as BlogFiltersType } from '@/types/blog';
 
 export default function BlogPage() {
-  const featuredBriefs = [
-    {
-      icon: <LightningIcon className="text-red-600" size={32} />,
-      title: '"$8.2B in Weather Losses Last Quarter – Who Paid the Price?"',
-      description: 'Texas Q2 2025: full breakdown by region, sector, and business size.',
-      action: 'Read Now'
-    },
-    {
-      icon: <TornadoIcon className="text-blue-600" size={32} />,
-      title: '"The Next 3 ZIPs to Watch This Month (and Why)"',
-      description: 'Real-time exposure forecasts based on Sentinel satellite detection.',
-      action: 'Access Report'
-    },
-    {
-      icon: <TrendingUpIcon className="text-green-600" size={32} />,
-      title: '"Operational Risk Score vs Traditional Forecasting – What Changed?"',
-      description: 'Why reactive response windows are shrinking, and how SCI leads win faster.',
-      action: 'Compare Systems'
+  const [filters, setFilters] = useState<BlogFiltersType>({});
+
+  const filteredArticles = useMemo(() => {
+    let articles = [...blogArticles];
+
+    // Apply category filter
+    if (filters.category) {
+      articles = getArticlesByCategory(filters.category);
     }
-  ];
+
+    // Apply featured filter
+    if (filters.featured) {
+      articles = articles.filter(article => article.featured);
+    }
+
+    // Apply search filter
+    if (filters.searchQuery && filters.searchQuery.trim()) {
+      const searchQuery = filters.searchQuery.toLowerCase().trim();
+      articles = articles.filter(article => 
+        article.title.toLowerCase().includes(searchQuery) ||
+        article.description.toLowerCase().includes(searchQuery) ||
+        article.tags.some(tag => tag.toLowerCase().includes(searchQuery)) ||
+        article.category.name.toLowerCase().includes(searchQuery)
+      );
+    }
+
+    // Sort by date (newest first)
+    return articles.sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime());
+  }, [filters]);
+
+  const featuredArticles = getFeaturedArticles();
 
   const coreCategories = [
     {
@@ -159,33 +176,82 @@ export default function BlogPage() {
         </div>
       </div>
 
+      {/* Blog Filters */}
+      <div className="py-12 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <BlogFilters 
+            categories={blogCategories}
+            onFiltersChange={setFilters}
+            currentFilters={filters}
+          />
+        </div>
+      </div>
+
       {/* Featured Briefs Section */}
-      <div className="py-24 bg-gray-50">
+      {featuredArticles.length > 0 && (
+        <div className="py-24 bg-gray-50">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-8">
+                📌 Featured Briefs
+              </h2>
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                Critical intelligence briefings selected by our editorial team for immediate action.
+              </p>
+            </div>
+            
+            <div className="space-y-8">
+              {featuredArticles.slice(0, 3).map((article) => (
+                <ArticleCard 
+                  key={article.id} 
+                  article={article} 
+                  featured={true} 
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* All Articles Section */}
+      <div className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-8">
-              📌 Featured Briefs
+              📚 All Intelligence Briefs
             </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              {filteredArticles.length} brief{filteredArticles.length !== 1 ? 's' : ''} found
+              {filters.category && ` in ${blogCategories.find(c => c.slug === filters.category)?.name}`}
+              {filters.searchQuery && ` matching "${filters.searchQuery}"`}
+            </p>
           </div>
           
-          <div className="space-y-8">
-            {featuredBriefs.map((brief, index) => (
-              <div key={index} className="bg-white rounded-3xl p-12 shadow-xl border border-gray-200">
-                <div className="flex items-start space-x-6">
-                  <div className="text-6xl">{brief.icon}</div>
-                  <div className="flex-1">
-                    <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                      {brief.title}
-                    </h3>
-                    <p className="text-lg text-gray-700 mb-6">
-                      {brief.description}
-                    </p>
-
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
+          {filteredArticles.length > 0 ? (
+            <div className="grid grid-cols-1 gap-8">
+              {filteredArticles.map((article) => (
+                <ArticleCard 
+                  key={article.id} 
+                  article={article} 
+                  featured={false} 
+                />
+              ))}
+            </div>
+          ) : (
+            <div className="text-center py-16">
+              <div className="text-6xl mb-4">🔍</div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">No briefs found</h3>
+              <p className="text-gray-600 mb-8">
+                Try adjusting your search criteria or browse all categories.
+              </p>
+              <button
+                onClick={() => setFilters({})}
+                className="inline-flex items-center px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-xl transition-colors duration-200"
+              >
+                Clear all filters
+              </button>
+            </div>
+          )}
         </div>
       </div>
 
