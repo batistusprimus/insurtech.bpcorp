@@ -3,6 +3,7 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import ArticleCard from '../../components/ArticleCard';
 import BlogFilters from '../../components/BlogFilters';
+import ContactCTA from '../../components/ContactCTA';
 import { SatelliteIcon, BuildingIcon, ListIcon, ChartIcon } from '../../components/Icons';
 import { blogCategories } from '@/data/blog';
 import { BlogFilters as BlogFiltersType, BlogArticle } from '@/types/blog';
@@ -455,7 +456,14 @@ export default function BlogPage() {
               <p className="text-xl mb-8 opacity-90">
                 Subscribe to the Sentinel Dispatch – the only climate ops report built for Texas B2B operators.
               </p>
-
+              <ContactCTA 
+                type="contact" 
+                variant="secondary" 
+                size="lg"
+                className="inline-block bg-white hover:bg-gray-100 text-blue-600 font-bold py-4 px-8 rounded-xl text-lg transition-all duration-300 transform hover:scale-105 shadow-lg"
+              >
+                Subscribe to Weekly Dispatch
+              </ContactCTA>
             </div>
           </div>
         </div>
