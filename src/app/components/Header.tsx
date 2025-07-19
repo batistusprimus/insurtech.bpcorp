@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import Navigation from './Navigation';
@@ -8,6 +8,7 @@ import Navigation from './Navigation';
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const dropdownTimerRef = useRef<NodeJS.Timeout | null>(null);
 
   const navigationItems = [
     { name: 'Lead Generation', href: '/pages/lead-gen' },
@@ -38,13 +39,35 @@ export default function Header() {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  const handleDropdownToggle = (dropdownKey: string) => {
-    setActiveDropdown(activeDropdown === dropdownKey ? null : dropdownKey);
+  const handleDropdownEnter = (dropdownKey: string) => {
+    if (dropdownTimerRef.current) {
+      clearTimeout(dropdownTimerRef.current);
+      dropdownTimerRef.current = null;
+    }
+    setActiveDropdown(dropdownKey);
+  };
+
+  const handleDropdownLeave = () => {
+    dropdownTimerRef.current = setTimeout(() => {
+      setActiveDropdown(null);
+    }, 150); // Délai de 150ms avant fermeture
   };
 
   const handleDropdownClose = () => {
+    if (dropdownTimerRef.current) {
+      clearTimeout(dropdownTimerRef.current);
+    }
     setActiveDropdown(null);
   };
+
+  // Cleanup timer on unmount
+  useEffect(() => {
+    return () => {
+      if (dropdownTimerRef.current) {
+        clearTimeout(dropdownTimerRef.current);
+      }
+    };
+  }, []);
 
   return (
     <header className="sticky top-0 z-50 w-full bg-white/95 backdrop-blur-md border-b border-gray-200/60 shadow-lg">
@@ -75,8 +98,8 @@ export default function Header() {
               {/* Coverage & Industries Dropdown */}
               <div
                 className="relative"
-                onMouseEnter={() => setActiveDropdown('coverage-industries')}
-                onMouseLeave={handleDropdownClose}
+                onMouseEnter={() => handleDropdownEnter('coverage-industries')}
+                onMouseLeave={handleDropdownLeave}
               >
                 <button
                   className={`flex items-center px-4 py-2 text-sm font-medium transition-all duration-200 whitespace-nowrap text-overflow-safe border rounded-lg shadow-sm hover:shadow-md ${activeDropdown === 'coverage-industries' ? 'border-blue-600 text-blue-600 bg-blue-50' : 'border-gray-200 text-gray-700 hover:text-blue-600 hover:border-blue-400 hover:bg-blue-50/50'}`}
@@ -95,16 +118,19 @@ export default function Header() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                   </svg>
                 </button>
-                {/* Affichage toujours visible pour diagnostic */}
+                {/* Menu déroulant sans gap */}
                 {activeDropdown === 'coverage-industries' && (
                   <div
-                    className="absolute top-full left-0 mt-2 w-64 bg-white rounded-xl shadow-xl border border-gray-200/60 py-2 z-50 backdrop-blur-sm"
+                    className="absolute top-full left-0 w-64 bg-white rounded-xl shadow-xl border border-gray-200/60 py-2 z-50 backdrop-blur-sm"
+                    onMouseEnter={() => handleDropdownEnter('coverage-industries')}
+                    onMouseLeave={handleDropdownLeave}
                   >
                     {dropdownMenus['coverage-industries'].items.map((item) => (
                       <Link
                         key={item.name}
                         href={item.href}
                         className="block px-4 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-all duration-200 text-overflow-safe mx-2 rounded-lg"
+                        onClick={handleDropdownClose}
                       >
                         {item.name}
                       </Link>
@@ -116,8 +142,8 @@ export default function Header() {
               {/* BP Corporation Dropdown */}
               <div
                 className="relative"
-                onMouseEnter={() => setActiveDropdown('bp-corporation')}
-                onMouseLeave={handleDropdownClose}
+                onMouseEnter={() => handleDropdownEnter('bp-corporation')}
+                onMouseLeave={handleDropdownLeave}
               >
                 <button
                   className={`flex items-center px-4 py-2 text-sm font-medium transition-all duration-200 whitespace-nowrap text-overflow-safe border rounded-lg shadow-sm hover:shadow-md ${activeDropdown === 'bp-corporation' ? 'border-blue-600 text-blue-600 bg-blue-50' : 'border-gray-200 text-gray-700 hover:text-blue-600 hover:border-blue-400 hover:bg-blue-50/50'}`}
@@ -136,16 +162,19 @@ export default function Header() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                   </svg>
                 </button>
-                {/* Affichage toujours visible pour diagnostic */}
+                {/* Menu déroulant sans gap */}
                 {activeDropdown === 'bp-corporation' && (
                   <div
-                    className="absolute top-full left-0 mt-2 w-64 bg-white rounded-xl shadow-xl border border-gray-200/60 py-2 z-50 backdrop-blur-sm"
+                    className="absolute top-full left-0 w-64 bg-white rounded-xl shadow-xl border border-gray-200/60 py-2 z-50 backdrop-blur-sm"
+                    onMouseEnter={() => handleDropdownEnter('bp-corporation')}
+                    onMouseLeave={handleDropdownLeave}
                   >
                     {dropdownMenus['bp-corporation'].items.map((item) => (
                       <Link
                         key={item.name}
                         href={item.href}
                         className="block px-4 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-all duration-200 text-overflow-safe mx-2 rounded-lg"
+                        onClick={handleDropdownClose}
                       >
                         {item.name}
                       </Link>
