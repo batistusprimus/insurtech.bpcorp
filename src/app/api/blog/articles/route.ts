@@ -7,7 +7,7 @@ import {
   addArticle, 
   updateArticle, 
   deleteArticle 
-} from '@/lib/storage';
+} from '@/lib/storage-kv';
 
 // GET - Récupérer tous les articles avec filtrage
 export async function GET(request: NextRequest) {
