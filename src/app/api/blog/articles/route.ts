@@ -1,53 +1,31 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { BlogArticle } from '@/types/blog';
 import { blogCategories } from '@/data/blog';
-
-// Interface pour les articles stockés (étendre BlogArticle avec des métadonnées)
-interface StoredBlogArticle extends BlogArticle {
-  source: 'manual' | 'outrank';
-  createdAt: string;
-  updatedAt: string;
-  scheduledAt?: string | null;
-  status: 'draft' | 'published' | 'scheduled' | 'archived';
-}
-
-// Stockage temporaire en mémoire (à remplacer par une vraie DB)
-const articlesStorage: StoredBlogArticle[] = [];
+import { 
+  StoredBlogArticle, 
+  getFilteredArticles, 
+  addArticle, 
+  updateArticle, 
+  deleteArticle 
+} from '@/lib/storage';
 
 // GET - Récupérer tous les articles avec filtrage
 export async function GET(request: NextRequest) {
   try {
     const { searchParams } = new URL(request.url);
-    const source = searchParams.get('source'); // 'manual' | 'outrank'
-    const status = searchParams.get('status'); // 'draft' | 'published' | 'scheduled'
+    const source = searchParams.get('source') as 'manual' | 'outrank' | undefined;
+    const status = searchParams.get('status') as 'draft' | 'published' | 'scheduled' | 'archived' | undefined;
     const limit = parseInt(searchParams.get('limit') || '10');
     const offset = parseInt(searchParams.get('offset') || '0');
 
-    let filteredArticles = [...articlesStorage];
-
-    // Filtrage par source
-    if (source) {
-      filteredArticles = filteredArticles.filter(article => article.source === source);
-    }
-
-    // Filtrage par status
-    if (status) {
-      filteredArticles = filteredArticles.filter(article => article.status === status);
-    }
-
-    // Tri par date de création (plus récent en premier)
-    filteredArticles.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
-
-    // Pagination
-    const paginatedArticles = filteredArticles.slice(offset, offset + limit);
-
-    return NextResponse.json({
-      articles: paginatedArticles,
-      total: filteredArticles.length,
+    const result = await getFilteredArticles({
+      source,
+      status,
       limit,
-      offset,
-      hasMore: offset + limit < filteredArticles.length
+      offset
     });
+
+    return NextResponse.json(result);
 
   } catch (error) {
     console.error('Erreur lors de la récupération des articles:', error);
@@ -111,12 +89,12 @@ export async function POST(request: NextRequest) {
     };
 
     // Stockage de l'article
-    articlesStorage.push(newArticle);
+    const savedArticle = await addArticle(newArticle);
 
     return NextResponse.json({
       success: true,
       message: 'Article created successfully',
-      article: newArticle
+      article: savedArticle
     }, { status: 201 });
 
   } catch (error) {
@@ -141,28 +119,20 @@ export async function PUT(request: NextRequest) {
       );
     }
 
-    // Recherche de l'article
-    const articleIndex = articlesStorage.findIndex(article => article.id === id);
-    
-    if (articleIndex === -1) {
+    // Mise à jour de l'article
+    const updatedArticle = await updateArticle(id, {
+      ...data,
+      publishedAt: data.status === 'published' && !data.publishedAt 
+        ? new Date().toISOString() 
+        : data.publishedAt
+    });
+
+    if (!updatedArticle) {
       return NextResponse.json(
         { error: 'Article not found' },
         { status: 404 }
       );
     }
-
-    // Mise à jour de l'article
-    const existingArticle = articlesStorage[articleIndex];
-    const updatedArticle: StoredBlogArticle = {
-      ...existingArticle,
-      ...data,
-      updatedAt: new Date().toISOString(),
-      publishedAt: data.status === 'published' && !existingArticle.publishedAt 
-        ? new Date().toISOString() 
-        : existingArticle.publishedAt
-    };
-
-    articlesStorage[articleIndex] = updatedArticle;
 
     return NextResponse.json({
       success: true,
@@ -192,17 +162,15 @@ export async function DELETE(request: NextRequest) {
       );
     }
 
-    // Recherche et suppression de l'article
-    const articleIndex = articlesStorage.findIndex(article => article.id === id);
-    
-    if (articleIndex === -1) {
+    // Suppression de l'article
+    const deletedArticle = await deleteArticle(id);
+
+    if (!deletedArticle) {
       return NextResponse.json(
         { error: 'Article not found' },
         { status: 404 }
       );
     }
-
-    const deletedArticle = articlesStorage.splice(articleIndex, 1)[0];
 
     return NextResponse.json({
       success: true,
