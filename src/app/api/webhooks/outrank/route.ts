@@ -89,7 +89,7 @@ async function processOutrankArticle(article: OutrankArticle) {
     // Sauvegarder l'article directement avec les fonctions de stockage
     try {
       // Import direct des fonctions de stockage
-      const { addArticle } = await import('@/lib/storage-kv');
+      const { addArticle } = await import('@/lib/storage-hybrid');
       
       const savedArticle = await addArticle(newArticle);
       console.log('✅ Article Outrank sauvegardé:', savedArticle.title);
