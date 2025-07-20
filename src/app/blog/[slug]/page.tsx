@@ -87,47 +87,228 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
     notFound();
   }
 
-  // Convert markdown-style content to HTML (simple conversion)
+  // Advanced markdown-to-JSX converter
   const formatContent = (content: string) => {
-    return content
-      .split('\n')
-      .map((line, index) => {
-        // Headers
-        if (line.startsWith('# ')) {
-          return <h1 key={index} className="text-4xl font-black text-gray-900 mb-8 mt-12">{line.slice(2)}</h1>;
+    const lines = content.split('\n');
+    const elements: JSX.Element[] = [];
+    let i = 0;
+    
+    // Function to parse inline markdown (bold, links)
+    const parseInlineMarkdown = (text: string, key: string): (string | JSX.Element)[] => {
+      const elements: (string | JSX.Element)[] = [];
+      const segments = text.split(/(\*\*.*?\*\*|\[.*?\]\(.*?\))/);
+      
+      segments.forEach((segment, index) => {
+        if (!segment) return;
+        
+        // Bold text **text**
+        if (segment.startsWith('**') && segment.endsWith('**')) {
+          const boldText = segment.slice(2, -2);
+          elements.push(
+            <strong key={`${key}-bold-${index}`} className="font-bold">
+              {boldText}
+            </strong>
+          );
         }
-        if (line.startsWith('## ')) {
-          return <h2 key={index} className="text-3xl font-bold text-gray-900 mb-6 mt-10">{line.slice(3)}</h2>;
+        // Links [text](url)
+        else if (segment.match(/^\[.*?\]\(.*?\)$/)) {
+          const match = segment.match(/^\[([^\]]+)\]\(([^)]+)\)$/);
+          if (match) {
+            const [, linkText, url] = match;
+            elements.push(
+              <a key={`${key}-link-${index}`} 
+                 href={url} 
+                 target="_blank" 
+                 rel="noopener noreferrer"
+                 className="text-blue-600 hover:text-blue-800 underline">
+                {linkText}
+              </a>
+            );
+          }
         }
-        if (line.startsWith('### ')) {
-          return <h3 key={index} className="text-2xl font-bold text-gray-900 mb-4 mt-8">{line.slice(4)}</h3>;
+        // Regular text
+        else {
+          elements.push(segment);
         }
-        if (line.startsWith('#### ')) {
-          return <h4 key={index} className="text-xl font-bold text-gray-900 mb-3 mt-6">{line.slice(5)}</h4>;
+      });
+      
+      return elements.filter(part => part !== '');
+    };
+    
+    while (i < lines.length) {
+      const line = lines[i];
+      const trimmedLine = line.trim();
+      
+      // Headers
+      if (trimmedLine.startsWith('# ')) {
+        const content = parseInlineMarkdown(trimmedLine.slice(2), `h1-${i}`);
+        elements.push(<h1 key={i} className="text-4xl font-black text-gray-900 mb-8 mt-12">{content}</h1>);
+      }
+      else if (trimmedLine.startsWith('## ')) {
+        const content = parseInlineMarkdown(trimmedLine.slice(3), `h2-${i}`);
+        elements.push(<h2 key={i} className="text-3xl font-bold text-gray-900 mb-6 mt-10">{content}</h2>);
+      }
+      else if (trimmedLine.startsWith('### ')) {
+        const content = parseInlineMarkdown(trimmedLine.slice(4), `h3-${i}`);
+        elements.push(<h3 key={i} className="text-2xl font-bold text-gray-900 mb-4 mt-8">{content}</h3>);
+      }
+      else if (trimmedLine.startsWith('#### ')) {
+        const content = parseInlineMarkdown(trimmedLine.slice(5), `h4-${i}`);
+        elements.push(<h4 key={i} className="text-xl font-bold text-gray-900 mb-3 mt-6">{content}</h4>);
+      }
+      
+      // Images ![alt](url)
+      else if (trimmedLine.match(/^!\[([^\]]*)\]\(([^)]+)\)$/)) {
+        const match = trimmedLine.match(/^!\[([^\]]*)\]\(([^)]+)\)$/);
+        if (match) {
+          const [, alt, src] = match;
+          elements.push(
+            <div key={i} className="my-8 text-center">
+              <img 
+                src={src} 
+                alt={alt} 
+                className="max-w-full h-auto rounded-lg shadow-lg mx-auto"
+                loading="lazy"
+              />
+              {alt && <p className="text-sm text-gray-600 mt-2 italic">{alt}</p>}
+            </div>
+          );
+        }
+      }
+      
+      // Tables
+      else if (trimmedLine.includes('|') && lines[i + 1]?.includes('|')) {
+        const tableLines: string[] = [];
+        let j = i;
+        
+        // Collect all table lines
+        while (j < lines.length && lines[j].trim().includes('|')) {
+          tableLines.push(lines[j].trim());
+          j++;
         }
         
-        // Bold text
-        if (line.startsWith('**') && line.endsWith('**')) {
-          return <p key={index} className="font-bold text-gray-900 mb-4">{line.slice(2, -2)}</p>;
+        if (tableLines.length >= 2) {
+          const headerRow = tableLines[0].split('|').map(cell => cell.trim()).filter(cell => cell);
+          const separatorRow = tableLines[1];
+          const dataRows = tableLines.slice(2).map(row => 
+            row.split('|').map(cell => cell.trim()).filter(cell => cell)
+          );
+          
+          // Check if it's a valid table (separator row has dashes)
+          if (separatorRow.includes('-')) {
+            elements.push(
+              <div key={i} className="my-8 overflow-x-auto">
+                <table className="min-w-full bg-white border border-gray-300 rounded-lg shadow">
+                  <thead className="bg-gray-50">
+                    <tr>
+                      {headerRow.map((header, idx) => (
+                        <th key={idx} className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-b">
+                          {parseInlineMarkdown(header, `table-header-${i}-${idx}`)}
+                        </th>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-gray-200">
+                    {dataRows.map((row, rowIdx) => (
+                      <tr key={rowIdx} className={rowIdx % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
+                        {row.map((cell, cellIdx) => (
+                          <td key={cellIdx} className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                            {parseInlineMarkdown(cell, `table-cell-${i}-${rowIdx}-${cellIdx}`)}
+                          </td>
+                        ))}
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            );
+            i = j - 1; // Skip processed table lines
+          }
+        }
+      }
+      
+      // Quote blocks
+      else if (trimmedLine.startsWith('> ')) {
+        const quoteLines: string[] = [];
+        let j = i;
+        
+        while (j < lines.length && lines[j].trim().startsWith('> ')) {
+          quoteLines.push(lines[j].trim().slice(2));
+          j++;
         }
         
-        // Lists
-        if (line.startsWith('- ')) {
-          return <li key={index} className="text-gray-700 mb-2 ml-4">{line.slice(2)}</li>;
-        }
-        if (/^\d+\./.test(line)) {
-          return <li key={index} className="text-gray-700 mb-2 ml-4">{line.replace(/^\d+\.\s*/, '')}</li>;
+        const quoteContent = quoteLines.join(' ');
+        elements.push(
+          <blockquote key={i} className="border-l-4 border-blue-500 pl-6 py-4 my-6 bg-blue-50 italic text-gray-700">
+            {parseInlineMarkdown(quoteContent, `quote-${i}`)}
+          </blockquote>
+        );
+        i = j - 1;
+      }
+      
+      // Lists
+      else if (trimmedLine.startsWith('- ') || trimmedLine.startsWith('* ')) {
+        const listItems: string[] = [];
+        let j = i;
+        
+        while (j < lines.length && (lines[j].trim().startsWith('- ') || lines[j].trim().startsWith('* '))) {
+          listItems.push(lines[j].trim().slice(2));
+          j++;
         }
         
-        // Empty lines
-        if (line.trim() === '') {
-          return <div key={index} className="mb-4"></div>;
+        elements.push(
+          <ul key={i} className="list-disc list-inside my-6 space-y-2">
+            {listItems.map((item, idx) => (
+              <li key={idx} className="text-gray-700">
+                {parseInlineMarkdown(item, `list-${i}-${idx}`)}
+              </li>
+            ))}
+          </ul>
+        );
+        i = j - 1;
+      }
+      
+      // Numbered lists
+      else if (/^\d+\./.test(trimmedLine)) {
+        const listItems: string[] = [];
+        let j = i;
+        
+        while (j < lines.length && /^\d+\./.test(lines[j].trim())) {
+          listItems.push(lines[j].trim().replace(/^\d+\.\s*/, ''));
+          j++;
         }
         
-        // Regular paragraphs
-        return <p key={index} className="text-gray-700 leading-relaxed mb-6">{line}</p>;
-      })
-      .filter(Boolean);
+        elements.push(
+          <ol key={i} className="list-decimal list-inside my-6 space-y-2">
+            {listItems.map((item, idx) => (
+              <li key={idx} className="text-gray-700">
+                {parseInlineMarkdown(item, `numlist-${i}-${idx}`)}
+              </li>
+            ))}
+          </ol>
+        );
+        i = j - 1;
+      }
+      
+      // Empty lines
+      else if (trimmedLine === '') {
+        elements.push(<div key={i} className="mb-4"></div>);
+      }
+      
+      // Regular paragraphs
+      else {
+        const content = parseInlineMarkdown(trimmedLine, `p-${i}`);
+        elements.push(
+          <p key={i} className="text-gray-700 leading-relaxed mb-6">
+            {content}
+          </p>
+        );
+      }
+      
+      i++;
+    }
+    
+    return elements;
   };
 
   return (
