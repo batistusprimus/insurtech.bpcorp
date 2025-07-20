@@ -59,16 +59,6 @@ export async function GET(request: NextRequest) {
                 }
               }
             ]
-          },
-          'Status': {
-            select: {
-              name: 'New'
-            }
-          },
-          'Created Date': {
-            date: {
-              start: new Date().toISOString()
-            }
           }
         },
       });

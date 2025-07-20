@@ -33,8 +33,16 @@ export async function POST(request: NextRequest) {
     const notionToken = process.env.NOTION_TOKEN;
     const notionDatabaseId = process.env.NOTION_DATABASE_ID;
 
+    console.log('Environment check:', {
+      notionTokenExists: !!notionToken,
+      notionDatabaseIdExists: !!notionDatabaseId,
+      notionDatabaseId: notionDatabaseId
+    });
+
     if (notionToken && notionDatabaseId) {
       try {
+        console.log('Initializing Notion client...');
+        
         // Initialiser le client Notion
         const notion = new Client({
           auth: notionToken,
@@ -62,16 +70,6 @@ export async function POST(request: NextRequest) {
                 }
               }
             ]
-          },
-          'Status': {
-            select: {
-              name: 'New'
-            }
-          },
-          'Created Date': {
-            date: {
-              start: new Date().toISOString()
-            }
           }
         };
 
@@ -94,52 +92,32 @@ export async function POST(request: NextRequest) {
           };
         }
 
-        if (type) {
-          properties['Type'] = {
+        if (industry) {
+          properties['Target Industry'] = {
             select: {
-              name: type
+              name: industry
             }
           };
         }
 
-        if (industry) {
-          properties['Industry'] = {
-            rich_text: [
-              {
-                text: {
-                  content: industry
-                }
-              }
-            ]
-          };
-        }
-
         if (territory) {
-          properties['Territory'] = {
-            rich_text: [
-              {
-                text: {
-                  content: territory
-                }
-              }
-            ]
+          properties['Target Territory'] = {
+            select: {
+              name: territory
+            }
           };
         }
 
         if (leadVolume) {
-          properties['Lead Volume'] = {
-            rich_text: [
-              {
-                text: {
-                  content: leadVolume
-                }
-              }
-            ]
+          properties['Leads Volume'] = {
+            select: {
+              name: leadVolume
+            }
           };
         }
 
         if (urgency) {
-          properties['Urgency'] = {
+          properties['Urgency Level'] = {
             select: {
               name: urgency
             }
@@ -147,17 +125,15 @@ export async function POST(request: NextRequest) {
         }
 
         if (eventType) {
-          properties['Event Type'] = {
-            rich_text: [
-              {
-                text: {
-                  content: eventType
-                }
-              }
-            ]
+          properties['Event Type Focus'] = {
+            select: {
+              name: eventType
+            }
           };
         }
 
+        console.log('Creating Notion entry with properties:', JSON.stringify(properties, null, 2));
+        
         // Créer l'entrée dans Notion
         const response = await notion.pages.create({
           parent: {
