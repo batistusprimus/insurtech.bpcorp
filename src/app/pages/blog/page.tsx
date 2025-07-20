@@ -3,7 +3,7 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import ArticleCard from '../../components/ArticleCard';
 import BlogFilters from '../../components/BlogFilters';
-import ContactCTA from '../../components/ContactCTA';
+
 import { SatelliteIcon, BuildingIcon, ListIcon, ChartIcon } from '../../components/Icons';
 import CategoryIcon from '../../components/CategoryIcon';
 import { blogCategories } from '@/data/blog';
@@ -565,33 +565,7 @@ export default function BlogPage() {
         </div>
       </div>
 
-      {/* Newsletter Section */}
-      <div className="py-24 bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-gradient-to-br from-blue-600 to-indigo-700 rounded-3xl p-12 shadow-xl">
-            <div className="text-center text-white">
-              <h2 className="text-3xl md:text-4xl font-black mb-8 inline-flex items-center justify-center">
-                <svg className="w-10 h-10 mr-3" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
-                  <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
-                </svg>
-                Want Briefs Delivered Weekly?
-              </h2>
-              <p className="text-xl mb-8 opacity-90">
-                Subscribe to the Sentinel Dispatch – the only climate ops report built for Texas B2B operators.
-              </p>
-              <ContactCTA 
-                type="contact" 
-                variant="secondary" 
-                size="lg"
-                className="inline-block bg-white hover:bg-gray-100 text-blue-600 font-bold py-4 px-8 rounded-xl text-lg transition-all duration-300 transform hover:scale-105 shadow-lg"
-              >
-                Subscribe to Weekly Dispatch
-              </ContactCTA>
-            </div>
-          </div>
-        </div>
-      </div>
+
     </div>
   );
 } 
