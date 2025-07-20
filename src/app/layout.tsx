@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import React from "react";
 import Header from "./components/Header";
@@ -8,15 +8,11 @@ import PagePreloader from "./components/PagePreloader";
 import PageTransition from "./components/PageTransition";
 import { defaultMetadata } from "./metadata";
 import { CacheProvider } from "./components/CacheProvider";
+import { Analytics } from "@vercel/analytics/next";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const inter = Inter({
   subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  variable: "--font-inter",
 });
 
 export const metadata: Metadata = defaultMetadata;
@@ -29,7 +25,7 @@ export default function RootLayout({
   return (
     <html lang="fr">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${inter.variable} font-sans antialiased`}
       >
         <CacheProvider>
           <Header />
@@ -39,6 +35,7 @@ export default function RootLayout({
           <Footer />
           <PagePreloader />
         </CacheProvider>
+        <Analytics />
       </body>
     </html>
   );
