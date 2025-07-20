@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { BlogArticle } from '@/types/blog';
+import CategoryIcon from './CategoryIcon';
 
 interface ArticleCardProps {
   article: BlogArticle;
@@ -22,7 +23,7 @@ export default function ArticleCard({ article, featured = false }: ArticleCardPr
         {/* Header avec catégorie et badge featured */}
         <div className="flex items-center justify-between mb-6">
           <div className="flex items-center space-x-3">
-            <span className="text-2xl">{article.category.icon}</span>
+            <CategoryIcon type={article.category.icon} size={24} />
             <span className={`
               inline-flex items-center px-3 py-1 rounded-full text-sm font-medium
               ${featured ? 'bg-blue-600 text-white' : 'bg-gray-100 text-gray-700'}

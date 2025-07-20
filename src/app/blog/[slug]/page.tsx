@@ -2,6 +2,7 @@ import React from 'react';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import ContactCTA from '../../components/ContactCTA';
+import CategoryIcon from '../../components/CategoryIcon';
 import { getArticleBySlug, blogArticles } from '@/data/blog';
 import { BlogArticle } from '@/types/blog';
 
@@ -342,7 +343,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
 
           {/* Category Badge */}
           <div className="inline-flex items-center px-6 py-3 bg-blue-600/20 border border-blue-400/30 rounded-full text-blue-200 text-sm font-semibold mb-8 backdrop-blur-sm">
-            <span className="mr-2 text-lg">{article.category.icon}</span>
+                            <CategoryIcon type={article.category.icon} size={20} className="mr-2" />
             {article.category.name}
           </div>
 
@@ -430,7 +431,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
                 >
                   <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300 group-hover:scale-105">
                     <div className="flex items-center mb-4">
-                      <span className="text-3xl mr-3">{relatedArticle.category.icon}</span>
+                      <CategoryIcon type={relatedArticle.category.icon} size={32} className="mr-3" />
                       <span className="inline-flex items-center px-2 py-1 bg-blue-100 text-blue-800 text-xs font-semibold rounded-full">
                         {relatedArticle.category.name}
                       </span>

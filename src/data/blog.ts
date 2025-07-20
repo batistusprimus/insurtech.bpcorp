@@ -22,7 +22,7 @@ export const blogCategories: BlogCategory[] = [
     name: 'Industry Exposure',
     slug: 'industry-exposure',
     description: 'Vertical-specific briefs for logistics, manufacturing, agriculture, energy',
-    icon: '🏭',
+    icon: 'industry',
     color: 'green-600'
   },
   {
@@ -30,7 +30,7 @@ export const blogCategories: BlogCategory[] = [
     name: 'Playbooks',
     slug: 'playbooks',
     description: 'Tactical briefs: when to send, who to target, how to convert',
-    icon: '📋',
+    icon: 'playbook',
     color: 'purple-600'
   },
   {
@@ -38,7 +38,7 @@ export const blogCategories: BlogCategory[] = [
     name: 'Sentinel Reports',
     slug: 'sentinel-reports',
     description: 'Raw data releases, Q&A with analysts, and methodology explainers',
-    icon: '📊',
+    icon: 'chart',
     color: 'red-600'
   }
 ];

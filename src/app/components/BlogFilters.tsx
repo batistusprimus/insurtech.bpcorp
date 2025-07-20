@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { BlogCategory, BlogFilters as BlogFiltersType } from '@/types/blog';
+import CategoryIcon from './CategoryIcon';
 
 interface BlogFiltersProps {
   categories: BlogCategory[];
@@ -80,7 +81,7 @@ export default function BlogFilters({ categories, onFiltersChange, currentFilter
             <option value="">All Categories</option>
             {categories.map((category) => (
               <option key={category.id} value={category.slug}>
-                {category.icon} {category.name}
+                {category.name}
               </option>
             ))}
           </select>
@@ -132,7 +133,12 @@ export default function BlogFilters({ categories, onFiltersChange, currentFilter
             
             {currentFilters.category && (
               <span className="inline-flex items-center px-3 py-1 bg-blue-100 text-blue-800 text-sm font-medium rounded-full">
-                {categories.find(c => c.slug === currentFilters.category)?.icon} {categories.find(c => c.slug === currentFilters.category)?.name}
+                <CategoryIcon 
+              type={categories.find(c => c.slug === currentFilters.category)?.icon || ''} 
+              className="mr-2" 
+              size={16} 
+            />
+            {categories.find(c => c.slug === currentFilters.category)?.name}
                 <button
                   onClick={() => handleCategoryChange(undefined)}
                   className="ml-2 text-blue-600 hover:text-blue-800"
