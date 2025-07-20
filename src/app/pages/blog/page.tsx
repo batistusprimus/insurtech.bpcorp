@@ -15,6 +15,59 @@ export default function BlogPage() {
   const [error, setError] = useState<string | null>(null);
   const [lastRefresh, setLastRefresh] = useState<Date>(new Date());
 
+  // Fonction pour déterminer le type d'article de manière intelligente
+  const getArticleType = (article: BlogArticle) => {
+    const title = article.title.toLowerCase();
+    const description = article.description.toLowerCase();
+    const tags = article.tags.map(tag => tag.toLowerCase());
+    const content = article.content.toLowerCase();
+    
+    // Mots-clés pour différents types d'articles
+    const marketingKeywords = ['marketing', 'lead generation', 'strategy', 'campaign', 'conversion', 'roi', 'growth', 'acquisition'];
+    const researchKeywords = ['research', 'analysis', 'study', 'data', 'statistics', 'findings', 'report', 'insights'];
+    const technicalKeywords = ['implementation', 'api', 'technical', 'development', 'integration', 'code', 'system'];
+    const industryKeywords = ['industry', 'sector', 'market', 'trends', 'outlook', 'forecast', 'intelligence'];
+    
+    // Compter les occurrences de chaque type
+    const marketingScore = marketingKeywords.reduce((score, keyword) => 
+      score + (title.includes(keyword) ? 3 : 0) + 
+      (description.includes(keyword) ? 2 : 0) + 
+      (tags.some(tag => tag.includes(keyword)) ? 2 : 0) + 
+      (content.includes(keyword) ? 1 : 0), 0);
+      
+    const researchScore = researchKeywords.reduce((score, keyword) => 
+      score + (title.includes(keyword) ? 3 : 0) + 
+      (description.includes(keyword) ? 2 : 0) + 
+      (tags.some(tag => tag.includes(keyword)) ? 2 : 0) + 
+      (content.includes(keyword) ? 1 : 0), 0);
+      
+    const technicalScore = technicalKeywords.reduce((score, keyword) => 
+      score + (title.includes(keyword) ? 3 : 0) + 
+      (description.includes(keyword) ? 2 : 0) + 
+      (tags.some(tag => tag.includes(keyword)) ? 2 : 0) + 
+      (content.includes(keyword) ? 1 : 0), 0);
+      
+    const industryScore = industryKeywords.reduce((score, keyword) => 
+      score + (title.includes(keyword) ? 3 : 0) + 
+      (description.includes(keyword) ? 2 : 0) + 
+      (tags.some(tag => tag.includes(keyword)) ? 2 : 0) + 
+      (content.includes(keyword) ? 1 : 0), 0);
+    
+    // Déterminer le type avec le score le plus élevé
+    const scores = [
+      { type: 'Marketing team report', score: marketingScore },
+      { type: 'Research team analysis', score: researchScore },
+      { type: 'Technical documentation', score: technicalScore },
+      { type: 'Industry intelligence brief', score: industryScore }
+    ];
+    
+    const bestMatch = scores.reduce((best, current) => 
+      current.score > best.score ? current : best);
+    
+    // Si aucun score significatif, retourner un type par défaut
+    return bestMatch.score > 0 ? bestMatch.type : 'Strategic insights report';
+  };
+
   // Charger les articles depuis l'API
   useEffect(() => {
     async function fetchArticles() {
@@ -62,7 +115,7 @@ export default function BlogPage() {
       setAllArticles(combined);
       setError(null);
       setLastRefresh(new Date());
-      console.log(`🔄 ${combined.length} articles rechargés`);
+              console.log(`Refresh: ${combined.length} articles rechargés`);
     } catch (err) {
       console.error('Erreur refresh:', err);
       setError('Erreur refresh');
@@ -198,19 +251,36 @@ export default function BlogPage() {
               {/* Category Preview */}
               <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4">
                 <div className="bg-white/20 backdrop-blur-sm rounded-xl p-4 text-center">
-                  <div className="text-2xl mb-2">🌪️</div>
+                  <div className="text-white mb-2 flex justify-center">
+                    <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clipRule="evenodd" />
+                    </svg>
+                  </div>
                   <div className="text-white text-sm font-semibold">Weather Intel</div>
                 </div>
                 <div className="bg-white/20 backdrop-blur-sm rounded-xl p-4 text-center">
-                  <div className="text-2xl mb-2">🏭</div>
+                  <div className="text-white mb-2 flex justify-center">
+                    <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M4 4a2 2 0 00-2 2v4a2 2 0 002 2V6h10a2 2 0 00-2-2H4zm2 6a2 2 0 012-2h8a2 2 0 012 2v4a2 2 0 01-2 2H8a2 2 0 01-2-2v-4zm6 4a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
+                    </svg>
+                  </div>
                   <div className="text-white text-sm font-semibold">Industry Exposure</div>
                 </div>
                 <div className="bg-white/20 backdrop-blur-sm rounded-xl p-4 text-center">
-                  <div className="text-2xl mb-2">📋</div>
+                  <div className="text-white mb-2 flex justify-center">
+                    <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" />
+                      <path fillRule="evenodd" d="M4 5a2 2 0 012-2h8a2 2 0 012 2v6a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 1a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clipRule="evenodd" />
+                    </svg>
+                  </div>
                   <div className="text-white text-sm font-semibold">Playbooks</div>
                 </div>
                 <div className="bg-white/20 backdrop-blur-sm rounded-xl p-4 text-center">
-                  <div className="text-2xl mb-2">📊</div>
+                  <div className="text-white mb-2 flex justify-center">
+                    <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z" />
+                    </svg>
+                  </div>
                   <div className="text-white text-sm font-semibold">Sentinel Reports</div>
                 </div>
               </div>
@@ -218,7 +288,10 @@ export default function BlogPage() {
               {/* Editorial Promise Badge */}
               <div className="mt-8">
                 <div className="inline-flex items-center px-6 py-3 bg-green-600/20 border border-green-400/30 rounded-full text-green-200 text-lg font-semibold backdrop-blur-sm">
-                  📊 Intelligence, Not Opinion
+                  <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z" />
+                  </svg>
+                  Intelligence, Not Opinion
                 </div>
               </div>
               
@@ -260,7 +333,16 @@ export default function BlogPage() {
               </div>
               {allArticles.some(article => article.source === 'outrank') && (
                 <div className="text-sm text-green-600 font-semibold">
-                  ✨ {allArticles.filter(article => article.source === 'outrank').length} AI-generated article{allArticles.filter(article => article.source === 'outrank').length !== 1 ? 's' : ''}
+                  <span className="inline-flex items-center">
+                    <svg className="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                    </svg>
+                    {allArticles.filter(article => article.source === 'outrank').length} {
+                      allArticles.filter(article => article.source === 'outrank').length === 1 
+                        ? getArticleType(allArticles.filter(article => article.source === 'outrank')[0]).toLowerCase()
+                        : 'specialized reports'
+                    }
+                  </span>
                 </div>
               )}
             </div>
@@ -276,7 +358,10 @@ export default function BlogPage() {
                 </>
               ) : (
                 <>
-                  🔄 Rafraîchir
+                  <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clipRule="evenodd" />
+                  </svg>
+                  Refresh
                 </>
               )}
             </button>
@@ -289,7 +374,12 @@ export default function BlogPage() {
         <div className="py-8 bg-yellow-50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="bg-yellow-100 border border-yellow-400 text-yellow-700 px-4 py-3 rounded-xl">
-              <p className="text-sm">⚠️ {error}</p>
+              <p className="text-sm inline-flex items-center">
+                <svg className="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
+                </svg>
+                {error}
+              </p>
             </div>
           </div>
         </div>
@@ -312,9 +402,12 @@ export default function BlogPage() {
         <div id="featured-briefs" className="py-24 bg-gray-50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-8">
-                📌 Featured Briefs
-              </h2>
+                          <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-8 inline-flex items-center">
+              <svg className="w-12 h-12 mr-4 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clipRule="evenodd" />
+              </svg>
+              Featured Briefs
+            </h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
                 Critical intelligence briefings selected by our editorial team for immediate action.
               </p>
@@ -338,16 +431,22 @@ export default function BlogPage() {
         <div id="all-briefs" className="py-24 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-8">
-                📚 All Intelligence Briefs
-              </h2>
+                          <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-8 inline-flex items-center">
+              <svg className="w-12 h-12 mr-4 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M9 4.804A7.968 7.968 0 005.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 015.5 14c1.669 0 3.218.51 4.5 1.385A7.962 7.962 0 0114.5 14c1.255 0 2.443.29 3.5.804v-10A7.968 7.968 0 0014.5 4c-1.255 0-2.443.29-3.5.804V12a1 1 0 11-2 0V4.804z" />
+              </svg>
+              All Intelligence Briefs
+            </h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
                 {filteredArticles.length} brief{filteredArticles.length !== 1 ? 's' : ''} found
                 {filters.category && ` in ${blogCategories.find(c => c.slug === filters.category)?.name}`}
                 {filters.searchQuery && ` matching "${filters.searchQuery}"`}
                 {allArticles.some(article => article.source === 'outrank') && (
-                  <span className="block text-sm text-green-600 mt-2">
-                    ✨ Includes latest AI-generated content
+                  <span className="block text-sm text-green-600 mt-2 inline-flex items-center">
+                    <svg className="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z" clipRule="evenodd" />
+                    </svg>
+                    Includes latest specialized content
                   </span>
                 )}
               </p>
@@ -365,7 +464,11 @@ export default function BlogPage() {
               </div>
             ) : (
               <div className="text-center py-16">
-                <div className="text-6xl mb-4">🔍</div>
+                <div className="mb-4 flex justify-center">
+                  <svg className="w-24 h-24 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clipRule="evenodd" />
+                  </svg>
+                </div>
                 <h3 className="text-2xl font-bold text-gray-900 mb-4">No briefs found</h3>
                 <p className="text-gray-600 mb-8">
                   Try adjusting your search criteria or browse all categories.
@@ -420,8 +523,11 @@ export default function BlogPage() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-white rounded-3xl p-12 shadow-xl border border-gray-200">
             <div className="text-center mb-12">
-              <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-8">
-                🧠 Editorial Promise
+              <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-8 inline-flex items-center justify-center">
+                <svg className="w-12 h-12 mr-4 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h6a1 1 0 110 2H4a1 1 0 01-1-1z" clipRule="evenodd" />
+                </svg>
+                Editorial Promise
               </h2>
             </div>
             
@@ -450,8 +556,12 @@ export default function BlogPage() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-gradient-to-br from-blue-600 to-indigo-700 rounded-3xl p-12 shadow-xl">
             <div className="text-center text-white">
-              <h2 className="text-3xl md:text-4xl font-black mb-8">
-                📨 Want Briefs Delivered Weekly?
+              <h2 className="text-3xl md:text-4xl font-black mb-8 inline-flex items-center justify-center">
+                <svg className="w-10 h-10 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+                  <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+                </svg>
+                Want Briefs Delivered Weekly?
               </h2>
               <p className="text-xl mb-8 opacity-90">
                 Subscribe to the Sentinel Dispatch – the only climate ops report built for Texas B2B operators.
