@@ -66,17 +66,17 @@
 ## 🚀 Déploiement
 
 ### Variables d'Environnement Vercel
-Les variables existantes suffisent :
+Configuration avec nouveau token simplifié :
 ```bash
-OUTRANK_ACCESS_TOKEN=insur_ccc5e220ceeb4cd89f82a6ee4dd340bc54295af367ca010bcf23c1786c34e9b2
+OUTRANK_ACCESS_TOKEN=insurtechtoken
 NEXT_PUBLIC_SITE_URL=https://insurtech.bpcorp.eu
 NODE_ENV=production
 ```
 
-### Configuration Outrank (Inchangée)
-- **Integration Name :** `insurtech-bpcorp-webhook`
+### Configuration Outrank (Nouvelle Intégration)
+- **Integration Name :** `insurtech-bpcorp-webhook-v2`
 - **Webhook Endpoint :** `https://insurtech.bpcorp.eu/api/webhooks/outrank`
-- **Access Token :** `insur_ccc5e220ceeb4cd89f82a6ee4dd340bc54295af367ca010bcf23c1786c34e9b2`
+- **Access Token :** `insurtechtoken`
 
 ## ⚠️ Limitations Actuelles
 

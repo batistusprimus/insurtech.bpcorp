@@ -10,7 +10,7 @@ const config = {
     host: 'localhost',
     port: 3000,
     protocol: 'http:',
-    token: 'insur_ccc5e220ceeb4cd89f82a6ee4dd340bc54295af367ca010bcf23c1786c34e9b2'
+    token: 'insurtechtoken'
   },
   
   // Configuration production
@@ -18,7 +18,7 @@ const config = {
     host: 'insurtech.bpcorp.eu',
     port: 443,
     protocol: 'https:',
-    token: 'insur_ccc5e220ceeb4cd89f82a6ee4dd340bc54295af367ca010bcf23c1786c34e9b2'
+    token: 'insurtechtoken'
   }
 };
 
