@@ -260,7 +260,7 @@ export default function BlogPage() {
               </div>
               {allArticles.some(article => article.source === 'outrank') && (
                 <div className="text-sm text-green-600 font-semibold">
-                  ✨ {allArticles.filter(article => article.source === 'outrank').length} article(s) Outrank
+                  ✨ {allArticles.filter(article => article.source === 'outrank').length} AI-generated article{allArticles.filter(article => article.source === 'outrank').length !== 1 ? 's' : ''}
                 </div>
               )}
             </div>
@@ -347,7 +347,7 @@ export default function BlogPage() {
                 {filters.searchQuery && ` matching "${filters.searchQuery}"`}
                 {allArticles.some(article => article.source === 'outrank') && (
                   <span className="block text-sm text-green-600 mt-2">
-                    ✨ Includes latest articles from Outrank AI
+                    ✨ Includes latest AI-generated content
                   </span>
                 )}
               </p>
