@@ -73,8 +73,8 @@ NEXT_PUBLIC_SITE_URL=https://insurtech.bpcorp.eu
 NODE_ENV=production
 ```
 
-### Configuration Outrank (Nouvelle Intégration)
-- **Integration Name :** `insurtech-bpcorp-webhook-v2`
+### Configuration Outrank (Token Mis à Jour)
+- **Integration Name :** `insurtech-bpcorp-webhook`
 - **Webhook Endpoint :** `https://insurtech.bpcorp.eu/api/webhooks/outrank`
 - **Access Token :** `insurtechtoken`
 

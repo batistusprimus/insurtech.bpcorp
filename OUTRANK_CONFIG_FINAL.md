@@ -25,8 +25,8 @@ OUTRANK_ACCESS_TOKEN=insurtechtoken
 
 ## 🔧 **Configuration Outrank Dashboard**
 
-### **Nouvelle Intégration :**
-- **Integration Name :** `insurtech-bpcorp-webhook-v2`
+### **Intégration Mise à Jour :**
+- **Integration Name :** `insurtech-bpcorp-webhook`
 - **Webhook Endpoint :** `https://insurtech.bpcorp.eu/api/webhooks/outrank`
 - **Access Token :** `insurtechtoken`
 
