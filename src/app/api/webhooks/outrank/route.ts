@@ -86,30 +86,14 @@ async function processOutrankArticle(article: OutrankArticle) {
       featured: false
     };
 
-    // Sauvegarder l'article via l'API interne (même système que les articles manuels)
+    // Sauvegarder l'article directement avec Upstash
     try {
-      const apiUrl = process.env.VERCEL_URL 
-        ? `https://${process.env.VERCEL_URL}` 
-        : process.env.NEXT_PUBLIC_SITE_URL || 'https://insurtech.bpcorp.eu';
+      const { addArticle } = await import('@/lib/storage-upstash');
       
-      const saveResponse = await fetch(`${apiUrl}/api/blog/articles`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(newArticle)
-      });
-
-      if (!saveResponse.ok) {
-        const errorText = await saveResponse.text();
-        console.error('Erreur lors de la sauvegarde:', errorText);
-        throw new Error(`Failed to save article: ${saveResponse.status}`);
-      }
-
-      const savedArticle = await saveResponse.json();
-      console.log('✅ Article Outrank sauvegardé via API:', savedArticle.article?.title);
+      const savedArticle = await addArticle(newArticle);
+      console.log('✅ Article Outrank sauvegardé directement dans Upstash:', savedArticle.title);
       
-      return savedArticle.article;
+      return savedArticle;
     } catch (saveError) {
       console.error('Erreur sauvegarde article Outrank:', saveError);
       // En cas d'erreur, au moins logger l'article
