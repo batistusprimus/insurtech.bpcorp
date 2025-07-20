@@ -5,6 +5,35 @@ import ContactCTA from '../../components/ContactCTA';
 import { getArticleBySlug, blogArticles } from '@/data/blog';
 import { BlogArticle } from '@/types/blog';
 
+// Fonction pour charger un article depuis l'API ou les données statiques
+async function getArticleFromApiOrStatic(slug: string): Promise<BlogArticle | null> {
+  try {
+    // D'abord, essayer de charger depuis l'API (articles Outrank)
+    const response = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL || 'https://insurtech.bpcorp.eu'}/api/blog/articles?limit=100`, {
+      cache: 'no-store' // Toujours charger la version la plus récente
+    });
+    
+    if (response.ok) {
+      const data = await response.json();
+      const apiArticle = data.articles?.find((article: BlogArticle) => article.slug === slug);
+      if (apiArticle) {
+        console.log(`✅ Article trouvé dans l'API: ${apiArticle.title}`);
+        return apiArticle;
+      }
+    }
+  } catch (error) {
+    console.warn('⚠️ Erreur lors du chargement de l\'API, utilisation des données statiques:', error);
+  }
+  
+  // Sinon, utiliser les données statiques
+  const staticArticle = getArticleBySlug(slug);
+  if (staticArticle) {
+    console.log(`✅ Article trouvé dans les données statiques: ${staticArticle.title}`);
+    return staticArticle;
+  }
+  return null;
+}
+
 interface ArticlePageProps {
   params: Promise<{
     slug: string;
@@ -21,7 +50,7 @@ export async function generateStaticParams() {
 // Generate metadata for SEO
 export async function generateMetadata({ params }: ArticlePageProps) {
   const { slug } = await params;
-  const article = getArticleBySlug(slug);
+  const article = await getArticleFromApiOrStatic(slug);
   
   if (!article) {
     return {
@@ -52,7 +81,7 @@ export async function generateMetadata({ params }: ArticlePageProps) {
 
 export default async function ArticlePage({ params }: ArticlePageProps) {
   const { slug } = await params;
-  const article = getArticleBySlug(slug);
+  const article = await getArticleFromApiOrStatic(slug);
 
   if (!article) {
     notFound();
