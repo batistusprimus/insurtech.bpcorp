@@ -204,31 +204,31 @@ export default function BlogPage() {
           <div className="text-center mb-16">
             <div className="inline-flex items-center px-6 py-3 bg-blue-600/20 border border-blue-400/30 rounded-full text-blue-200 text-sm font-semibold mb-8 backdrop-blur-sm">
               <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M3 3a1 1 0 000 2v8a2 2 0 002 2h2.586l-1.293 1.293a1 1 0 101.414 1.414L10 15.414l2.293 2.293a1 1 0 001.414-1.414L12.414 15H15a2 2 0 002-2V5a1 1 0 100-2H3zm11.707 4.707a1 1 0 00-1.414-1.414L10 9.586 8.707 8.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                <path fillRule="evenodd" d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" clipRule="evenodd" />
               </svg>
-              AI-Powered Intelligence Platform
+              Premium Business Intelligence
             </div>
             <h1 className="text-6xl md:text-7xl lg:text-8xl font-black text-white mb-8 leading-tight">
-              Sentinel Intelligence
+              Business Intelligence Hub
             </h1>
             <p className="text-2xl md:text-3xl text-blue-200 font-light max-w-4xl mx-auto leading-relaxed mb-12">
-              Automated insights, intelligent classification, real-time analysis.
+              Strategic insights, market analysis, operational excellence.
             </p>
           </div>
           
           {/* Key Metrics */}
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-16">
             <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-8 text-center">
-              <div className="text-4xl font-black text-blue-300 mb-2">24/7</div>
-              <div className="text-blue-100 font-semibold">Auto-Publishing</div>
+              <div className="text-4xl font-black text-blue-300 mb-2">Expert</div>
+              <div className="text-blue-100 font-semibold">Analysis</div>
             </div>
             <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-8 text-center">
               <div className="text-4xl font-black text-green-300 mb-2">5+</div>
               <div className="text-green-100 font-semibold">Content Types</div>
             </div>
             <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-8 text-center">
-              <div className="text-4xl font-black text-purple-300 mb-2">AI</div>
-              <div className="text-purple-100 font-semibold">Smart Classification</div>
+              <div className="text-4xl font-black text-purple-300 mb-2">Data</div>
+              <div className="text-purple-100 font-semibold">Driven Insights</div>
             </div>
             <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-8 text-center">
               <div className="text-4xl font-black text-orange-300 mb-2">100%</div>
@@ -241,13 +241,13 @@ export default function BlogPage() {
             <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-12 text-center">
               <div className="space-y-6 text-lg text-blue-100 leading-relaxed">
                 <p className="text-2xl font-bold text-white">
-                  Enterprise-grade content intelligence platform.
+                  Enterprise-grade business intelligence platform.
                 </p>
                 <p className="text-xl text-blue-200">
-                  Our AI system automatically generates, classifies, and publishes specialized business content across marketing, research, technical, and industry verticals.
+                  Our expert teams deliver comprehensive business insights across marketing, research, technical, and industry verticals.
                 </p>
                 <p className="font-semibold text-white text-xl">
-                  Intelligent automation. Professional quality. Zero manual intervention.
+                  Strategic expertise. Professional quality. Data-driven results.
                 </p>
               </div>
               
@@ -300,9 +300,9 @@ export default function BlogPage() {
               <div className="mt-8">
                 <div className="inline-flex items-center px-6 py-3 bg-green-600/20 border border-green-400/30 rounded-full text-green-200 text-lg font-semibold backdrop-blur-sm">
                   <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
+                    <path fillRule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
-                  Powered by Advanced AI Technology
+                  Trusted by Industry Leaders
                 </div>
               </div>
               
