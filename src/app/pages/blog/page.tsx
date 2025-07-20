@@ -202,34 +202,36 @@ export default function BlogPage() {
           {/* Header */}
           <div className="text-center mb-16">
             <div className="inline-flex items-center px-6 py-3 bg-blue-600/20 border border-blue-400/30 rounded-full text-blue-200 text-sm font-semibold mb-8 backdrop-blur-sm">
-              <SatelliteIcon className="mr-2" size={16} />
-              Intelligence Briefs
+              <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M3 3a1 1 0 000 2v8a2 2 0 002 2h2.586l-1.293 1.293a1 1 0 101.414 1.414L10 15.414l2.293 2.293a1 1 0 001.414-1.414L12.414 15H15a2 2 0 002-2V5a1 1 0 100-2H3zm11.707 4.707a1 1 0 00-1.414-1.414L10 9.586 8.707 8.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+              </svg>
+              AI-Powered Intelligence Platform
             </div>
             <h1 className="text-6xl md:text-7xl lg:text-8xl font-black text-white mb-8 leading-tight">
-              Sentinel Briefs
+              Sentinel Intelligence
             </h1>
             <p className="text-2xl md:text-3xl text-blue-200 font-light max-w-4xl mx-auto leading-relaxed mb-12">
-              Intelligence, Not Opinion.
+              Automated insights, intelligent classification, real-time analysis.
             </p>
           </div>
           
           {/* Key Metrics */}
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-16">
             <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-8 text-center">
-              <div className="text-4xl font-black text-blue-300 mb-2">≤3min</div>
-              <div className="text-blue-100 font-semibold">Read Time</div>
+              <div className="text-4xl font-black text-blue-300 mb-2">24/7</div>
+              <div className="text-blue-100 font-semibold">Auto-Publishing</div>
             </div>
             <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-8 text-center">
-              <div className="text-4xl font-black text-green-300 mb-2">60%</div>
-              <div className="text-green-100 font-semibold">Data-Driven</div>
+              <div className="text-4xl font-black text-green-300 mb-2">5+</div>
+              <div className="text-green-100 font-semibold">Content Types</div>
             </div>
             <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-8 text-center">
-              <div className="text-4xl font-black text-purple-300 mb-2">4</div>
-              <div className="text-purple-100 font-semibold">Core Categories</div>
+              <div className="text-4xl font-black text-purple-300 mb-2">AI</div>
+              <div className="text-purple-100 font-semibold">Smart Classification</div>
             </div>
             <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-8 text-center">
               <div className="text-4xl font-black text-orange-300 mb-2">100%</div>
-              <div className="text-orange-100 font-semibold">Texas Focus</div>
+              <div className="text-orange-100 font-semibold">Business Focus</div>
             </div>
           </div>
           
@@ -238,25 +240,41 @@ export default function BlogPage() {
             <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-12 text-center">
               <div className="space-y-6 text-lg text-blue-100 leading-relaxed">
                 <p className="text-2xl font-bold text-white">
-                  This isn't a climate awareness blog.
+                  Enterprise-grade content intelligence platform.
                 </p>
                 <p className="text-xl text-blue-200">
-                  This is operational intelligence for Texas-based teams managing risk, infrastructure, logistics, and revenue.
+                  Our AI system automatically generates, classifies, and publishes specialized business content across marketing, research, technical, and industry verticals.
                 </p>
                 <p className="font-semibold text-white text-xl">
-                  Short, specific, and always backed by data.
+                  Intelligent automation. Professional quality. Zero manual intervention.
                 </p>
               </div>
               
-              {/* Category Preview */}
-              <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4">
+              {/* Content Types Preview */}
+              <div className="mt-12 grid grid-cols-2 md:grid-cols-5 gap-4">
                 <div className="bg-white/20 backdrop-blur-sm rounded-xl p-4 text-center">
                   <div className="text-white mb-2 flex justify-center">
                     <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clipRule="evenodd" />
+                      <path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z" />
                     </svg>
                   </div>
-                  <div className="text-white text-sm font-semibold">Weather Intel</div>
+                  <div className="text-white text-sm font-semibold">Marketing</div>
+                </div>
+                <div className="bg-white/20 backdrop-blur-sm rounded-xl p-4 text-center">
+                  <div className="text-white mb-2 flex justify-center">
+                    <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M3 3a1 1 0 000 2v8a2 2 0 002 2h2.586l-1.293 1.293a1 1 0 101.414 1.414L10 15.414l2.293 2.293a1 1 0 001.414-1.414L12.414 15H15a2 2 0 002-2V5a1 1 0 100-2H3zm11.707 4.707a1 1 0 00-1.414-1.414L10 9.586 8.707 8.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                    </svg>
+                  </div>
+                  <div className="text-white text-sm font-semibold">Research</div>
+                </div>
+                <div className="bg-white/20 backdrop-blur-sm rounded-xl p-4 text-center">
+                  <div className="text-white mb-2 flex justify-center">
+                    <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clipRule="evenodd" />
+                    </svg>
+                  </div>
+                  <div className="text-white text-sm font-semibold">Technical</div>
                 </div>
                 <div className="bg-white/20 backdrop-blur-sm rounded-xl p-4 text-center">
                   <div className="text-white mb-2 flex justify-center">
@@ -264,7 +282,7 @@ export default function BlogPage() {
                       <path fillRule="evenodd" d="M4 4a2 2 0 00-2 2v4a2 2 0 002 2V6h10a2 2 0 00-2-2H4zm2 6a2 2 0 012-2h8a2 2 0 012 2v4a2 2 0 01-2 2H8a2 2 0 01-2-2v-4zm6 4a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
                     </svg>
                   </div>
-                  <div className="text-white text-sm font-semibold">Industry Exposure</div>
+                  <div className="text-white text-sm font-semibold">Industry</div>
                 </div>
                 <div className="bg-white/20 backdrop-blur-sm rounded-xl p-4 text-center">
                   <div className="text-white mb-2 flex justify-center">
@@ -273,25 +291,17 @@ export default function BlogPage() {
                       <path fillRule="evenodd" d="M4 5a2 2 0 012-2h8a2 2 0 012 2v6a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 1a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clipRule="evenodd" />
                     </svg>
                   </div>
-                  <div className="text-white text-sm font-semibold">Playbooks</div>
-                </div>
-                <div className="bg-white/20 backdrop-blur-sm rounded-xl p-4 text-center">
-                  <div className="text-white mb-2 flex justify-center">
-                    <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
-                      <path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z" />
-                    </svg>
-                  </div>
-                  <div className="text-white text-sm font-semibold">Sentinel Reports</div>
+                  <div className="text-white text-sm font-semibold">Strategic</div>
                 </div>
               </div>
               
-              {/* Editorial Promise Badge */}
+              {/* Technology Badge */}
               <div className="mt-8">
                 <div className="inline-flex items-center px-6 py-3 bg-green-600/20 border border-green-400/30 rounded-full text-green-200 text-lg font-semibold backdrop-blur-sm">
                   <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z" />
+                    <path fillRule="evenodd" d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
                   </svg>
-                  Intelligence, Not Opinion
+                  Powered by Advanced AI Technology
                 </div>
               </div>
               
