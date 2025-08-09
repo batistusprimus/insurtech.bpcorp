@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 export const siteConfig = {
   name: 'Sentinel Shield',
   description: 'Transform weather events into business opportunities with our real-time climate intelligence and qualified B2B leads.',
-  url: 'https://insurtech.bpcorp.com',
+  url: 'https://insurtech.bpcorp.eu',
   ogImage: '/og-image.jpg',
   links: {
     twitter: 'https://twitter.com/sentinelshield',

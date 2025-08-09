@@ -9,6 +9,7 @@ import PageTransition from "./components/PageTransition";
 import { defaultMetadata } from "./metadata";
 import { CacheProvider } from "./components/CacheProvider";
 import { Analytics } from "@vercel/analytics/next";
+import Script from "next/script";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -22,11 +23,25 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const GA_ID = process.env.NEXT_PUBLIC_GA_ID || "G-3K5YVBJBLX";
   return (
     <html lang="fr">
       <body
         className={`${inter.variable} font-sans antialiased`}
       >
+        {/* Google Analytics */}
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
+          strategy="afterInteractive"
+        />
+        <Script id="gtag-init" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${GA_ID}');
+          `}
+        </Script>
         <CacheProvider>
           <Header />
           <PageTransition>
