@@ -66,7 +66,7 @@ export default function ContactModal({ isOpen, onClose, defaultType = 'leads' }:
                   }`}
                 >
                   <TargetIcon className="inline mr-2" size={16} />
-                  Request Leads
+                  Request Business Intelligence
                 </button>
                 <button
                   onClick={() => setActiveTab('contact')}
@@ -88,8 +88,8 @@ export default function ContactModal({ isOpen, onClose, defaultType = 'leads' }:
             {activeTab === 'leads' ? (
               <ContactForm
                 type="leads"
-                title="Request Qualified Leads"
-                description="Tell us about your target market and we'll deliver verified B2B contacts within 7 days."
+                title="Request Business Intelligence"
+                description="Tell us about your target market and we'll deliver actionable B2B intelligence within 7 days."
                 onSubmit={handleLeadsSubmit}
               />
             ) : (

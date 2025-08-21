@@ -9,7 +9,7 @@ const Footer = () => {
     {
       title: "Services",
       links: [
-        { name: "Lead Generation", href: "/pages/lead-gen" },
+        { name: "Business Intelligence", href: "/pages/lead-gen" },
         { name: "Sentinel Climate", href: "/pages/sentinel" },
         { name: "Coverage Areas", href: "/pages/coverage" },
         { name: "Industries", href: "/pages/industries" }
@@ -54,7 +54,7 @@ const Footer = () => {
             </div>
             
             <p className="text-gray-300 mb-6 leading-relaxed text-overflow-safe">
-              Transform weather events into business opportunities with our real-time climate intelligence and qualified B2B leads.
+              Transform weather events into business opportunities with our real-time climate intelligence and actionable B2B business intelligence.
             </p>
             
             {/* Contact Info */}
@@ -65,8 +65,8 @@ const Footer = () => {
               </div>
               <div className="flex items-center text-gray-300">
                 <EmailIcon className="mr-3 flex-shrink-0" size={20} />
-                <a href="mailto:leads@bpcorp.eu" className="hover:text-blue-300 transition-colors text-overflow-safe">
-                  leads@bpcorp.eu
+                <a href="mailto:intel@bpcorp.eu" className="hover:text-blue-300 transition-colors text-overflow-safe">
+                  intel@bpcorp.eu
                 </a>
               </div>
             </div>

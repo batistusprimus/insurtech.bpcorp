@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
+import Link from 'next/link';
 import ContactModal from './ContactModal';
 import { TargetIcon, ShieldIcon } from './Icons';
 
@@ -10,6 +11,8 @@ interface ContactCTAProps {
   size?: 'sm' | 'md' | 'lg';
   className?: string;
   children?: React.ReactNode;
+  href?: string;
+  newTab?: boolean;
 }
 
 export default function ContactCTA({ 
@@ -17,7 +20,9 @@ export default function ContactCTA({
   variant = 'primary', 
   size = 'md',
   className = '',
-  children 
+  children,
+  href,
+  newTab = false,
 }: ContactCTAProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -37,13 +42,13 @@ export default function ContactCTA({
 
   const buttonClasses = `${baseClasses} ${variantClasses[variant]} ${sizeClasses[size]} ${className}`;
 
-  const defaultText = type === 'leads' ? 'Request Leads' : 'Contact Us';
+  const defaultText = type === 'leads' ? 'Request Business Intelligence' : 'Contact Us';
   const IconComponent = type === 'leads' ? TargetIcon : ShieldIcon;
 
   const handleClick = () => {
     if (type === 'email') {
       // Open email client directly
-      window.location.href = 'mailto:leads@bpcorp.eu';
+      window.location.href = 'mailto:intel@bpcorp.eu';
     } else {
       // Open modal for leads and general contact
       setIsModalOpen(true);
@@ -52,17 +57,33 @@ export default function ContactCTA({
 
   return (
     <>
-      <button
-        onClick={handleClick}
-        className={buttonClasses}
-      >
-        {children || (
-          <>
-            <IconComponent className="mr-2" size={size === 'sm' ? 16 : size === 'lg' ? 24 : 20} />
-            {defaultText}
-          </>
-        )}
-      </button>
+      {href ? (
+        <Link
+          href={href}
+          className={buttonClasses}
+          target={newTab ? '_blank' : undefined}
+          rel={newTab ? 'noopener noreferrer' : undefined}
+        >
+          {children || (
+            <>
+              <IconComponent className="mr-2" size={size === 'sm' ? 16 : size === 'lg' ? 24 : 20} />
+              {defaultText}
+            </>
+          )}
+        </Link>
+      ) : (
+        <button
+          onClick={handleClick}
+          className={buttonClasses}
+        >
+          {children || (
+            <>
+              <IconComponent className="mr-2" size={size === 'sm' ? 16 : size === 'lg' ? 24 : 20} />
+              {defaultText}
+            </>
+          )}
+        </button>
+      )}
 
       <ContactModal
         isOpen={isModalOpen}

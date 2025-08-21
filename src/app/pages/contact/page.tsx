@@ -57,7 +57,7 @@ export default function ContactPage() {
             </div>
             <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-8 text-center">
               <div className="text-4xl font-black text-purple-300 mb-2">7 days</div>
-              <div className="text-purple-100 font-semibold">Lead Delivery</div>
+              <div className="text-purple-100 font-semibold">Intelligence Delivery</div>
             </div>
           </div>
         </div>
@@ -70,8 +70,8 @@ export default function ContactPage() {
           <div className="mb-16">
             <ContactForm
               type="leads"
-              title="Request Qualified Leads"
-              description="Tell us about your target market and we'll deliver verified B2B contacts within 7 days."
+              title="Request Business Intelligence"
+              description="Tell us about your target market and we'll deliver actionable B2B intelligence within 7 days."
               onSubmit={handleLeadsSubmit}
             />
           </div>
@@ -120,7 +120,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <p className="font-semibold text-gray-900">Email</p>
-                    <a href="mailto:leads@bpcorp.eu" className="text-gray-600 hover:text-blue-600 transition-colors">leads@bpcorp.eu</a>
+                    <a href="mailto:intel@bpcorp.eu" className="text-gray-600 hover:text-blue-600 transition-colors">intel@bpcorp.eu</a>
                   </div>
                 </div>
               </div>
@@ -141,19 +141,19 @@ export default function ContactPage() {
           <div className="space-y-8">
             <div className="bg-white rounded-2xl p-8 shadow-xl border border-gray-200">
               <h3 className="text-xl font-bold text-gray-900 mb-4">
-                How quickly can you deliver leads?
+                How quickly can you deliver intelligence?
               </h3>
               <p className="text-gray-700">
-                We typically deliver qualified leads within 7 days of a weather event. For urgent requests, we can expedite to 24-48 hours.
+                We typically deliver actionable intelligence within 7 days of a weather event. For urgent requests, we can expedite to 24-48 hours.
               </p>
             </div>
             
             <div className="bg-white rounded-2xl p-8 shadow-xl border border-gray-200">
               <h3 className="text-xl font-bold text-gray-900 mb-4">
-                What information do you provide with each lead?
+                What information do you provide with each intelligence package?
               </h3>
               <p className="text-gray-700">
-                Each lead includes: verified decision-maker contact (name, role, email, phone), business location (ZIP-level), sector & size, risk score, and contact urgency.
+                Each package includes: verified decision-maker contact (name, role, email, phone), business location (ZIP-level), sector & size, risk score, and contact urgency.
               </p>
             </div>
             
@@ -168,10 +168,10 @@ export default function ContactPage() {
             
             <div className="bg-white rounded-2xl p-8 shadow-xl border border-gray-200">
               <h3 className="text-xl font-bold text-gray-900 mb-4">
-                Is there a minimum lead volume requirement?
+                Is there a minimum intelligence volume requirement?
               </h3>
               <p className="text-gray-700">
-                No minimum requirement. We can deliver anywhere from 25 to 500+ leads per batch, depending on your needs and the event scope.
+                No minimum requirement. We can deliver anywhere from 25 to 500+ intelligence units per batch, depending on your needs and the event scope.
               </p>
             </div>
           </div>
@@ -191,7 +191,7 @@ export default function ContactPage() {
             onClick={scrollToForm}
             className="bg-white text-blue-600 font-bold py-4 px-8 rounded-xl text-lg transition-all duration-300 transform hover:scale-105 shadow-xl"
           >
-            Request Your First Leads
+            Request Your First Intelligence Package
           </button>
         </div>
       </div>

@@ -108,15 +108,15 @@ export default function ContactForm({ type, title, description, onSubmit }: Cont
   ];
 
   const leadVolumes = [
-    '25-50 leads per week',
-    '50-100 leads per week',
-    '100-250 leads per week',
-    '250+ leads per week',
+    '25-50 intelligence units per week',
+    '50-100 intelligence units per week',
+    '100-250 intelligence units per week',
+    '250+ intelligence units per week',
     'Custom volume'
   ];
 
   const urgencyLevels = [
-    'Immediate - Need leads this week',
+    'Immediate - Need intelligence this week',
     'High - Within 2 weeks',
     'Medium - Within 1 month',
     'Low - Planning phase'
@@ -147,7 +147,7 @@ export default function ContactForm({ type, title, description, onSubmit }: Cont
                 <p className="text-green-800 font-semibold text-overflow-safe">Thank you!</p>
                 <p className="text-green-700 text-sm text-overflow-safe">
                   {type === 'leads' 
-                    ? 'We\'ll review your request and get back to you within 24 hours with qualified leads.'
+                    ? 'We\'ll review your request and get back to you within 24 hours with actionable business intelligence.'
                     : 'We\'ll get back to you within 24 hours.'
                   }
                 </p>
@@ -291,7 +291,7 @@ export default function ContactForm({ type, title, description, onSubmit }: Cont
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <label htmlFor="leadVolume" className="block text-sm font-medium text-gray-700 mb-2">
-                    Lead Volume *
+                    Intelligence Volume *
                   </label>
                   <select
                     id="leadVolume"
@@ -382,7 +382,7 @@ export default function ContactForm({ type, title, description, onSubmit }: Cont
                   Processing...
                 </div>
               ) : (
-                type === 'leads' ? 'Request Leads' : 'Send Message'
+                type === 'leads' ? 'Request Business Intelligence' : 'Send Message'
               )}
             </button>
           </div>

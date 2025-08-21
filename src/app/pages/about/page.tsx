@@ -7,7 +7,7 @@ export default function AboutPage() {
     'Detect major weather events via satellite + AI',
     'Identify exposed business infrastructure (ZIP-level)',
     'Score risk by severity, urgency, and economic impact',
-    'Deliver verified B2B leads to sales teams—on demand'
+    'Deliver actionable B2B business intelligence to teams—on demand'
   ];
 
   const texasStats = [
@@ -19,7 +19,7 @@ export default function AboutPage() {
     {
       year: '2025',
       title: 'Texas',
-      description: 'Lead Gen + Embedded Risk Intelligence'
+      description: 'Business Intelligence + Embedded Risk Intelligence'
     },
     {
       year: '2026',

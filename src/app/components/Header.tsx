@@ -11,7 +11,7 @@ export default function Header() {
   const dropdownTimerRef = useRef<NodeJS.Timeout | null>(null);
 
   const navigationItems = [
-    { name: 'Lead Generation', href: '/pages/lead-gen' },
+    { name: 'Business Intelligence', href: '/pages/lead-gen' },
     { name: 'Sentinel Climate', href: '/pages/sentinel' },
     { name: 'Contact', href: '/pages/contact' }
   ];
@@ -191,7 +191,7 @@ export default function Header() {
               href="/pages/contact"
               className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-semibold py-2.5 px-6 rounded-lg transition-all duration-200 shadow-md hover:shadow-lg transform hover:-translate-y-0.5 whitespace-nowrap text-overflow-safe"
             >
-              Find my Leads
+              Access Business Intelligence
             </Link>
           </div>
 
@@ -293,7 +293,7 @@ export default function Header() {
                 className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-200 shadow-md hover:shadow-lg block text-center text-overflow-safe"
                 onClick={() => setIsMenuOpen(false)}
               >
-                Find my Leads
+                Access Business Intelligence
               </Link>
             </div>
           </div>

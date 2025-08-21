@@ -13,7 +13,7 @@ export default function IndustriesPage() {
       capability: 'Sentinel identifies every impacted facility within 24–48h of an event',
       useCases: [
         'Infrastructure audits post-flood or hurricane',
-        'Emergency procurement leads',
+        'Emergency procurement intelligence',
         'Facility-level risk scoring by ZIP'
       ]
     },
@@ -46,7 +46,7 @@ export default function IndustriesPage() {
       title: 'Agriculture & Food Processing',
       subtitle: '→ Drought & freeze prone, seasonal cycles',
       description: 'Exposure to water stress, extreme heat, supply chain bottlenecks',
-      capability: 'Lower digitization = lower visibility = perfect lead target',
+      capability: 'Lower digitization = lower visibility = ideal intelligence target',
       useCases: [
         'Irrigation and equipment providers',
         'Ag-logistics / refrigeration partners',
@@ -101,7 +101,7 @@ export default function IndustriesPage() {
             <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-8 text-center">
               <div className="text-4xl font-black text-green-300 mb-2">24-48h</div>
               <div className="text-green-100 font-semibold">Detection Speed</div>
-              <div className="text-green-200 text-sm mt-2">From event to verified leads</div>
+              <div className="text-green-200 text-sm mt-2">From event to verified intelligence</div>
             </div>
             <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-8 text-center">
               <div className="text-4xl font-black text-purple-300 mb-2">100%</div>
@@ -253,7 +253,7 @@ export default function IndustriesPage() {
               size="lg"
               className="inline-block bg-white text-blue-600 font-bold py-4 px-8 rounded-xl text-lg transition-all duration-300 transform hover:scale-105 shadow-xl mr-4"
             >
-              🔘 Request Leads
+              🔘 Request Business Intelligence
             </ContactCTA>
             <a 
               href="/pages/coverage"

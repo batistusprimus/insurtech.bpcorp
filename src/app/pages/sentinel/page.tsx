@@ -41,7 +41,7 @@ export default function SentinelPage() {
               </h1>
               
               <p className="text-xl lg:text-2xl mb-8 text-blue-100 leading-relaxed max-w-2xl">
-                Transform weather chaos into qualified B2B leads. Our AI system detects impacted areas and identifies exposed businesses in real-time.
+                Transform weather chaos into actionable B2B business intelligence. Our AI system detects impacted areas and identifies exposed businesses in real-time.
               </p>
               
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
@@ -52,7 +52,7 @@ export default function SentinelPage() {
                   className="inline-flex items-center justify-center bg-white text-blue-900 font-bold py-4 px-8 rounded-lg hover:bg-gray-100 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
                 >
                   <TargetIcon className="w-5 h-5 mr-2" />
-                  Request Qualified Leads
+                  Request Business Intelligence
                 </ContactCTA>
               </div>
               
@@ -108,7 +108,7 @@ export default function SentinelPage() {
                     
                     <div className="bg-white/5 rounded-lg p-4">
                       <div className="flex items-center justify-between mb-2">
-                        <span className="text-sm font-medium">Leads Generated</span>
+                        <span className="text-sm font-medium">Insights Generated</span>
                         <span className="text-2xl font-bold text-purple-400">89</span>
                       </div>
                       <div className="w-full bg-white/10 rounded-full h-2">
@@ -254,7 +254,7 @@ export default function SentinelPage() {
                   5
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-4">Lead Activation</h3>
+                  <h3 className="text-xl font-bold text-gray-900 mb-4">Intelligence Activation</h3>
                   <p className="text-gray-700 mb-4">
                     Verified decision-maker contacts are qualified and delivered within days. Output is clean, structured, and CRM-ready.
                   </p>
@@ -305,7 +305,7 @@ export default function SentinelPage() {
             
             <div className="bg-gray-50 p-6 rounded-lg border">
               <h3 className="text-lg font-bold text-gray-900 mb-3">Volume</h3>
-              <p className="text-gray-700">25 to 500+ leads per delivery</p>
+              <p className="text-gray-700">25 to 500+ intelligence units per delivery</p>
             </div>
           </div>
         </div>
@@ -336,7 +336,7 @@ export default function SentinelPage() {
               
               <div className="bg-white/10 p-6 rounded-lg">
                 <div className="text-2xl font-bold text-purple-400 mb-2">&lt;7 days</div>
-                <div className="text-purple-300">Detection to lead delivery</div>
+                <div className="text-purple-300">Detection to intelligence delivery</div>
               </div>
               
               <div className="bg-white/10 p-6 rounded-lg">
@@ -369,11 +369,11 @@ export default function SentinelPage() {
             
             <div className="bg-gray-50 p-6 rounded-lg border">
               <h3 className="text-lg font-bold text-gray-900 mb-3">Weekly batch delivery</h3>
-              <p className="text-gray-700">Consistent, reliable lead delivery schedule</p>
+              <p className="text-gray-700">Consistent, reliable intelligence delivery schedule</p>
             </div>
             
             <div className="bg-gray-50 p-6 rounded-lg border">
-              <h3 className="text-lg font-bold text-gray-900 mb-3">Scales from 10 to 10,000 leads</h3>
+              <h3 className="text-lg font-bold text-gray-900 mb-3">Scales from 10 to 10,000 intelligence units</h3>
               <p className="text-gray-700">Flexible volume to match your needs</p>
             </div>
             
@@ -410,7 +410,7 @@ export default function SentinelPage() {
             size="lg"
             className="bg-white text-blue-900 font-bold py-3 px-8 rounded-lg hover:bg-gray-100 transition-colors"
           >
-            Request Leads
+            Request Business Intelligence
           </ContactCTA>
         </div>
       </div>

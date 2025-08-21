@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 
 export const siteConfig = {
   name: 'Sentinel Shield',
-  description: 'Transform weather events into business opportunities with our real-time climate intelligence and qualified B2B leads.',
+  description: 'Transform weather events into business opportunities with our real-time climate intelligence and actionable B2B business intelligence.',
   url: 'https://insurtech.bpcorp.eu',
   ogImage: '/og-image.jpg',
   links: {
@@ -19,12 +19,12 @@ export const defaultMetadata: Metadata = {
   description: siteConfig.description,
   keywords: [
     'climate intelligence',
-    'B2B leads',
+    'B2B business intelligence',
     'weather events',
     'disaster recovery',
-    'insurance leads',
+    'insurance business intelligence',
     'real-time detection',
-    'qualified leads',
+    'actionable insights',
     'Texas',
   ],
   authors: [

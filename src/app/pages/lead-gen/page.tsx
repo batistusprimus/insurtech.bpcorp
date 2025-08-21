@@ -18,13 +18,13 @@ export default function LeadGenPage() {
           <div className="text-center mb-16">
             <div className="inline-flex items-center px-6 py-3 bg-blue-600/20 border border-blue-400/30 rounded-full text-blue-200 text-sm font-semibold mb-8 backdrop-blur-sm">
               <TargetIcon className="mr-2" size={16} />
-              Lead Generation
+              Business Intelligence
             </div>
             <h1 className="text-6xl md:text-7xl lg:text-8xl font-black text-white mb-8 leading-tight">
-              Qualified B2B Leads
+              Actionable B2B Business Intelligence
             </h1>
             <p className="text-2xl md:text-3xl text-blue-200 font-light max-w-4xl mx-auto leading-relaxed mb-12">
-              Get verified decision-makers from climate-impacted businesses in less than 24 hours
+              Get actionable intelligence on decision-makers from climate-impacted businesses in less than 24 hours
             </p>
           </div>
           
@@ -51,10 +51,10 @@ export default function LeadGenPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-8">
-              How Our Lead Generation Works
+              How Our Business Intelligence Works
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              We detect weather events in real-time and deliver qualified B2B leads before your competitors even know what happened.
+              We detect weather events in real-time and deliver actionable B2B business intelligence before your competitors even know what happened.
             </p>
           </div>
 
@@ -72,7 +72,7 @@ export default function LeadGenPage() {
               <div className="w-20 h-20 bg-green-100 rounded-2xl flex items-center justify-center mx-auto mb-6">
                 <TrendingUpIcon className="w-10 h-10 text-green-600" />
               </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">2. Lead Qualification</h3>
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">2. Intelligence Qualification</h3>
               <p className="text-gray-600">
                 Clyma™ AI engine enriches and verifies contact data for decision-makers in affected areas.
               </p>
@@ -83,7 +83,7 @@ export default function LeadGenPage() {
             </div>
               <h3 className="text-2xl font-bold text-gray-900 mb-4">3. Fast Delivery</h3>
               <p className="text-gray-600">
-                Receive qualified leads within 24 hours via our PayPerLeads™ performance-based model.
+                Receive actionable business intelligence within 24 hours via our performance-based model.
               </p>
             </div>
           </div>
@@ -94,7 +94,7 @@ export default function LeadGenPage() {
       <div className="py-24 bg-gradient-to-br from-blue-600 to-indigo-700">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-4xl md:text-5xl font-black text-white mb-8">
-            Ready to Get Your First Leads?
+            Ready to Get Your First Intelligence Package?
           </h2>
           <p className="text-xl text-blue-100 mb-12">
             Join the companies already using Sentinel Shield to turn weather events into business opportunities.
@@ -106,7 +106,7 @@ export default function LeadGenPage() {
               size="lg"
               className="inline-block bg-white text-blue-600 font-bold py-4 px-8 rounded-xl text-lg transition-all duration-300 transform hover:scale-105 shadow-xl"
             >
-              Request Leads Now
+              Request Business Intelligence Now
             </ContactCTA>
             <Link 
               href="/pages/contact"

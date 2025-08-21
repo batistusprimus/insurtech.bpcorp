@@ -16,13 +16,13 @@ export default function CoveragePage() {
     },
     {
       number: '3',
-      title: 'Lead Volume Forecasting',
+      title: 'Intelligence Volume Forecasting',
       description: 'We estimate how many verified companies are located within each zone and match your targeting criteria.'
     },
     {
       number: '4',
       title: 'Weekly Batch Delivery',
-      description: 'Lead lists are refreshed and dispatched every week, as new events emerge or zones update.'
+      description: 'Intelligence packages are refreshed and dispatched every week, as new events emerge or zones update.'
     }
   ];
 
@@ -109,7 +109,7 @@ export default function CoveragePage() {
             </div>
             <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-8 text-center">
               <div className="text-4xl font-black text-orange-300 mb-2">&lt;7 days</div>
-              <div className="text-orange-100 font-semibold">Lead Delivery</div>
+              <div className="text-orange-100 font-semibold">Intelligence Delivery</div>
             </div>
           </div>
           
@@ -124,7 +124,7 @@ export default function CoveragePage() {
                   Every zone listed below has been scanned, validated, and confirmed as impacted by a recent or ongoing climate event.
                 </p>
                 <p className="font-semibold text-white text-xl">
-                  If it's listed, we can deliver verified B2B leads—within days.
+                  If it's listed, we can deliver verified B2B business intelligence—within days.
                 </p>
               </div>
               
@@ -195,7 +195,7 @@ export default function CoveragePage() {
                     <p className="text-gray-700">{zone.zips.join(', ')}</p>
                   </div>
                   <div>
-                    <h4 className="font-semibold text-gray-900 mb-2">Lead Volume:</h4>
+                    <h4 className="font-semibold text-gray-900 mb-2">Intelligence Volume:</h4>
                     <p className="text-gray-700">{zone.leadVolume}</p>
                   </div>
                   <div>
@@ -228,7 +228,7 @@ export default function CoveragePage() {
               </h2>
               <p className="text-xl text-gray-700 mb-8">
                 Want to know if your target region was hit recently?<br />
-                We can generate a tailored lead list for:
+                We can generate a tailored intelligence report for:
               </p>
             </div>
             
@@ -263,7 +263,7 @@ export default function CoveragePage() {
                 size="lg"
                 className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold py-4 px-8 rounded-xl text-lg transition-all duration-300 transform hover:scale-105 shadow-xl"
               >
-                Request Leads
+                Request Business Intelligence
               </ContactCTA>
             </div>
           </div>
@@ -307,7 +307,7 @@ export default function CoveragePage() {
               size="lg"
               className="inline-block bg-white text-blue-600 font-bold py-4 px-8 rounded-xl text-lg transition-all duration-300 transform hover:scale-105 shadow-xl mr-4"
             >
-              🔘 Request Leads Now
+              🔘 Request Business Intelligence Now
             </ContactCTA>
             <a 
               href="/pages/sentinel"
