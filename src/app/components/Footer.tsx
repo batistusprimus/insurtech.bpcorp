@@ -30,6 +30,7 @@ const Footer = () => {
         { name: "About Us", href: "/pages/about" },
         { name: "Careers", href: "/pages/careers" },
         { name: "Contact", href: "/pages/contact" },
+        { name: "Partners", href: "/partners" },
         { name: "Legal Notice", href: "/mentions-legales" }
       ]
     }

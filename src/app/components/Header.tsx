@@ -30,7 +30,8 @@ export default function Header() {
         { name: 'Resources', href: '/pages/resources' },
         { name: 'Blog', href: '/pages/blog' },
         { name: 'About', href: '/pages/about' },
-        { name: 'Careers', href: '/pages/careers' }
+        { name: 'Careers', href: '/pages/careers' },
+        { name: 'Partners', href: '/partners' }
       ]
     }
   };
